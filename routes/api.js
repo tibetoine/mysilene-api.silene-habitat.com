@@ -115,9 +115,8 @@ router.post('/news', function (req, res) {
 
 
 router.get('/contacts', function (req, res) {
-	console.log('Get request for contacts');
-
-	Contacts.find({})
+	console.log('Get request for contacts sorted');
+	Contacts.find({}).sort({sn:1})
 		.exec(function (err, contacts) {
 			if (err) {
 				console.log("Erreur dans la récupération des contacts");
