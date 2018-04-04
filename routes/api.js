@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const request = require('request-promise-lite');
 const News = require('../models/news');
+const NewsSilene = require('../models/newsSilene');
 const Contacts = require('../models/contacts');
 
 const db = "mongodb://silenemongodb:Silene44@cluster0-shard-00-00-qonhe.mongodb.net:27017,cluster0-shard-00-01-qonhe.mongodb.net:27017,cluster0-shard-00-02-qonhe.mongodb.net:27017/meantuto?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin";
@@ -25,15 +26,32 @@ router.get('/news', function (req, res) {
 	//var jsonNews = Array<News>;
 
 	/* Appel de l'API Sharepoint pour récupérer les actualités */
-	request.get('https://jsonplaceholder.typicode.com/photos', { json: true })
+	/*request.get('https://jsonplaceholder.typicode.com/photos', { json: true })
 		.then((response) => {
 			//console.log(JSON.stringify(response));
-		});
+		});*/
 
-	/* Synchronisation avec Mongo */
 
 
 	News.find({})
+		.exec(function (err, news) {
+			if (err) {
+				console.log("Erreur dans la récupération des news");
+			} else {
+				res.json(news);
+			}
+		});
+});
+
+/**
+ * REST pour les news Silène (Version 2)
+ */
+router.get('/newsSilene', function (req, res) {
+	console.log('Get request for newsSilene');
+
+
+
+	NewsSilene.find({})
 		.exec(function (err, news) {
 			if (err) {
 				console.log("Erreur dans la récupération des news");
