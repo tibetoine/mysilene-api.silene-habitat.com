@@ -51,7 +51,7 @@ router.get('/newsSilene', function (req, res) {
 
 
 
-	NewsSilene.find({})
+	NewsSilene.find({}).sort('-date')
 		.exec(function (err, news) {
 			if (err) {
 				console.log("Erreur dans la récupération des news");
