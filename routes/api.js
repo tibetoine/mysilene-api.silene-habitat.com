@@ -73,7 +73,7 @@ router.get('/news/:id', function (req, res) {
 			}
 		});
 });
-
+/*
 router.put('/news/:id', function (req, res) {
 	console.log('Update a news');
 	News.findByIdAndUpdate(req.params.id,
@@ -127,7 +127,7 @@ router.post('/news', function (req, res) {
 			res.json(insertedNews);
 		}
 	});
-});
+});*/
 
 /* API : Contacts */
 
