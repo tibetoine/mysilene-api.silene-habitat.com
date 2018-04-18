@@ -3,10 +3,13 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const api = require('./routes/api');
+const apiAuth = require('./routes/api-auth');
 
 const port = process.env.EXPRESS_PORT || 3000;
 
 const app = express();
+
+app.use(require('sanitize').middleware);
 
 app.use(function (req, res, next) {
 	// Website you wish to allow to connect
@@ -38,6 +41,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/api', api);
+app.use('/api-auth', apiAuth);
 
 
 app.get('*', (req, res) => {

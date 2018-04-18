@@ -11,14 +11,17 @@
   "author": "",
   "license": "",
   "dependencies": {
+    "activedirectory": "^0.7.2",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
+    "dotenv": "^5.0.1",
     "express": "~4.15.5",
     "express-validator": "^4.3.0",
     "lodash": "^4.17.4",
     "mongodb": "^2.2.33",
     "mongoose": "^5.0.12",
-    "request-promise-lite": "^0.13.1"
+    "request-promise-lite": "^0.13.1",
+    "sanitize": "^2.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

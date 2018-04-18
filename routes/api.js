@@ -5,8 +5,10 @@ const request = require('request-promise-lite');
 const News = require('../models/news');
 const NewsSilene = require('../models/newsSilene');
 const Contacts = require('../models/contacts');
+const Users = require('../models/users');
+require('dotenv').load();
 
-const db = "mongodb://silenemongodb:Silene44@cluster0-shard-00-00-qonhe.mongodb.net:27017,cluster0-shard-00-01-qonhe.mongodb.net:27017,cluster0-shard-00-02-qonhe.mongodb.net:27017/meantuto?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin";
+const db = process.env.MONGO_DB;
 mongoose.Promise = global.Promise;
 
 
@@ -60,6 +62,8 @@ router.get('/newsSilene', function (req, res) {
 			}
 		});
 });
+
+
 
 router.get('/news/:id', function (req, res) {
 	console.log('Get request for news');
