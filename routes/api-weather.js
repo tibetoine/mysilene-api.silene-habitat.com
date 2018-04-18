@@ -26,42 +26,46 @@ router.get('/weather', (req, res) => {
       console.log('Erreur creating Weather')
       console.log('ERROR : ' + JSON.stringify(err))
     }
+    var dateLastWeather = 0
     if (lastWeather) {
-      //console.log("Dernier Weather : " + lastWeather._id + " à la date du ");
-      //console.log("Record time :" + lastWeather.toObject().currently.time)
-      //console.log("Current time :" + new Date().getTime())
-      //console.log("Date now :" +Math.round(Date.now() / 1000))
-      //console.log(Math.round(Date.now() / 1000) - lastWeather.toObject().currently.time)
-      var secondDepuisDernierRecord =
-        Math.round(Date.now() / 1000) - lastWeather.toObject().currently.time
-      if (secondDepuisDernierRecord > 3600) {
-        forecast
-          .latitude(lat)
-          .longitude(lon)
-          .units(units)
-          .language('fr')
-          .exclude('minutely,hourly,flags')
-          .get()
-          .then(response => {
-            /* 2. Enregistre en base */
-            var weather = new Weather(response)
-            //Weather.create(JSON.stringify(response), function (err, weather) {
-            weather.save(function(err, savedWeather) {
-              if (err) {
-                console.log('Erreur creating Weather')
-                console.log('ERROR : ' + JSON.stringify(err))
-              }
-				console.log('Insertion de Weather et Retourne un weather tout frais !');
-              res.send(weather)
-            })
+      dateLastWeather = lastWeather.toObject().currently.time
+    }
+    //console.log("Dernier Weather : " + lastWeather._id + " à la date du ");
+    //console.log("Record time :" + lastWeather.toObject().currently.time)
+    //console.log("Current time :" + new Date().getTime())
+    //console.log("Date now :" +Math.round(Date.now() / 1000))
+    //console.log(Math.round(Date.now() / 1000) - lastWeather.toObject().currently.time)
+    var secondDepuisDernierRecord =
+      Math.round(Date.now() / 1000) - dateLastWeather
+    if (secondDepuisDernierRecord > 3600) {
+      forecast
+        .latitude(lat)
+        .longitude(lon)
+        .units(units)
+        .language('fr')
+        .exclude('minutely,flags')
+        .get()
+        .then(response => {
+          /* 2. Enregistre en base */
+          var weather = new Weather(response)
+          //Weather.create(JSON.stringify(response), function (err, weather) {
+          weather.save(function(err, savedWeather) {
+            if (err) {
+              console.log('Erreur creating Weather')
+              console.log('ERROR : ' + JSON.stringify(err))
+            }
+            console.log(
+              'Insertion de Weather et Retourne un weather tout frais !'
+            )
+            res.send(weather)
           })
-          .catch(error => {
-            res.send(error)
-          })
-      } else {
-        console.log('Je retourne le Weather en Cache !')
-        res.send(lastWeather)
-      }
+        })
+        .catch(error => {
+          res.send(error)
+        })
+    } else {
+      console.log('Je retourne le Weather en Cache !')
+      res.send(lastWeather)
     }
   })
 })
