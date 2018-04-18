@@ -4,6 +4,7 @@ const path = require('path');
 
 const api = require('./routes/api');
 const apiAuth = require('./routes/api-auth');
+const apiWeather = require('./routes/api-weather');
 
 const port = process.env.EXPRESS_PORT || 3000;
 
@@ -42,6 +43,7 @@ app.use(bodyParser.json());
 
 app.use('/api', api);
 app.use('/api-auth', apiAuth);
+app.use('/api-weather', apiWeather);
 
 
 app.get('*', (req, res) => {
