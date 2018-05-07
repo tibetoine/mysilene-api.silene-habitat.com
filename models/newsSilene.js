@@ -9,7 +9,8 @@ const newsSileneSchema = new Schema({
     date:Date,
     author:String,
     image:String,
-    content:String
+    content: String,
+    link:String
 });
 
 

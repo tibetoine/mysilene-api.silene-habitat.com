@@ -12,7 +12,8 @@ const newsSchema = new Schema({
 	type:String,
 	date:Date,
 	auteur:String,
-	content:String
+	content:String,
+	link:String
 });
 
 
