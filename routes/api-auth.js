@@ -42,7 +42,7 @@ router.post('/auth', function (req, res) {
 	}
 	var userId = (req.body.id).trim().toLowerCase();
 	// userId --> enlever email ending au besoin
-	console.log("userId :" +  userId);
+	// console.log("userId :" +  userId);
 	userId = userId.replace('@silene-habitat.com','');
 
 	var userPassword = req.body.password;
@@ -53,9 +53,9 @@ router.post('/auth', function (req, res) {
 	}
 
 	// 1- Authentification sur l'AD.
-	//console.log("Recherche dans l'ad de sAMAccountName = " + userId)
+	// console.log("Recherche dans l'ad de sAMAccountName = " + userId)
 	ad.findUser(userId, function (err, user) {
-		//console.log("flag : " + res);
+		// console.log("flag : " + res);
 		if (err) {
 			//console.log('ERROR: ' + JSON.stringify(err));
 			res.status(403).send("Erreur lors de la recherche de l'utilisateur dans l'ad.");
@@ -75,23 +75,20 @@ router.post('/auth', function (req, res) {
 				}
 
 				if (auth) {
-					console.log('Authenticated!');
+					console.log('[OK] : ' + userId + ' is Authenticated!');
 					/* 1 - Création d'un token */
 					const buf = crypto.randomBytes(64);
 					var token = buf.toString('hex');
 
 
 					/* 2- Create or Update user et token en base*/
-					var userModel = new Users();
-					
-					userModel._id = userId;
-					userModel.token = token;
 					var updateObj = {token: token};
 					Users.findByIdAndUpdate(userId,updateObj,{upsert:true, new:true}, function (err, updatedUser) {
 						if (err) {
-							console.log('Error saving a User');
+							console.log('Error saving a User : ' + userId + " avec le token : " + token);
 							console.log('ERROR: '+JSON.stringify(err));
 						} else {
+							console.log('[OK] : Token enregistré (ou mis à jour) en base pour ' + userId );
 							res.json(updatedUser);
 						}
 					});
