@@ -22,7 +22,8 @@
     "mongodb": "^2.2.33",
     "mongoose": "^5.0.12",
     "request-promise-lite": "^0.13.1",
-    "sanitize": "^2.1.0"
+    "sanitize": "^2.1.0",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

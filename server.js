@@ -12,7 +12,12 @@ const app = express();
 
 app.use(require('sanitize').middleware);
 
+  
 app.use(function (req, res, next) {
+	
+	
+	
+	
 	// Website you wish to allow to connect
 	
 	var allowedOrigins = ['http://localhost:4200', 'http://192.168.1.34:4200', 'http://10.10.10.5:4200', 'http://siln-634.silene.local:4200', 'http://localhost:9000','http://localhost:8080'];
@@ -45,6 +50,14 @@ app.use('/api', api);
 app.use('/api-auth', apiAuth);
 app.use('/api-weather', apiWeather);
 
+/* Gestion des erreurs */
+/*app.use(function(err, req, res, next) {
+	if (res.headersSent) {
+		return next(err);
+	  }
+	  res.status(500);
+	  res.render('error', { error: err });
+});*/
 
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'dist/index.html'));

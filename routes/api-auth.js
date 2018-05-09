@@ -6,6 +6,7 @@ const Users = require('../models/users');
 const ActiveDirectory = require('activedirectory');
 const assert = require('assert');
 const crypto = require('crypto');
+const uuidv4 = require('uuid/v4');
 require('dotenv').load();
 
 const db = process.env.MONGO_DB;
@@ -19,6 +20,30 @@ var ldapConfig = {
 }
 var ad = new ActiveDirectory(ldapConfig);
 
+var buildBusinessError = (message, httpErrorCode, sileneErrorCode, correlationId) => {
+	
+	if (message == null || message.length <= 0) {
+		throw new Error("Le paramètre 'message' est requis");
+	}
+
+	if (sileneErrorCode == null) {
+		throw new Error("Le paramètre 'sileneErrorCode' est requis");
+	}
+	if (!httpErrorCode || httpErrorCode == null) {
+		httpErrorCode = 500
+	}
+
+	var error = {
+		status: httpErrorCode,
+		data: {
+			sileneErrorCode: "4031",
+			correlationCode: correlationId
+		},
+		message: message
+	}
+	
+	return error
+}
 mongoose.connect(db, function (err) {
 	if (err) {
 		console.error("Erreur de connection à la base " + err);
@@ -33,7 +58,10 @@ router.get('/', function (req, res) {
  * POST d'authentification
  */
 router.post('/auth', function (req, res) {
-	console.log('Post Auth');
+	var correlationId = uuidv4();
+	console.log(correlationId - 'Post Auth');
+
+	
 
 	if(!req.body.id){
 		res.status("400");
@@ -58,19 +86,21 @@ router.post('/auth', function (req, res) {
 		// console.log("flag : " + res);
 		if (err) {
 			//console.log('ERROR: ' + JSON.stringify(err));
-			res.status(403).send("Erreur lors de la recherche de l'utilisateur dans l'ad.");
+			var error = buildBusinessError("Erreur lors de la recherche de l'utilisateur dans l'ad.", 403, 40311, correlationId)
+			res.status(403).type('application/json').send(error);
 		}
 		if (!user) {
 			//console.log('User: ' + userId + ' not found.');
-			res.status(403).send("Impossible de trouver l'utilisateur dans l'ad.");
+			var error = buildBusinessError("Utilisateur inconnu", 403, 40312, correlationId)
+			res.status(403).json(error);
 		} else {
-
 			/* On cherche à authentifier l'utilisateur */
 			ad.authenticate(userId + '@silene-habitat.com', userPassword, function (err, auth) {
 				// console.log("Tentative d'authent pour " + userId + " avec le mdp : " + userPassword);
 				if (err) {
-					//console.log('ERROR: ' + JSON.stringify(err));
-					res.status(403).send("Erreur lors de la tentative d'authentification de l'utilisateur.");
+					console.log('ERROR: ' + JSON.stringify(err));
+					var error = buildBusinessError("Impossible d'authentifier l'utilisateur", 403, 4032, correlationId)
+					res.status(403).json(error);
 					return;
 				}
 
@@ -87,6 +117,8 @@ router.post('/auth', function (req, res) {
 						if (err) {
 							console.log('Error saving a User : ' + userId + " avec le token : " + token);
 							console.log('ERROR: '+JSON.stringify(err));
+							var error = buildBusinessError("Erreur lors de l'authentification", 403, 4033, correlationId)
+							res.status(403).json(error);							
 						} else {
 							console.log('[OK] : Token enregistré (ou mis à jour) en base pour ' + userId );
 							res.json(updatedUser);
@@ -94,7 +126,9 @@ router.post('/auth', function (req, res) {
 					});
 				}
 				else {
-					res.status(403).send("Echec de l'authentification");
+					var error = buildBusinessError("Echec de l'authentification", 403, 4034, correlationId)
+					res.status(403).json(error);		
+					
 				}
 			});
 		}
