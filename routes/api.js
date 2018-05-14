@@ -12,7 +12,14 @@ const db = process.env.MONGO_DB;
 mongoose.Promise = global.Promise;
 
 
-mongoose.connect(db, function (err) {
+mongoose.connect(db, {
+	server: {
+	  socketOptions: {
+		socketTimeoutMS: 0,
+		connectTimeoutMS: 0
+	  }
+	}
+  },function (err) {
 	if (err) {
 		console.error("Erreur de connection à la base " + err);
 	}

@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const request = require('request-promise-lite');
 const Users = require('../models/users');
 const ActiveDirectory = require('activedirectory');
+const ActiveDirectoryMock = require('../mock/activedirectory');
 const assert = require('assert');
 const crypto = require('crypto');
 const uuidv4 = require('uuid/v4');
@@ -18,7 +19,8 @@ var ldapConfig = {
 	username: process.env.LDAP_USERNAME,
 	password: process.env.LDAP_PASSWORD
 }
-var ad = new ActiveDirectory(ldapConfig);
+// var ad = new ActiveDirectory(ldapConfig);
+var ad = new ActiveDirectoryMock(ldapConfig);
 
 var buildBusinessError = (message, httpErrorCode, sileneErrorCode, correlationId) => {
 	
@@ -44,7 +46,14 @@ var buildBusinessError = (message, httpErrorCode, sileneErrorCode, correlationId
 	
 	return error
 }
-mongoose.connect(db, function (err) {
+mongoose.connect(db, {
+	server: {
+	  socketOptions: {
+		socketTimeoutMS: 0,
+		connectTimeoutMS: 0
+	  }
+	}
+  },function (err) {
 	if (err) {
 		console.error("Erreur de connection à la base " + err);
 	}
