@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+const mongoose = require('mongoose');
+const Users = require('./models/users');
+
 const api = require('./routes/api');
 const apiAuth = require('./routes/api-auth');
 const apiWeather = require('./routes/api-weather');
@@ -12,11 +15,9 @@ const app = express();
 
 app.use(require('sanitize').middleware);
 
+
   
 app.use(function (req, res, next) {
-	
-	
-	
 	
 	// Website you wish to allow to connect
 	
@@ -46,9 +47,38 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/api', api);
+
+function isAuthenticated (req, res, next) {
+    const db = process.env.MONGO_DB;
+	mongoose.Promise = global.Promise;
+	
+	console.log(req.headers)
+    if (!req.headers['authorization']) {
+		console.log('You must be logged in to access this API.')				
+		return res.sendStatus(401)		
+    }
+
+
+	Users.find({token:req.headers['authorization']})
+		.exec(function (err, user) {
+			if (err) {
+                console.log("Erreur Token inconnu. " + token);
+                return res.sendStatus(401)
+			} else {
+                console.log(JSON.stringify(user))
+                
+			}
+		});
+	
+	/* Vérification que le token est connu */
+	return next()
+}
+
+/* Attention l'ordre est important ici  */
 app.use('/api-auth', apiAuth);
 app.use('/api-weather', apiWeather);
+app.use(isAuthenticated);
+app.use('/api', api);
 
 /* Gestion des erreurs */
 /*app.use(function(err, req, res, next) {
@@ -59,9 +89,9 @@ app.use('/api-weather', apiWeather);
 	  res.render('error', { error: err });
 });*/
 
-app.get('*', (req, res) => {
+/*app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
+});*/
 
 app.listen(port, function () {
 	console.log("Serv running on localhost : " + port);

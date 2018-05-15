@@ -19,8 +19,8 @@ var ldapConfig = {
 	username: process.env.LDAP_USERNAME,
 	password: process.env.LDAP_PASSWORD
 }
-// var ad = new ActiveDirectory(ldapConfig);
-var ad = new ActiveDirectoryMock(ldapConfig);
+var ad = new ActiveDirectory(ldapConfig);
+// var ad = new ActiveDirectoryMock(ldapConfig);
 
 var buildBusinessError = (message, httpErrorCode, sileneErrorCode, correlationId) => {
 	
