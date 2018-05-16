@@ -13,7 +13,8 @@ const contactsSchema = new Schema({
 	otherTelephone:String, 
 	sileneProcessus:String, 
 	silenesst:String, 
-	sileneserrefile:String, 
+	sileneserrefile:String,
+	sileneguidefile:String,
 	title:String
 });
 
