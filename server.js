@@ -52,7 +52,7 @@ function isAuthenticated (req, res, next) {
     const db = process.env.MONGO_DB;
 	mongoose.Promise = global.Promise;
 	
-	console.log(req.headers)
+	// console.log(req.headers)
     if (!req.headers['authorization']) {
 		console.log('You must be logged in to access this API.')				
 		return res.sendStatus(401)		
@@ -66,7 +66,6 @@ function isAuthenticated (req, res, next) {
                 return res.sendStatus(401)
 			} else {
                 console.log(JSON.stringify(user))
-                
 			}
 		});
 	
