@@ -1,0 +1,29 @@
+Commande non valide.
+
+La commande AT planifie l'ex‚cution des commandes et programmes sur 
+l'ordinateur … une date et une heure sp‚cifi‚es. Le service Planification
+doit fonctionner pour utiliser la commande AT.
+
+AT [\\ordinateur] [ [id] [/DELETE] | /DELETE [/YES]]                         
+AT [\\ordinateur] heure [/INTERACTIVE]
+   [ /EVERY:date[,...] | /NEXT:date[,...]] "commande"
+
+\\ordinateur      Sp‚cifie un ordinateur distant. Les commandes sont planifi‚es
+                  sur l'ordinateur local si ce paramŠtre est omis.             
+id                Identificateur (nombre) affect‚ … une commande
+                  planifi‚e.
+/DELETE           Supprime une commande planifi‚e. Si id est omis, toutes
+                  les commandes sur l'ordinateur sont supprim‚es.
+/YES              Utilis‚e pour supprimer toutes les tƒches sans demande de
+                  confirmation.
+heure             Heure de l'ex‚cution de la commande.
+/INTERACTIVE      Permet au travail d'interagir avec le bureau de l'utilisateur
+                  qui est connect‚ au moment o— le travail est effectu‚.
+/EVERY:date[,...] Ex‚cute la commande tous les jours sp‚cifi‚s de la semaine
+                  ou du mois. Si la date est omise, le jour en cours du mois
+                  est utilis‚ par d‚faut.                                    
+/NEXT:date[,...]  Ex‚cute la commande lors de la prochaine occurrence du jour
+                  (par exemple, jeudi prochain). Si la date est omise, le
+                  jour en cours du mois est utilis‚ par d‚faut.
+"commande"        Commande Windows NT, ou programme de commandes … ex‚cuter.
+

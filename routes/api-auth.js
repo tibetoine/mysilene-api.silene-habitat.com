@@ -46,14 +46,7 @@ var buildBusinessError = (message, httpErrorCode, sileneErrorCode, correlationId
 	
 	return error
 }
-mongoose.connect(db, {
-	server: {
-	  socketOptions: {
-		socketTimeoutMS: 0,
-		connectTimeoutMS: 0
-	  }
-	}
-  },function (err) {
+mongoose.connect(db, function (err) {
 	if (err) {
 		console.error("Erreur de connection à la base " + err);
 	}

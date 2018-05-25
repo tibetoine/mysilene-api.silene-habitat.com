@@ -1,4 +1,5 @@
 const express = require('express');
+const swaggerJSDoc = require('swagger-jsdoc');
 const bodyParser = require('body-parser');
 const path = require('path');
 
@@ -13,6 +14,27 @@ const port = process.env.EXPRESS_PORT || 3000;
 
 const app = express();
 
+/*Swagger ! */
+// swagger definition
+var swaggerDefinition = {
+	info: {
+	  title: 'Node Swagger API',
+	  version: '1.0.0',
+	  description: 'Demonstrating how to describe a RESTful API with Swagger',
+	},
+	host: 'localhost:3000',
+	basePath: '/',
+  };
+  // options for the swagger docs
+  var options = {
+	// import swaggerDefinitions
+	swaggerDefinition: swaggerDefinition,
+	// path to the API docs
+	apis: ['./**/routes/*.js','routes.js'],// pass all in array 
+	};
+  // initialize swagger-jsdoc
+  var swaggerSpec = swaggerJSDoc(options);
+/* Fin Swagger */
 app.use(require('sanitize').middleware);
 
 
@@ -47,6 +69,9 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.get('/', function (req, res) {
+	res.sendFile(__dirname + '/dist/index.html');
+});
 
 function isAuthenticated (req, res, next) {
     const db = process.env.MONGO_DB;
@@ -73,10 +98,18 @@ function isAuthenticated (req, res, next) {
 	return next()
 }
 
+// serve swagger 
+app.get('/swagger.json', function (req, res) {
+	res.setHeader('Content-Type', 'application/json');
+	res.send(swaggerSpec);
+});
+
+
+
 /* Attention l'ordre est important ici  */
 app.use('/api-auth', apiAuth);
 app.use('/api-weather', apiWeather);
-app.use(isAuthenticated);
+app.use(isAuthenticated); /* A partir de ce point toutes les routes nécessitent une authentification */
 app.use('/api', api);
 
 /* Gestion des erreurs */
@@ -88,9 +121,7 @@ app.use('/api', api);
 	  res.render('error', { error: err });
 });*/
 
-/*app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'dist/index.html'));
-});*/
+
 
 app.listen(port, function () {
 	console.log("Serv running on localhost : " + port);
