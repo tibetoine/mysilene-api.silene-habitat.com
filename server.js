@@ -64,13 +64,13 @@ app.use(function (req, res, next) {
 	// Pass to next layer of middleware
 	next();
 });
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'api-docs')));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-	res.sendFile(__dirname + '/dist/index.html');
+	res.sendFile(__dirname + '/api-docs/index.html');
 });
 
 function isAuthenticated (req, res, next) {
