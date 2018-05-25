@@ -69,7 +69,7 @@ app.use(express.static(path.join(__dirname, 'api-docs')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('/', function (req, res) {
+app.get('/docs', function (req, res) {
 	res.sendFile(__dirname + '/api-docs/index.html');
 });
 
