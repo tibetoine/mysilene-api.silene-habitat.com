@@ -9,6 +9,19 @@ const forecast = new DarkSky(process.env.DARK_SKY_KEY)
 const db = process.env.MONGO_DB
 mongoose.Promise = global.Promise
 
+/**
+ * @swagger
+ * /api-weather/weather:
+ *   get:
+ *     description: Retourne un objet Json Weather depuis l'API Public DARK_SKY. (Si un appel a été fait il y a moins d'1 heure, c'est le Weather en cache Mongo qui est retourné)
+ *     tags:
+ *      - Weather
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: https://darksky.net/dev/docs#/dev/docs#response-format
+ */
 router.get('/weather', (req, res) => {
   let lat = '47.2734979'
   let lon = '-2.213848'

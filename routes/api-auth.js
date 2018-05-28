@@ -57,7 +57,28 @@ router.get('/', function (req, res) {
 });
 
 /**
- * POST d'authentification
+ * @swagger
+ * /api-auth/auth:
+ *   post:
+ *     description: Permet d'authentifier un utilisateur via login et mot de passe
+ *     tags:
+ *      - Auth
+ *     produces:
+ *      - application/json
+ *     parameters:
+ *       - name: id
+ *         description: id est le nom utilisé pourla connexion à l'AD Silène
+ *         in: formData
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         description: User's password.
+ *         in: formData
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Retourne un Token de connexion.
  */
 router.post('/auth', function (req, res) {
 	var correlationId = uuidv4();

@@ -18,119 +18,118 @@ mongoose.connect(db, function(err) {
 });
 
 
-/**
-   * @swagger
-   * /:
-   *   get:
-   *     description: Returns the homepage
-   *     responses:
-   *       200:
-   *         description: hello world
-   */
 router.get("/", function(req, res) {
   res.send("api works");
 });
 
 /**
-   * @swagger
-   * definitions:
-   *   News:
-   *     properties:
-   *       _id:
-   *         type: string
-   *       type:
-   *         type: string
-   *       title:
-   *         type: string
-   *       date:
-   *         type: string
-   *       author:
-   *         type: string
-   *       image:
-   *         type: string
-   *       content:
-   *         type: string
-   *       link:
-   *         type: string
-   */
+ * @swagger
+ * definitions:
+ *   News:
+ *     properties:
+ *       _id:
+ *         type: string
+ *       type:
+ *         type: string
+ *       title:
+ *         type: string
+ *       date:
+ *         type: string
+ *       author:
+ *         type: string
+ *       image:
+ *         type: string
+ *       content:
+ *         type: string
+ *       link:
+ *         type: string
+ */
+
+ /**
+ * @swagger
+ * definitions:
+ *   Contacts:
+ *     properties:
+ *       _id:
+ *         type: string
+ *       mail:
+ *         type: string
+ *       sn:
+ *         type: string
+ *       givenName:
+ *         type: string
+ *       thumbnailPhoto:
+ *         type: string
+ *       mobile:
+ *         type: string
+ *       telephoneNumber:
+ *         type: string
+ *       department:
+ *         type: string
+ *       otherTelephone:
+ *         type: string
+ *       sileneProcessus:
+ *         type: string
+ *       silenesst:
+ *         type: string
+ *       sileneserrefile:
+ *         type: string
+ *       sileneguidefile:
+ *         type: string
+ *       title:
+ *         type: string
+ */
 
 /**
-   * @swagger
-   * /news:
-   *   get:
-   *     description: Returns news
-   *     tags:
-   *      - News
-   *     produces:
-   *      - application/json
-   *     responses:
-   *       200:
-   *         description: news
-   */
+ * @swagger
+ * /api/news:
+ *   get:
+ *     description: Retourne toutes les News Silène trié par date de publication décroissante
+ *     tags:
+ *      - News
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: news
+ */
 router.get("/news", function(req, res) {
-	console.log("Get request for news");
-  
-	News.find({}).exec(function(err, news) {
-	  if (err) {
-		console.log("Erreur dans la récupération des news");
-	  } else {
-		res.json(news);
-	  }
-	});
-  });
-  
-  /**
-   * @swagger
-   * /newsSilene:
-   *   get:
-   *     description: Returns news
-   *     tags:
-   *      - News
-   *     produces:
-   *      - application/json
-   *     responses:
-   *       200:
-   *         description: news
-   */
-  router.get("/newsSilene", function(req, res) {
-	console.log("Get request for newsSilene");
-  
-	NewsSilene.find({})
-	  .sort("-date")
-	  .exec(function(err, news) {
-		if (err) {
-		  console.log("Erreur dans la récupération des news");
-		} else {
-		  res.json(news);
-		}
-	  });
-  });
-  
-  
-  
+  console.log("Get request for news");
+
+  NewsSilene.find({})
+    .sort("-date")
+    .exec(function(err, news) {
+      if (err) {
+        console.log("Erreur dans la récupération des news");
+      } else {
+        res.json(news);
+      }
+    });
+});
+
 /**
-   * @swagger
-   * /contacts:
-   *   get:
-   *     description: Returns contacts
-   *     tags:
-   *      - Contacts
-   *     produces:
-   *      - application/json
-   *     responses:
-   *       200:
-   *         description: contacts
-   */
-  router.get("/contacts", function(req, res) {
-	console.log("Get request for contacts sorted");
-	Contacts.find({})
-	  .sort({ sn: 1 })
-	  .exec(function(err, contacts) {
-		if (err) {
-		  console.log("Erreur dans la récupération des contacts");
-		} else {
-		  res.json(contacts);
-		}
-	  });
-  });
+ * @swagger
+ * /api/contacts:
+ *   get:
+ *     description: Retourne l'ensemble des contacts de Silène
+ *     tags:
+ *      - Contacts
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: contacts
+ */
+router.get("/contacts", function(req, res) {
+  console.log("Get request for contacts sorted");
+  Contacts.find({})
+    .sort({ sn: 1 })
+    .exec(function(err, contacts) {
+      if (err) {
+        console.log("Erreur dans la récupération des contacts");
+      } else {
+        res.json(contacts);
+      }
+    });
+});
 module.exports = router;
