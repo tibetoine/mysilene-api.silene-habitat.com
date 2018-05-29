@@ -671,3 +671,93 @@
   }
 }
 [2018-05-29T16:54:43.789] [INFO] access - undefined - - "GET /api-weather/weather HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
+[2018-05-29T16:55:44.944] [INFO] access - [Access]  GET   /api/news  -  function header(name) {
+  if (!name) {
+    throw new TypeError('name argument is required to req.get');
+  }
+
+  if (typeof name !== 'string') {
+    throw new TypeError('name must be a string to req.get');
+  }
+
+  var lc = name.toLowerCase();
+
+  switch (lc) {
+    case 'referer':
+    case 'referrer':
+      return this.headers.referrer
+        || this.headers.referer;
+    default:
+      return this.headers[lc];
+  }
+}
+[2018-05-29T16:55:44.994] [INFO] access - undefined - - "GET /api/news HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
+[2018-05-29T16:55:46.063] [INFO] access - [Access]  GET   /api/contacts  -  function header(name) {
+  if (!name) {
+    throw new TypeError('name argument is required to req.get');
+  }
+
+  if (typeof name !== 'string') {
+    throw new TypeError('name must be a string to req.get');
+  }
+
+  var lc = name.toLowerCase();
+
+  switch (lc) {
+    case 'referer':
+    case 'referrer':
+      return this.headers.referrer
+        || this.headers.referer;
+    default:
+      return this.headers[lc];
+  }
+}
+[2018-05-29T16:55:47.158] [INFO] access - undefined - - "GET /api-weather/weather HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
+[2018-05-29T16:55:47.260] [INFO] access - undefined - - "GET /api/contacts HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
+[2018-05-29T16:56:40.280] [INFO] access - undefined - - "GET /api-weather/weather HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
+[2018-05-29T16:56:58.421] [INFO] access - undefined - - "GET /api-weather/weather HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
+[2018-05-29T16:57:05.047] [INFO] access - ::ffff:127.0.0.1 - - "POST /api-auth/auth HTTP/1.1" 403 157 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
+[2018-05-29T16:57:11.722] [INFO] access - ::ffff:127.0.0.1 - - "POST /api-auth/auth HTTP/1.1" 200 163 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
+[2018-05-29T16:57:11.814] [INFO] access - [Access]  GET   /api/news  -  function header(name) {
+  if (!name) {
+    throw new TypeError('name argument is required to req.get');
+  }
+
+  if (typeof name !== 'string') {
+    throw new TypeError('name must be a string to req.get');
+  }
+
+  var lc = name.toLowerCase();
+
+  switch (lc) {
+    case 'referer':
+    case 'referrer':
+      return this.headers.referrer
+        || this.headers.referer;
+    default:
+      return this.headers[lc];
+  }
+}
+[2018-05-29T16:57:11.840] [INFO] access - [Access]  GET   /api/contacts  -  function header(name) {
+  if (!name) {
+    throw new TypeError('name argument is required to req.get');
+  }
+
+  if (typeof name !== 'string') {
+    throw new TypeError('name must be a string to req.get');
+  }
+
+  var lc = name.toLowerCase();
+
+  switch (lc) {
+    case 'referer':
+    case 'referrer':
+      return this.headers.referrer
+        || this.headers.referer;
+    default:
+      return this.headers[lc];
+  }
+}
+[2018-05-29T16:57:11.865] [INFO] access - undefined - - "GET /api/news HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
+[2018-05-29T16:57:11.922] [INFO] access - undefined - - "GET /api-weather/weather HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
+[2018-05-29T16:57:12.016] [INFO] access - undefined - - "GET /api/contacts HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
