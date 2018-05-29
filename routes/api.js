@@ -6,6 +6,7 @@ const News = require("../models/news");
 const NewsSilene = require("../models/newsSilene");
 const Contacts = require("../models/contacts");
 const Users = require("../models/users");
+var logger  = require('../utils/logger');
 require("dotenv").load();
 
 const db = process.env.MONGO_DB;
@@ -13,12 +14,18 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(db, function(err) {
   if (err) {
-    console.error("Erreur de connection à la base " + err);
+    /*if(logger.isDebug(logger.system)) {
+      logger.system.debug("debugログは、DEBUGレベルの時だけ呼びたい。");
+    }*/
+  
+    logger.error.error("Erreur de connection à la base " , err);
+    // console.error("Erreur de connection à la base " + err);
   }
 });
 
 
 router.get("/", function(req, res) {
+  logger.error.error("Erreur de connection à la base " , err);
   res.send("api works");
 });
 
@@ -96,6 +103,9 @@ router.get("/", function(req, res) {
 router.get("/news", function(req, res) {
   console.log("Get request for news");
 
+  
+  logger.logApiAccess("GET", req.header, "/api/news");
+
   NewsSilene.find({})
     .sort("-date")
     .exec(function(err, news) {
@@ -122,6 +132,7 @@ router.get("/news", function(req, res) {
  */
 router.get("/contacts", function(req, res) {
   console.log("Get request for contacts sorted");
+  logger.logApiAccess("GET", req.header, "/api/contacts");
   Contacts.find({})
     .sort({ sn: 1 })
     .exec(function(err, contacts) {

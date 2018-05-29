@@ -12,7 +12,11 @@ const apiWeather = require('./routes/api-weather');
 
 const port = process.env.EXPRESS_PORT || 3000;
 
+var logger = require('./utils/logger');
+
 const app = express();
+
+app.use(logger.express);
 
 /*Swagger ! */
 // swagger definition
@@ -77,25 +81,37 @@ function isAuthenticated (req, res, next) {
     const db = process.env.MONGO_DB;
 	mongoose.Promise = global.Promise;
 	
+	var userConnu = false;
+
 	// console.log(req.headers)
     if (!req.headers['authorization']) {
 		console.log('You must be logged in to access this API.')				
 		return res.sendStatus(401)		
     }
 
-
 	Users.find({token:req.headers['authorization']})
 		.exec(function (err, user) {
-			if (err) {
-                console.log("Erreur Token inconnu. " + token);
-                return res.sendStatus(401)
-			} else {
-                console.log(JSON.stringify(user))
-			}
-		});
+		console.log("CallBack Users Find- ", err, user )
+		if (err) {
+			console.log("Erreur Token inconnu. " + token);
+			return res.sendStatus(401)
+		} else {
+			console.log(JSON.stringify(user))
+		}
+		
+		if (user && user.length > 0 && user[0]._id === req.headers['userid'] ) {
+			console.log("Auth : Ok le user " + req.headers['userid']+ " est reconnu.")
+			userConnu = true
+			return next()
+		} else {
+			return res.sendStatus(401)
+		}
+			
+	})
 	
-	/* Vérification que le token est connu */
-	return next()
+	
+	
+	
 }
 
 // serve swagger 
