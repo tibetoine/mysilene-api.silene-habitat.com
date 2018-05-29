@@ -31,6 +31,7 @@ node_modules/
 /libpeerconnection.log
 npm-debug.log
 testem.log
+mysilene-api.log
 /typings
 
 # e2e

@@ -3,9 +3,6 @@ const log4js = require('log4js');
 /* Configuration des logs */
 log4js.configure({
   appenders: {
-    console: {
-      type: 'console', filename: 'mysilene-api-access.log'
-    },    
     mysilene: {
       type: 'file', filename: 'mysilene-api.log'
     },
