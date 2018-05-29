@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const Weather = require('../models/weather')
 require('dotenv').load()
 const forecast = new DarkSky(process.env.DARK_SKY_KEY)
+var logger = require('../utils/logger');
 
 const db = process.env.MONGO_DB
 mongoose.Promise = global.Promise
@@ -36,8 +37,7 @@ router.get('/weather', (req, res) => {
     lastWeather
   ) {
     if (err) {
-      console.log('Erreur creating Weather')
-      console.log('ERROR : ' + JSON.stringify(err))
+      logger.logError("Erreur creating Weather", "GET", req.headers, "/api-weather/weather", err);
     }
     var dateLastWeather = 0
     if (lastWeather) {
@@ -64,12 +64,11 @@ router.get('/weather', (req, res) => {
           //Weather.create(JSON.stringify(response), function (err, weather) {
           weather.save(function(err, savedWeather) {
             if (err) {
-              console.log('Erreur creating Weather')
-              console.log('ERROR : ' + JSON.stringify(err))
-            }
-            console.log(
-              'Insertion de Weather et Retourne un weather tout frais !'
-            )
+              logger.logError("Erreur creating Weather", "GET", req.headers, "/api-weather/weather", err);
+              // console.log('Erreur creating Weather')
+              // console.log('ERROR : ' + JSON.stringify(err))
+            }           
+            logger.logSuccess("Insertion de Weather et Retourne un weather tout frais !", "GET", req.headers, "/api-weather/weather");
             res.send(weather)
           })
         })
@@ -77,7 +76,7 @@ router.get('/weather', (req, res) => {
           res.send(error)
         })
     } else {
-      console.log('Je retourne le Weather en Cache !')
+      logger.logSuccess("Je retourne le Weather en Cache !", "GET", req.headers, "/api-weather/weather");
       res.send(lastWeather)
     }
   })

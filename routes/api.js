@@ -101,16 +101,14 @@ router.get("/", function(req, res) {
  *         description: news
  */
 router.get("/news", function(req, res) {
-  console.log("Get request for news");
-
   
-  logger.logApiAccess("GET", req.header, "/api/news");
+  logger.logApiAccess("GET", req.headers, "/api/news");
 
   NewsSilene.find({})
     .sort("-date")
     .exec(function(err, news) {
       if (err) {
-        console.log("Erreur dans la récupération des news");
+        logger.logError("Erreur dans la récupération des news en base", "GET", req.headers, "/api/news");
       } else {
         res.json(news);
       }
@@ -131,13 +129,12 @@ router.get("/news", function(req, res) {
  *         description: contacts
  */
 router.get("/contacts", function(req, res) {
-  console.log("Get request for contacts sorted");
-  logger.logApiAccess("GET", req.header, "/api/contacts");
+  logger.logApiAccess("GET", req.headers, "/api/contacts");
   Contacts.find({})
     .sort({ sn: 1 })
     .exec(function(err, contacts) {
       if (err) {
-        console.log("Erreur dans la récupération des contacts");
+        logger.logError("Erreur dans la récupération des contacts en base", "GET", req.headers, "/api/contacts");
       } else {
         res.json(contacts);
       }

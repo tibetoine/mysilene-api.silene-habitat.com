@@ -5,17 +5,14 @@ log4js.configure({
   appenders: {
     console: {
       type: 'console', filename: 'mysilene-api-access.log'
-    },
-    access: {
-      type: 'file', filename: 'mysilene-api-access.log'
-    },
+    },    
     mysilene: {
       type: 'file', filename: 'mysilene-api.log'
     },
   },
   categories: {
     default: {
-      appenders: ['access','mysilene'], level: 'debug'
+      appenders: ['mysilene'], level: 'debug'
     }
   }
 });
@@ -24,9 +21,30 @@ log4js.configure({
 module.exports = { 
     express: log4js.connectLogger(log4js.getLogger('access'), {level: log4js.levels.INFO}),
     logApiAccess: function (method, header, apiEndpoint) {
-      log4js.getLogger('access').info(
-        "[Access] ", method, " ", apiEndpoint, " - ",        
-        header
+      var info = ''
+      if (header && header.authorization) {
+        Info = '[ User : '+ header.userid+' - Token : ' + header.authorization + ' ] [ Host : ' + header.host + ' ]'
+      }
+      log4js.getLogger('mysilene').info(
+        "[Access]", method, apiEndpoint, "-",info
+      )
+    },
+    logSuccess: function (message, method, header, apiEndpoint) {
+      var info = ''
+      if (header && header.authorization) {
+        Info = '[ User : '+ header.userid+' - Token : ' + header.authorization + ' ] [ Host : ' + header.host + ' ]'
+      }
+      log4js.getLogger('mysilene').debug(
+        "[Success]", method, apiEndpoint, "-",info, message
+      )
+    },
+    logError: function (message, method, header, apiEndpoint, error) {
+      var info = ''
+      if (header && header.authorization) {
+        Info = '[ User : '+ header.userid+' - Token : ' + header.authorization + ' ] [ Host : ' + header.host + ' ]'
+      }
+      log4js.getLogger('mysilene').info(
+        "[Error]", method, apiEndpoint, "-",info, message, error
       )
     },
     isDebug: function(category) {

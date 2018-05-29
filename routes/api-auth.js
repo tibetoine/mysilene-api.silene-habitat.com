@@ -9,6 +9,7 @@ const assert = require('assert');
 const crypto = require('crypto');
 const uuidv4 = require('uuid/v4');
 require('dotenv').load();
+var logger = require('../utils/logger');
 
 const db = process.env.MONGO_DB;
 mongoose.Promise = global.Promise;
@@ -82,7 +83,7 @@ router.get('/', function (req, res) {
  */
 router.post('/auth', function (req, res) {
 	var correlationId = uuidv4();
-	console.log(correlationId - 'Post Auth');
+	// console.log(correlationId - 'Post Auth');
 
 	
 
@@ -109,26 +110,28 @@ router.post('/auth', function (req, res) {
 		// console.log("flag : " + res);
 		if (err) {
 			//console.log('ERROR: ' + JSON.stringify(err));
-			var error = buildBusinessError("Erreur lors de la recherche de l'utilisateur dans l'ad.", 403, 40311, correlationId)
+			var error = buildBusinessError("Erreur lors de la recherche de l'utilisateur dans l'ad.", 403, 40311, correlationId, err)
 			res.status(403).type('application/json').send(error);
 		}
 		if (!user) {
 			//console.log('User: ' + userId + ' not found.');
 			var error = buildBusinessError("Utilisateur inconnu", 403, 40312, correlationId)
+			logger.logError("Utilisateur [" + userId + "] inconnu ", "POST", req.headers, "/api-auth/auth");
 			res.status(403).json(error);
 		} else {
 			/* On cherche à authentifier l'utilisateur */
 			ad.authenticate(userId + '@silene-habitat.com', userPassword, function (err, auth) {
 				// console.log("Tentative d'authent pour " + userId + " avec le mdp : " + userPassword);
 				if (err) {
-					console.log('ERROR: ' + JSON.stringify(err));
 					var error = buildBusinessError("Impossible d'authentifier l'utilisateur", 403, 4032, correlationId)
+					logger.logError("Impossible d'authentifier l'utilisateur [" + userId + "]", "POST", req.headers, "/api-auth/auth");
 					res.status(403).json(error);
 					return;
 				}
 
 				if (auth) {
-					console.log('[OK] : ' + userId + ' is Authenticated!');
+					// console.log('[OK] : ' + userId + ' is Authenticated!');
+					logger.logSuccess(" [ " + userId + "] est Authentifié", "POST", req.headers, "/api-auth/auth");
 					/* 1 - Création d'un token */
 					const buf = crypto.randomBytes(64);
 					var token = buf.toString('hex');
@@ -138,12 +141,14 @@ router.post('/auth', function (req, res) {
 					var updateObj = {token: token};
 					Users.findByIdAndUpdate(userId,updateObj,{upsert:true, new:true}, function (err, updatedUser) {
 						if (err) {
-							console.log('Error saving a User : ' + userId + " avec le token : " + token);
-							console.log('ERROR: '+JSON.stringify(err));
+							// console.log('Error saving a User : ' + userId + " avec le token : " + token);
+							// console.log('ERROR: '+JSON.stringify(err));
+							logger.logError("Problème de la création ou mise à jour de l'utilisateur en base [" + userId + "]", "POST", req.headers, "/api-auth/auth", err);
 							var error = buildBusinessError("Erreur lors de l'authentification", 403, 4033, correlationId)
 							res.status(403).json(error);							
 						} else {
-							console.log('[OK] : Token enregistré (ou mis à jour) en base pour ' + userId );
+							// console.log('[OK] : Token enregistré (ou mis à jour) en base pour ' + userId );
+							logger.logSuccess('Token enregistré (ou mis à jour) en base pour ' + userId, "POST", req.headers, "/api-auth/auth");
 							res.json(updatedUser);
 						}
 					});

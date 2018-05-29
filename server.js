@@ -16,7 +16,7 @@ var logger = require('./utils/logger');
 
 const app = express();
 
-app.use(logger.express);
+// app.use(logger.express);
 
 /*Swagger ! */
 // swagger definition
@@ -85,33 +85,30 @@ function isAuthenticated (req, res, next) {
 
 	// console.log(req.headers)
     if (!req.headers['authorization']) {
-		console.log('You must be logged in to access this API.')				
+		logger.logError("Pas de Header authorization", "?", req.headers, "?");
+		// console.log('You must be logged in to access this API.')				
 		return res.sendStatus(401)		
     }
 
 	Users.find({token:req.headers['authorization']})
 		.exec(function (err, user) {
-		console.log("CallBack Users Find- ", err, user )
+		// console.log("CallBack Users Find- ", err, user )
 		if (err) {
-			console.log("Erreur Token inconnu. " + token);
+			// console.log("Erreur Token inconnu. " + token);
+			logger.logError("Erreur Token inconnu", "?", req.headers, "?", err);
 			return res.sendStatus(401)
 		} else {
-			console.log(JSON.stringify(user))
+			// console.log(JSON.stringify(user))
 		}
 		
 		if (user && user.length > 0 && user[0]._id === req.headers['userid'] ) {
-			console.log("Auth : Ok le user " + req.headers['userid']+ " est reconnu.")
+			// console.log("Auth : Ok le user " + req.headers['userid']+ " est reconnu.")
 			userConnu = true
 			return next()
 		} else {
 			return res.sendStatus(401)
 		}
-			
 	})
-	
-	
-	
-	
 }
 
 // serve swagger 
