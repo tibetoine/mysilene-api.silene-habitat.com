@@ -87,7 +87,7 @@ function isAuthenticated (req, res, next) {
     if (!req.headers['authorization']) {
 		logger.logError("Pas de Header authorization", "?", req.headers, "?");
 		// console.log('You must be logged in to access this API.')				
-		return res.sendStatus(401)		
+		return res.sendStatus(401)
     }
 
 	Users.find({token:req.headers['authorization']})
@@ -101,10 +101,17 @@ function isAuthenticated (req, res, next) {
 			// console.log(JSON.stringify(user))
 		}
 		
-		if (user && user.length > 0 && user[0]._id === req.headers['userid'] ) {
-			// console.log("Auth : Ok le user " + req.headers['userid']+ " est reconnu.")
-			userConnu = true
-			return next()
+		if (user && user.length > 0) {
+			console.log("user[0]._id.trim().toLowerCase()", user[0]._id.trim().toLowerCase())
+			console.log("req.headers['userid']", req.headers['userid'])
+			if (user[0]._id && user[0]._id.length > 0 && user[0]._id.trim().toLowerCase() === req.headers['userid']) {
+				
+				// console.log("Auth : Ok le user " + req.headers['userid']+ " est reconnu.")
+				userConnu = true
+				return next()
+			} else {
+				return res.sendStatus(401)	
+			}
 		} else {
 			return res.sendStatus(401)
 		}

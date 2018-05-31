@@ -6,3 +6,841 @@
 [2018-05-29T19:26:40.822] [INFO] mysilene - [Access] GET /api/news - 
 [2018-05-29T19:26:40.838] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
 [2018-05-29T19:26:40.868] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-29T19:36:24.749] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-29T19:36:24.783] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-29T19:36:25.080] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-29T19:36:34.184] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-29T19:36:34.206] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-29T19:36:34.490] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-29T19:36:45.150] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-29T19:36:45.154] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-29T19:36:45.195] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-29T19:36:45.197] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-29T19:36:45.255] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T09:50:50.873] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T09:50:51.650] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Insertion de Weather et Retourne un weather tout frais !
+[2018-05-30T09:51:28.804] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T09:51:29.822] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T09:51:29.837] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T09:55:03.945] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T09:55:03.965] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T09:55:04.086] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T09:55:05.297] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T09:55:05.505] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T09:56:36.129] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T09:56:36.144] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T09:56:36.351] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T09:56:49.914] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T09:56:49.916] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T09:56:50.050] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T09:57:43.927] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T09:57:43.944] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T09:57:44.085] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T09:57:46.475] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T09:57:46.556] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:06:30.415] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:06:31.528] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:06:32.657] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T10:06:33.144] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:06:34.208] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:14:35.497] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:14:35.498] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:14:35.628] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T10:17:39.928] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:17:39.939] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:17:40.068] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T10:21:54.491] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:21:54.505] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:21:54.633] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T10:21:55.968] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:21:55.977] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:26:41.003] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:26:41.010] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:26:41.329] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T10:26:42.998] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:26:43.457] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:27:36.788] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:27:36.795] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:27:37.002] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T10:31:04.971] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:31:04.981] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:31:05.137] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T10:44:45.230] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:44:45.232] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:44:45.363] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T10:44:49.369] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:44:49.385] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:45:14.496] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:45:14.498] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:45:14.610] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T10:45:18.054] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:45:18.055] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:49:27.458] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:49:27.469] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:49:27.595] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T10:49:29.027] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:49:29.067] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:50:10.483] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:50:10.497] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:50:10.679] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T10:50:29.249] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:50:29.264] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:50:29.401] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T10:52:09.707] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:52:09.724] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:52:11.373] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:52:11.395] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:52:11.506] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Insertion de Weather et Retourne un weather tout frais !
+[2018-05-30T10:59:22.369] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:59:22.380] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:59:22.534] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T10:59:24.357] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:59:24.359] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T10:59:32.828] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T10:59:32.832] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:10:57.832] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:10:57.849] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:10:58.192] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:11:00.224] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:11:00.310] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:11:33.231] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:11:33.242] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:11:33.383] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:13:43.719] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:13:43.721] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:13:43.965] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:14:02.002] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:14:02.024] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:14:02.269] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:22:35.373] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:22:35.385] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:22:35.506] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:22:38.505] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:22:38.529] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:23:34.576] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:24:16.062] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:24:16.086] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:24:16.263] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:24:19.271] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:24:19.273] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:27:30.977] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:27:30.986] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:27:31.113] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:27:34.997] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:27:34.998] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:29:02.106] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:29:02.118] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:29:02.265] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:29:05.268] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:29:05.270] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:29:48.383] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:29:48.393] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:29:48.599] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:29:51.601] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:29:51.602] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:30:12.010] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:30:12.055] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:42:42.374] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:42:42.386] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:42:42.525] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:42:45.531] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:42:45.544] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:43:09.451] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:43:09.467] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:43:09.988] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:43:12.692] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:43:12.722] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:45:22.082] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:45:22.097] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:45:22.375] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:45:25.397] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:45:25.422] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:45:37.926] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:45:37.940] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:45:38.166] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:45:41.485] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:45:41.486] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:49:09.384] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:49:09.396] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:49:09.523] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:49:12.527] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:49:12.557] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:51:25.589] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:51:25.598] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:51:25.726] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:51:28.737] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:51:28.779] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:53:40.334] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Insertion de Weather et Retourne un weather tout frais !
+[2018-05-30T11:54:19.381] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:55:39.237] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:55:40.175] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:55:55.827] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:55:56.699] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:57:05.075] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:58:06.195] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:58:17.374] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:58:28.943] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:58:44.189] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:58:52.457] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-30T11:58:52.470] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-30T11:58:52.492] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:58:52.513] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:58:52.518] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:59:23.547] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:59:23.549] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:59:24.012] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:59:27.308] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T11:59:27.321] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:59:27.772] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T11:59:30.784] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T11:59:30.789] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:00:42.771] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:00:42.778] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:00:42.926] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T12:00:46.018] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:00:46.051] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:03:53.826] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:03:53.836] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:03:54.066] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T12:03:57.074] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:03:57.077] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:04:48.758] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:04:48.778] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:04:49.020] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T12:04:52.010] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:04:52.039] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:06:53.698] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T12:07:01.915] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-30T12:07:01.919] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-30T12:07:01.965] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T12:07:01.970] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:07:01.977] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:07:30.978] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:07:30.986] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:07:31.114] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T12:07:34.124] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:07:34.151] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:15:57.959] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:15:57.961] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:15:58.110] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T12:16:01.106] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:16:01.109] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:18:00.055] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:18:00.062] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:18:00.186] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T12:18:03.181] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:18:03.218] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:19:50.990] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:19:51.003] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:19:51.137] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T12:19:54.155] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:19:54.165] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:20:00.760] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:20:00.788] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:20:00.914] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T12:20:03.914] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:20:03.917] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:22:43.080] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-30T12:22:43.081] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:22:43.208] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-30T12:22:46.507] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-30T12:22:46.509] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:21:18.898] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Insertion de Weather et Retourne un weather tout frais !
+[2018-05-31T11:21:29.659] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:21:35.291] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T11:21:35.306] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T11:21:35.326] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:21:35.328] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:21:36.345] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:23:50.673] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:23:50.675] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:23:51.069] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:23:54.076] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:23:54.080] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:25:52.727] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:25:52.734] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:25:52.918] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:25:56.858] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:25:56.928] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:28:54.776] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:28:54.787] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:28:54.995] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:28:58.870] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:28:58.871] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:30:11.966] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:30:11.982] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:30:12.151] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:30:15.853] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:30:15.972] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:30:20.710] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:30:20.718] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:30:21.224] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:30:24.859] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:30:24.908] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:30:32.814] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:30:32.820] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:30:33.029] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:30:36.844] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:30:36.851] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:30:41.202] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:30:41.205] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:30:42.218] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:30:45.843] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:30:45.949] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:30:59.305] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:30:59.314] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:30:59.768] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:31:02.849] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:31:02.912] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:31:05.473] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:31:05.485] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:31:05.689] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:31:08.864] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:31:08.873] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:31:18.315] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:31:18.351] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:31:18.629] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:31:21.848] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:31:21.888] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:32:42.283] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:32:42.293] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:32:42.462] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:32:45.852] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:32:45.906] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:32:59.688] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:32:59.697] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:32:59.857] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:33:02.864] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:33:03.787] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:33:06.197] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:33:06.210] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:33:06.469] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:33:09.856] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:33:09.865] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:33:33.007] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:33:33.016] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:33:33.159] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:33:36.952] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:33:36.962] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:33:37.089] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:33:40.862] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:33:40.939] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:33:54.882] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:33:54.892] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:33:55.073] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:33:58.854] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:33:58.899] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:34:09.216] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:34:09.228] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:34:09.424] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:34:26.407] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:34:26.409] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:34:27.723] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:34:27.736] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:34:27.915] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:34:46.856] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:34:46.885] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:34:55.007] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:34:55.016] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:34:55.161] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:34:59.593] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:34:59.602] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:34:59.805] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:35:02.818] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:35:02.827] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:35:36.959] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:35:36.968] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:35:37.095] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:35:40.376] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:35:40.381] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:35:41.399] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:35:41.410] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:35:41.534] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:35:44.540] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:35:44.546] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:35:59.402] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:35:59.411] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:35:59.549] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:36:02.547] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:36:02.631] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:37:11.307] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:37:11.316] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:37:11.462] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:37:14.463] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:37:14.511] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:37:42.036] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:37:42.044] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:37:42.177] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:37:45.274] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:37:45.285] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:37:51.874] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:37:51.885] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:37:52.022] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:37:55.021] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:37:55.021] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:38:23.361] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:38:23.368] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:38:23.503] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:38:26.505] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:38:26.562] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:39:20.392] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:39:20.400] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:39:20.522] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:39:23.532] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:39:23.561] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:39:41.044] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:39:41.053] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:39:41.188] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:39:44.192] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:39:44.199] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:40:04.832] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:40:05.871] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:40:05.883] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:40:07.853] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:40:07.860] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:40:20.771] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:40:20.780] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:40:21.188] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:40:24.180] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:40:24.212] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:41:36.465] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:41:36.477] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:41:37.164] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:41:40.143] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:41:40.151] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:42:19.716] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:42:19.725] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:42:19.843] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:42:22.844] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:42:22.879] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:42:26.995] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:42:27.007] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:42:27.158] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:42:30.148] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:42:30.151] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:42:45.973] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:42:45.981] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:42:46.216] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:42:49.889] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:42:49.922] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:42:56.885] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:42:56.896] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:42:57.028] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:43:00.040] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:43:00.050] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:43:50.331] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:43:50.347] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:43:50.531] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:43:53.549] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:43:53.550] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:44:32.617] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:44:32.618] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:44:32.745] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:44:35.750] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:44:35.751] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:45:14.945] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:45:14.955] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:45:15.093] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:45:18.110] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:45:18.111] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:48:39.420] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:48:39.427] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:48:39.594] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:48:42.893] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:48:42.894] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:49:50.275] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:49:50.284] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:49:50.703] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:49:53.886] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:49:54.009] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:50:44.256] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:50:44.266] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:50:44.809] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:50:47.882] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:50:47.889] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:50:57.404] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:50:57.416] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:50:58.007] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:51:01.873] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:51:01.906] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:51:26.275] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:51:26.285] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:51:26.789] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:51:31.307] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:51:31.319] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:51:31.779] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:51:34.885] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:51:34.941] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:51:38.850] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:51:38.858] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:51:39.365] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:51:42.878] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:51:42.922] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:52:17.295] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:52:17.308] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:52:17.724] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:52:20.882] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:52:20.908] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:53:43.260] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:53:43.267] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:53:43.839] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:53:46.873] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:53:46.875] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:53:49.543] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:53:49.552] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:53:50.008] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:53:53.868] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:53:53.896] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:54:17.944] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:54:19.045] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:54:19.480] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:54:22.873] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:54:22.883] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:54:28.356] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:54:28.358] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:54:29.106] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:54:33.740] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:54:33.751] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:54:34.243] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:54:37.869] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:54:37.871] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:56:57.255] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:56:57.263] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:56:57.947] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:57:00.951] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:57:00.955] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:57:37.652] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:57:37.653] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:57:38.083] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:57:41.084] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:57:41.108] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:58:03.504] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:58:03.514] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:58:03.917] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:58:06.910] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:58:06.911] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:58:45.121] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:58:45.134] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:58:45.533] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:58:48.534] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:58:48.556] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:59:16.834] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T11:59:16.844] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:59:17.246] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T11:59:20.246] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T11:59:20.275] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:00:38.380] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:00:38.390] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:00:38.534] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:00:41.547] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:00:41.548] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:02:41.497] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:02:41.504] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:02:41.991] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:02:45.848] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:02:45.850] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:02:55.121] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:02:55.129] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:02:55.608] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:02:58.846] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:02:58.883] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:03:15.948] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:03:15.958] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:03:17.215] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:03:19.878] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:03:19.879] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:03:27.533] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:03:27.549] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:03:28.045] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:03:31.861] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:03:31.864] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:10:13.201] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:10:13.211] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:10:13.642] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:10:16.644] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:10:16.646] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:10:55.601] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:10:55.611] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:10:56.135] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:10:59.130] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:10:59.163] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:11:13.203] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:11:13.215] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:11:13.640] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:11:17.908] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:11:17.909] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:11:53.646] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:11:53.657] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:11:54.057] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:11:57.105] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:11:57.106] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:12:29.958] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:12:29.959] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:12:30.086] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:12:33.133] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:12:33.210] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:13:39.100] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:13:39.109] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:13:39.274] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:13:42.914] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:13:42.960] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:13:48.026] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:13:48.038] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:13:48.275] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:13:51.281] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:13:51.283] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:15:48.825] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:15:48.842] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:15:48.979] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:15:52.915] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:15:52.919] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:16:34.084] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:16:34.086] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:16:34.309] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:16:37.926] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:16:37.952] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:16:46.418] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:16:46.427] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:16:46.879] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:16:49.921] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:16:49.924] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:17:40.276] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:17:40.287] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:17:40.853] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:17:43.974] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:17:43.975] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:17:53.256] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:17:53.265] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:17:53.704] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:17:56.921] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:17:56.922] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:18:03.416] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:18:03.427] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:18:03.896] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:18:06.924] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:18:06.926] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:18:28.793] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:18:28.804] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:18:29.397] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:18:32.927] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:18:32.978] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:19:16.125] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:19:16.133] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:19:16.621] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:19:19.924] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:19:19.955] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:19:32.667] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:19:32.676] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:19:33.118] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:19:36.926] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:19:36.959] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:20:25.111] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:20:25.121] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:20:25.682] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:20:28.925] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:20:28.952] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:21:09.392] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:21:09.403] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:21:09.855] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:21:12.927] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:21:12.952] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:21:53.686] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:21:53.695] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:21:54.855] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Insertion de Weather et Retourne un weather tout frais !
+[2018-05-31T12:21:57.928] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:21:57.968] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:22:23.459] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:22:23.465] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:22:24.235] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:22:27.230] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:22:27.232] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:22:52.904] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:22:52.917] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:22:53.385] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:22:56.391] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:22:56.393] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:23:31.076] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:23:31.085] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:23:31.490] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:23:34.490] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:23:34.495] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:24:06.380] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:24:06.382] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:24:06.771] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:24:09.779] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:24:09.799] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:24:42.674] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:24:42.682] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:24:43.108] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:24:46.108] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:24:46.109] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:24:55.867] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:24:55.878] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:24:56.407] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:24:59.475] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:24:59.477] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:29:06.625] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:29:06.633] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:29:07.235] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:29:10.234] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:29:10.238] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:29:29.813] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:29:29.823] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:29:30.251] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:29:33.248] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:29:33.250] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:29:43.549] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:29:43.562] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:29:44.012] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:29:47.000] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:29:47.031] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:30:12.338] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:30:12.352] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:30:12.553] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:30:15.556] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:30:15.560] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:32:23.462] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:32:23.477] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:32:23.631] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:32:26.652] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:32:26.655] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:32:36.960] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T12:32:36.962] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:32:37.106] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T12:32:40.111] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T12:32:40.136] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T15:10:43.176] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T15:10:44.195] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T15:10:45.493] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T15:10:45.503] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T15:10:48.092] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Insertion de Weather et Retourne un weather tout frais !
+[2018-05-31T15:19:48.016] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:19:48.038] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:19:49.107] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:21:01.405] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:21:01.425] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:21:02.475] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:22:31.379] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:22:31.407] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:22:32.470] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:22:47.780] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:22:47.789] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:22:47.858] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:25:39.979] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:25:41.570] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:25:46.498] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:25:46.521] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:25:47.581] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:25:50.535] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:25:50.549] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:25:51.289] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:25:51.603] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:25:51.607] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:25:51.660] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:10.727] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:11.782] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:18.229] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:19.231] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:32.888] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:26:32.902] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:26:32.958] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:36.150] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:26:36.163] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:26:36.216] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:37.019] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:26:37.029] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:26:37.069] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:37.551] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:26:37.564] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:26:37.614] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:38.114] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:26:38.126] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:26:38.168] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:38.668] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:26:38.685] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:26:38.735] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:39.279] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:26:39.294] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:26:39.336] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:39.800] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:26:39.814] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:26:39.867] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:40.696] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:26:40.715] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:26:40.780] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:41.134] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:26:41.141] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:26:41.206] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:41.368] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:26:41.382] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:26:41.444] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:26:41.645] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:26:41.662] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:26:41.738] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:27:23.317] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:27:24.220] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:27:37.672] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:27:37.682] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:27:37.733] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:27:42.151] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:27:42.163] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:27:42.214] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:27:43.414] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:27:43.426] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:27:43.494] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:28:34.996] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:28:36.575] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:28:39.418] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:28:45.651] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:28:45.671] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:28:45.721] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:29:17.752] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:29:17.773] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:29:17.839] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:30:25.966] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:30:36.305] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:34:24.880] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:34:24.900] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:34:26.011] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:34:42.057] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:34:58.431] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:35:34.472] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:35:34.477] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:35:34.507] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:35:48.847] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:38:18.292] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:38:28.857] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:38:28.864] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:38:30.014] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:40:23.711] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:41:13.357] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:41:14.567] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:41:41.259] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:41:52.046] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:41:52.049] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:41:52.102] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T15:41:52.118] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T15:41:53.157] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:42:05.264] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:42:27.336] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:42:30.589] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:42:39.801] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-05-31T15:42:39.804] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-05-31T15:42:39.851] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T15:42:39.867] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T15:42:39.912] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:42:44.285] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T15:42:44.326] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T15:42:44.777] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:42:47.790] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T15:42:47.857] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T15:42:57.794] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T15:42:57.815] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T15:42:58.061] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:43:01.079] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T15:43:01.102] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T15:43:18.607] [INFO] mysilene - [Access] GET /api/news - 
+[2018-05-31T15:43:18.634] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T15:43:18.791] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-05-31T15:43:21.806] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-05-31T15:43:21.862] [INFO] mysilene - [Access] GET /api/news - 
