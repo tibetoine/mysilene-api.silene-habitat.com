@@ -109,54 +109,46 @@ router.post('/auth', function (req, res) {
 	ad.findUser(userId, function (err, user) {
 		// console.log("flag : " + res);
 		if (err) {
-			//console.log('ERROR: ' + JSON.stringify(err));
+			// console.log('ERROR: ' + JSON.stringify(err));
 			var error = buildBusinessError("Erreur lors de la recherche de l'utilisateur dans l'ad.", 403, 40311, correlationId, err)
 			res.status(403).type('application/json').send(error);
 		}
 		if (!user) {
-			//console.log('User: ' + userId + ' not found.');
+			// console.log('User: ' + userId + ' not found.');
 			var error = buildBusinessError("Utilisateur inconnu", 403, 40312, correlationId)
 			logger.logError("Utilisateur [" + userId + "] inconnu ", "POST", req.headers, "/api-auth/auth");
 			res.status(403).json(error);
 		} else {
 			/* On cherche à authentifier l'utilisateur */
 			ad.authenticate(userId + '@silene-habitat.com', userPassword, function (err, auth) {
-				// console.log("Tentative d'authent pour " + userId + " avec le mdp : " + userPassword);
+				// console.log("Tentative d'authent pour " + userId + "@silene-habitat.com avec le mdp : xxx");
 				if (err) {
-					var error = buildBusinessError("Impossible d'authentifier l'utilisateur", 403, 4032, correlationId)
-					logger.logError("Impossible d'authentifier l'utilisateur [" + userId + "]", "POST", req.headers, "/api-auth/auth");
-					res.status(403).json(error);
-					return;
-				}
-
-				if (auth) {
-					// console.log('[OK] : ' + userId + ' is Authenticated!');
-					logger.logSuccess(" [ " + userId + "] est Authentifié", "POST", req.headers, "/api-auth/auth");
-					/* 1 - Création d'un token */
-					const buf = crypto.randomBytes(64);
-					var token = buf.toString('hex');
-
-
-					/* 2- Create or Update user et token en base*/
-					var updateObj = {token: token};
-					Users.findByIdAndUpdate(userId,updateObj,{upsert:true, new:true}, function (err, updatedUser) {
-						if (err) {
-							// console.log('Error saving a User : ' + userId + " avec le token : " + token);
-							// console.log('ERROR: '+JSON.stringify(err));
-							logger.logError("Problème de la création ou mise à jour de l'utilisateur en base [" + userId + "]", "POST", req.headers, "/api-auth/auth", err);
-							var error = buildBusinessError("Erreur lors de l'authentification", 403, 4033, correlationId)
-							res.status(403).json(error);							
+					// console.log("erreur d'authent --> Nouvelle tentative sur @silene.local. ");
+					ad.authenticate(userId + '@silene-habitat.com', userPassword, function (err2, auth2) {
+						// console.log("Tentative d'authent pour " + userId + "@silene.local avec le mdp : xxx");
+						if (err2) {
+							// console.log('err2', err2)
+							var error = buildBusinessError("Impossible d'authentifier l'utilisateur", 403, 4032, correlationId)
+							logger.logError("Impossible d'authentifier l'utilisateur [" + userId + "]", "POST", req.headers, "/api-auth/auth");
+							res.status(403).json(error);
+							return;
+						}
+						if (auth2) {
+							// console.log('auth2', auth2)
+							authSuccess(userId, req, correlationId, res);
 						} else {
-							// console.log('[OK] : Token enregistré (ou mis à jour) en base pour ' + userId );
-							logger.logSuccess('Token enregistré (ou mis à jour) en base pour ' + userId, "POST", req.headers, "/api-auth/auth");
-							res.json(updatedUser);
+							var error = buildBusinessError("Echec de l'authentification", 403, 4034, correlationId)
+							res.status(403).json(error);		
 						}
 					});
 				}
-				else {
+
+				if (auth) {
+					authSuccess(userId, req, correlationId, res);
+				}
+				if (!err && !auth) {
 					var error = buildBusinessError("Echec de l'authentification", 403, 4034, correlationId)
 					res.status(403).json(error);		
-					
 				}
 			});
 		}
@@ -171,3 +163,27 @@ router.post('/auth', function (req, res) {
 });
 
 module.exports = router;
+
+function authSuccess (userId, req, correlationId, res) {
+	console.log('[OK] : ' + userId + ' is Authenticated!');
+	logger.logSuccess(" [ " + userId + "] est Authentifié", "POST", req.headers, "/api-auth/auth");
+	/* 1 - Création d'un token */
+	const buf = crypto.randomBytes(64);
+	var token = buf.toString('hex');
+	/* 2- Create or Update user et token en base*/
+	var updateObj = { token: token };
+	Users.findByIdAndUpdate(userId, updateObj, { upsert: true, new: true }, function (err, updatedUser) {
+		if (err) {
+			console.log('Error saving a User : ' + userId + " avec le token : " + token);
+			console.log('ERROR: ' + JSON.stringify(err));
+			logger.logError("Problème de la création ou mise à jour de l'utilisateur en base [" + userId + "]", "POST", req.headers, "/api-auth/auth", err);
+			var error = buildBusinessError("Erreur lors de l'authentification", 403, 4033, correlationId);
+			res.status(403).json(error);
+		}
+		else {
+			console.log('[OK] : Token enregistré (ou mis à jour) en base pour ' + userId);
+			logger.logSuccess('Token enregistré (ou mis à jour) en base pour ' + userId, "POST", req.headers, "/api-auth/auth");
+			res.json(updatedUser);
+		}
+	});
+}
