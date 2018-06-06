@@ -927,3 +927,8 @@
 [2018-06-06T09:01:40.259] [INFO] mysilene - [Access] GET /api/news - 
 [2018-06-06T09:01:40.915] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Insertion de Weather et Retourne un weather tout frais !
 [2018-06-06T09:01:41.328] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-06T09:05:48.660] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ desbois] est Authentifié
+[2018-06-06T09:05:48.690] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour desbois
+[2018-06-06T09:05:48.731] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-06T09:05:49.741] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-06T09:05:50.759] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !

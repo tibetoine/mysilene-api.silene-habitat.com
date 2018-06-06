@@ -103,8 +103,8 @@ function isAuthenticated (req, res, next) {
 		}
 		
 		if (user && user.length > 0) {
-			console.log("user[0]._id.trim().toLowerCase()", user[0]._id.trim().toLowerCase())
-			console.log("req.headers['userid']", req.headers['userid'])
+			// console.log("user[0]._id.trim().toLowerCase()", user[0]._id.trim().toLowerCase())
+			// console.log("req.headers['userid']", req.headers['userid'])
 			if (user[0]._id && user[0]._id.length > 0 && user[0]._id.trim().toLowerCase() === req.headers['userid']) {
 				
 				// console.log("Auth : Ok le user " + req.headers['userid']+ " est reconnu.")
