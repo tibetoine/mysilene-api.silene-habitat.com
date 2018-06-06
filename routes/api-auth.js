@@ -124,7 +124,7 @@ router.post('/auth', function (req, res) {
 				// console.log("Tentative d'authent pour " + userId + "@silene-habitat.com avec le mdp : xxx");
 				if (err) {
 					// console.log("erreur d'authent --> Nouvelle tentative sur @silene.local. ");
-					ad.authenticate(userId + '@silene-habitat.com', userPassword, function (err2, auth2) {
+					ad.authenticate(userId + '@silene.local', userPassword, function (err2, auth2) {
 						// console.log("Tentative d'authent pour " + userId + "@silene.local avec le mdp : xxx");
 						if (err2) {
 							// console.log('err2', err2)
@@ -165,7 +165,7 @@ router.post('/auth', function (req, res) {
 module.exports = router;
 
 function authSuccess (userId, req, correlationId, res) {
-	console.log('[OK] : ' + userId + ' is Authenticated!');
+	// console.log('[OK] : ' + userId + ' is Authenticated!');
 	logger.logSuccess(" [ " + userId + "] est Authentifié", "POST", req.headers, "/api-auth/auth");
 	/* 1 - Création d'un token */
 	const buf = crypto.randomBytes(64);
@@ -174,14 +174,14 @@ function authSuccess (userId, req, correlationId, res) {
 	var updateObj = { token: token };
 	Users.findByIdAndUpdate(userId, updateObj, { upsert: true, new: true }, function (err, updatedUser) {
 		if (err) {
-			console.log('Error saving a User : ' + userId + " avec le token : " + token);
+			// console.log('Error saving a User : ' + userId + " avec le token : " + token);
 			console.log('ERROR: ' + JSON.stringify(err));
 			logger.logError("Problème de la création ou mise à jour de l'utilisateur en base [" + userId + "]", "POST", req.headers, "/api-auth/auth", err);
 			var error = buildBusinessError("Erreur lors de l'authentification", 403, 4033, correlationId);
 			res.status(403).json(error);
 		}
 		else {
-			console.log('[OK] : Token enregistré (ou mis à jour) en base pour ' + userId);
+			// console.log('[OK] : Token enregistré (ou mis à jour) en base pour ' + userId);
 			logger.logSuccess('Token enregistré (ou mis à jour) en base pour ' + userId, "POST", req.headers, "/api-auth/auth");
 			res.json(updatedUser);
 		}

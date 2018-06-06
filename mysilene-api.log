@@ -916,3 +916,14 @@
 [2018-06-05T10:21:31.700] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
 [2018-06-05T10:21:40.625] [INFO] mysilene - [Error] POST /api-auth/auth -  Impossible d'authentifier l'utilisateur [desbois] undefined
 [2018-06-05T10:22:29.635] [INFO] mysilene - [Error] POST /api-auth/auth -  Impossible d'authentifier l'utilisateur [desbois] undefined
+[2018-06-05T10:24:46.867] [INFO] mysilene - [Error] POST /api-auth/auth -  Impossible d'authentifier l'utilisateur [desbois] undefined
+[2018-06-05T10:54:45.475] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ desbois] est Authentifié
+[2018-06-05T10:54:45.537] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour desbois
+[2018-06-05T10:54:45.604] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-05T10:54:46.655] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-05T10:54:48.692] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Insertion de Weather et Retourne un weather tout frais !
+[2018-06-06T09:01:39.145] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-06T09:01:40.160] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-06T09:01:40.259] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-06T09:01:40.915] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Insertion de Weather et Retourne un weather tout frais !
+[2018-06-06T09:01:41.328] [INFO] mysilene - [Access] GET /api/contacts - 
