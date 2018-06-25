@@ -932,3 +932,141 @@
 [2018-06-06T09:05:48.731] [INFO] mysilene - [Access] GET /api/news - 
 [2018-06-06T09:05:49.741] [INFO] mysilene - [Access] GET /api/contacts - 
 [2018-06-06T09:05:50.759] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-07T09:03:46.752] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-07T09:03:47.799] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-07T09:03:49.079] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-07T09:03:49.110] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-07T09:03:50.018] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Insertion de Weather et Retourne un weather tout frais !
+[2018-06-07T09:10:22.286] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-07T09:10:22.288] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-07T09:17:28.668] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-07T09:17:28.684] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-07T09:17:29.020] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-07T09:17:31.962] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-07T09:17:31.963] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-07T09:24:06.309] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-07T09:24:06.311] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-07T09:24:06.584] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-07T09:24:09.553] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-07T09:24:09.554] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-07T09:25:03.748] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-07T09:25:03.767] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-07T09:25:04.280] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-07T09:25:07.293] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-07T09:25:07.296] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-07T09:25:19.638] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-07T09:25:19.650] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-07T09:25:20.093] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-07T09:25:23.089] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-07T09:25:23.093] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-25T16:15:50.706] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Insertion de Weather et Retourne un weather tout frais !
+[2018-06-25T16:16:09.976] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-06-25T16:16:10.010] [INFO] mysilene - [Error] POST /api-auth/auth -  Problème de la création ou mise à jour de l'utilisateur en base [robert] { MongoError: '$push' is empty. You must specify a field like so: {$push: {<field>: ...}}
+    at C:\Users\robert\devhome\Projets\mysilene-api.silene-habitat.com\node_modules\mongoose\node_modules\mongodb-core\lib\connection\pool.js:595:61
+    at authenticateStragglers (C:\Users\robert\devhome\Projets\mysilene-api.silene-habitat.com\node_modules\mongoose\node_modules\mongodb-core\lib\connection\pool.js:513:16)
+    at Connection.messageHandler (C:\Users\robert\devhome\Projets\mysilene-api.silene-habitat.com\node_modules\mongoose\node_modules\mongodb-core\lib\connection\pool.js:549:5)
+    at emitMessageHandler (C:\Users\robert\devhome\Projets\mysilene-api.silene-habitat.com\node_modules\mongoose\node_modules\mongodb-core\lib\connection\connection.js:309:10)
+    at Socket.<anonymous> (C:\Users\robert\devhome\Projets\mysilene-api.silene-habitat.com\node_modules\mongoose\node_modules\mongodb-core\lib\connection\connection.js:452:17)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+  name: 'MongoError',
+  message: '\'$push\' is empty. You must specify a field like so: {$push: {<field>: ...}}',
+  ok: 0,
+  errmsg: '\'$push\' is empty. You must specify a field like so: {$push: {<field>: ...}}',
+  code: 9,
+  codeName: 'FailedToParse' }
+[2018-06-25T16:17:45.549] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-06-25T16:17:45.572] [INFO] mysilene - [Error] POST /api-auth/auth -  Problème de la création ou mise à jour de l'utilisateur en base [robert] { MongoError: '$push' is empty. You must specify a field like so: {$push: {<field>: ...}}
+    at C:\Users\robert\devhome\Projets\mysilene-api.silene-habitat.com\node_modules\mongoose\node_modules\mongodb-core\lib\connection\pool.js:595:61
+    at authenticateStragglers (C:\Users\robert\devhome\Projets\mysilene-api.silene-habitat.com\node_modules\mongoose\node_modules\mongodb-core\lib\connection\pool.js:513:16)
+    at Connection.messageHandler (C:\Users\robert\devhome\Projets\mysilene-api.silene-habitat.com\node_modules\mongoose\node_modules\mongodb-core\lib\connection\pool.js:549:5)
+    at emitMessageHandler (C:\Users\robert\devhome\Projets\mysilene-api.silene-habitat.com\node_modules\mongoose\node_modules\mongodb-core\lib\connection\connection.js:309:10)
+    at Socket.<anonymous> (C:\Users\robert\devhome\Projets\mysilene-api.silene-habitat.com\node_modules\mongoose\node_modules\mongodb-core\lib\connection\connection.js:452:17)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:607:20)
+  name: 'MongoError',
+  message: '\'$push\' is empty. You must specify a field like so: {$push: {<field>: ...}}',
+  ok: 0,
+  errmsg: '\'$push\' is empty. You must specify a field like so: {$push: {<field>: ...}}',
+  code: 9,
+  codeName: 'FailedToParse' }
+[2018-06-25T16:35:02.939] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-06-25T16:35:02.988] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-06-25T16:35:04.078] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-25T16:35:05.167] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-25T16:35:05.179] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:08:01.203] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-25T17:08:01.206] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-25T17:08:01.575] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:08:04.572] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-25T17:08:04.576] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-25T17:08:41.904] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:09:12.238] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:09:14.340] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:09:16.953] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:10:19.875] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:10:32.621] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-06-25T17:10:32.636] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-06-25T17:10:32.654] [INFO] mysilene - [Error] ? ? -  Pas de Header authorization undefined
+[2018-06-25T17:10:32.668] [INFO] mysilene - [Error] ? ? -  Pas de Header authorization undefined
+[2018-06-25T17:10:32.688] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:10:39.079] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-06-25T17:10:39.085] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-06-25T17:10:39.103] [INFO] mysilene - [Error] ? ? -  Pas de Header authorization undefined
+[2018-06-25T17:10:39.106] [INFO] mysilene - [Error] ? ? -  Pas de Header authorization undefined
+[2018-06-25T17:10:39.133] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:10:42.893] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-06-25T17:10:42.904] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-06-25T17:10:42.921] [INFO] mysilene - [Error] ? ? -  Pas de Header authorization undefined
+[2018-06-25T17:10:42.923] [INFO] mysilene - [Error] ? ? -  Pas de Header authorization undefined
+[2018-06-25T17:10:42.936] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:12:00.990] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-06-25T17:12:01.024] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-06-25T17:12:01.054] [INFO] mysilene - [Error] ? ? -  Pas de Header authorization undefined
+[2018-06-25T17:12:01.093] [INFO] mysilene - [Error] ? ? -  Pas de Header authorization undefined
+[2018-06-25T17:12:01.131] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:12:36.547] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:12:44.769] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-06-25T17:12:44.778] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-06-25T17:12:44.823] [INFO] mysilene - [Error] ? ? -  Pas de Header authorization undefined
+[2018-06-25T17:12:44.827] [INFO] mysilene - [Error] ? ? -  Pas de Header authorization undefined
+[2018-06-25T17:12:44.867] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:17:25.622] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-06-25T17:17:25.648] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-06-25T17:17:25.721] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-25T17:17:26.734] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-25T17:17:28.840] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Insertion de Weather et Retourne un weather tout frais !
+[2018-06-25T17:18:37.213] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:18:46.150] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-06-25T17:18:46.161] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-06-25T17:18:46.199] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-25T17:18:46.247] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-25T17:18:46.269] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:18:57.616] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-25T17:18:57.628] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-25T17:18:57.882] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:19:00.876] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-25T17:19:00.878] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-25T17:19:12.968] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-06-25T17:19:12.972] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-06-25T17:19:13.014] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-25T17:19:13.035] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-25T17:19:13.041] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:21:28.649] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-25T17:21:28.682] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-25T17:21:28.843] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !
+[2018-06-25T17:21:31.911] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-25T17:21:32.047] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-25T17:22:06.190] [DEBUG] mysilene - [Success] POST /api-auth/auth -   [ robert] est Authentifié
+[2018-06-25T17:22:06.194] [DEBUG] mysilene - [Success] POST /api-auth/auth -  Token enregistré (ou mis à jour) en base pour robert
+[2018-06-25T17:22:06.247] [INFO] mysilene - [Access] GET /api/news - 
+[2018-06-25T17:22:06.253] [INFO] mysilene - [Access] GET /api/contacts - 
+[2018-06-25T17:22:06.300] [DEBUG] mysilene - [Success] GET /api-weather/weather -  Je retourne le Weather en Cache !

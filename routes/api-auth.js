@@ -171,8 +171,10 @@ function authSuccess (userId, req, correlationId, res) {
 	const buf = crypto.randomBytes(64);
 	var token = buf.toString('hex');
 	/* 2- Create or Update user et token en base*/
-	var updateObj = { token: token };
-	Users.findByIdAndUpdate(userId, updateObj, { upsert: true, new: true }, function (err, updatedUser) {
+	//var updateObj = { token: token };
+	// var updateObj = { $push: { tokens: token } };
+	
+	Users.findByIdAndUpdate(userId, { $push: { tokens: token } }, { upsert: true, new: true }, function (err, updatedUser) {
 		if (err) {
 			// console.log('Error saving a User : ' + userId + " avec le token : " + token);
 			console.log('ERROR: ' + JSON.stringify(err));
@@ -183,7 +185,7 @@ function authSuccess (userId, req, correlationId, res) {
 		else {
 			// console.log('[OK] : Token enregistré (ou mis à jour) en base pour ' + userId);
 			logger.logSuccess('Token enregistré (ou mis à jour) en base pour ' + userId, "POST", req.headers, "/api-auth/auth");
-			res.json(updatedUser);
+			res.json({ _id: userId , token: token });
 		}
 	});
 }

@@ -91,7 +91,9 @@ function isAuthenticated (req, res, next) {
 		return res.sendStatus(401)
     }
 
-	Users.find({token:req.headers['authorization']})
+	var userToken = req.headers['authorization']
+	// console.log("Recherche du token :" + userToken)
+	Users.find({ $or: [{ token: userToken }, { tokens: userToken }] })
 		.exec(function (err, user) {
 		// console.log("CallBack Users Find- ", err, user )
 		if (err) {
