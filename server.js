@@ -10,6 +10,7 @@ const api = require('./routes/api');
 const apiAuth = require('./routes/api-auth');
 const apiWeather = require('./routes/api-weather');
 const apiOperation = require('./routes/api-operation');
+const apiDocs = require('./routes/api-docs');
 
 const port = process.env.EXPRESS_PORT || 3000;
 
@@ -135,6 +136,7 @@ app.use('/api-weather', apiWeather);
 app.use('/api-operation', apiOperation);
 app.use(isAuthenticated); /* A partir de ce point toutes les routes nécessitent une authentification */
 app.use('/api', api);
+app.use('/api-docs', apiDocs);
 
 /* Gestion des erreurs */
 /*app.use(function(err, req, res, next) {
