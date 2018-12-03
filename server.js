@@ -6,6 +6,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Users = require('./models/users');
 
+const healthcheck = require('./routes/healthcheck');
 const api = require('./routes/api');
 const apiAuth = require('./routes/api-auth');
 const apiWeather = require('./routes/api-weather');
@@ -17,6 +18,7 @@ const port = process.env.EXPRESS_PORT || 3000;
 var logger = require('./utils/logger');
 
 const app = express();
+
 
 // app.use(logger.express);
 
@@ -134,6 +136,7 @@ app.get('/swagger.json', function (req, res) {
 app.use('/api-auth', apiAuth);
 app.use('/api-weather', apiWeather);
 app.use('/api-operation', apiOperation);
+app.use('/healthcheck', healthcheck);
 app.use(isAuthenticated); /* A partir de ce point toutes les routes nécessitent une authentification */
 app.use('/api', api);
 app.use('/api-docs', apiDocs);
