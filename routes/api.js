@@ -28,7 +28,16 @@ router.get("/", function(req, res) {
   logger.error.error("Erreur de connection à la base " , err);
   res.send("api works");
 });
-
+/**
+ * @swagger
+ * definitions:
+ *   Users:
+ *     properties:
+ *       _id:
+ *         type: string       
+ *       prefs:
+ *         type: [string]
+ */
 /**
  * @swagger
  * definitions:
@@ -140,4 +149,67 @@ router.get("/contacts", function(req, res) {
       }
     });
 });
+
+/**
+ * @swagger
+ * /api/users:
+ *   put:
+ *     description: Permet de mettre à jour les prefs de l'utilisateur
+ *     tags:
+ *      - Users
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: users
+ */
+router.put("/users/:id", function(req, res) {
+  logger.logApiAccess("PUT", req.headers, "/api/users");
+  Users.findByIdAndUpdate(req.params.id,    
+    {
+			$set: {
+				prefs: req.body.prefs								
+			}
+		},
+		{
+			new: true
+		},
+		function (err, updatedUser) {
+			if (err) {
+				console.log("Erreur dans la mise à jour du user", err);
+      } else {   
+        updatedUser.tokens = undefined
+        res.json(updatedUser);
+			}
+		});
+  
+})
+
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     description: Permet de récupérer les informations d'un user (Sans les tokens)
+ *     tags:
+ *      - Users
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: users
+ */
+router.get("/users/:id", function(req, res) {
+  logger.logApiAccess("GET", req.headers, "/api/users");
+  Users.findById(req.params.id,   
+    
+		function (err, user) {
+			if (err) {
+				console.log("Erreur dans la récupération du user " + req.params.id, err);
+      } else {   
+        user.tokens = undefined
+        res.json(user);
+			}
+		});
+  
+})
 module.exports = router;

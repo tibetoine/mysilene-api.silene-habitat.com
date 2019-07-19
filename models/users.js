@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const usersSchema = new Schema({
 	_id:String,		
 	token: String,
-	tokens: [String]
+	tokens: [String],
+	prefs: [String]
 });
 
 
