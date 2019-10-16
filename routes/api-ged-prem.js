@@ -4,12 +4,13 @@ var logger = require("../utils/logger");
 
 const oracledb = require("oracledb");
 const config = {
-  user: "SILN_API",
-  password: "LufiBNea9kL3HrVEa48z",
-  connectString: "ORASRV_TCP.PREM"
+  user: process.env.ORACLE_USER,
+  password: process.env.ORACLE_PASSWORD,
+  connectString: process.env.ORACLE_CONNECT_STRING
 };
 
-const log=true
+
+
 
 /**
  * @swagger
@@ -45,9 +46,9 @@ router.get("/residences/:id/docs", (req, res) => {
           nodeAttachement: element[6],
           type: element[8],
           link:
-            "http://spsihb01/ged.prod//geddocument.aspx?itemid=" +
+            "/api-ged-prem/docs/" +
             element[0] +
-            "&versid=" +
+            "?versionid=" +
             element[10]
         };
         jsonResult["result"].push(jsonElement);
@@ -55,6 +56,16 @@ router.get("/residences/:id/docs", (req, res) => {
     }
     res.json(jsonResult);
   });
+});
+
+router.get("/residences", (req, res) => {
+  myLog(
+    "Récupération de la liste des résidences"
+  );
+
+  // var jsonResult = { result: [] };
+
+  
 });
 
 /**
@@ -198,6 +209,37 @@ async function getDocInfo(docid) {
   }
 }
 
+
+/**
+ * Récupérer la liste des résidences 
+ */
+async function getResidencesList() {
+  let conn;
+  try {
+    conn = await oracledb.getConnection(config);
+
+    /**
+     * ATTENTION : Bien utilisé le système de BIND VARIABLE d'oracle (et pas de la concatenation de String) pour éviter le SQL Injection
+     */
+    const result = await conn.execute(
+      `select CATID, TITRE 
+      from kweb_items ki 
+      where ki.itemid = :id
+     `,
+      [docid]
+    );
+
+    return result;
+  } catch (err) {
+    myLog("Ouch!", err);
+  } finally {
+    if (conn) {
+      // conn assignment worked, need to close
+      await conn.close();
+    }
+  }
+}
+
 /**
  * Récupère la liste des catégories autorisées pour lecture de documents depuis l'API
  */
@@ -274,6 +316,7 @@ async function getAllDocsOfResidence(residenceId) {
 }
 
 function myLog (texte, objects) {
-  if(log) console.log(texte, objects)
+  let log = process.env.LOG
+  if (log === 'ON') console.log(texte, objects)
 }
 module.exports = router;
