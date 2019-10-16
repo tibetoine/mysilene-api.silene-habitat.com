@@ -23,6 +23,7 @@
     "log4js": "^2.7.0",
     "mongodb": "^2.2.33",
     "mongoose": "^5.0.12",
+    "oracledb": "^4.0.1",
     "request-promise-lite": "^0.13.1",
     "sanitize": "^2.1.0",
     "swagger-jsdoc": "^1.9.7",
