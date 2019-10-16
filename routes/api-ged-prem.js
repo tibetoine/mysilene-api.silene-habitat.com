@@ -9,6 +9,8 @@ const config = {
   connectString: "ORASRV_TCP.PREM"
 };
 
+const log=true
+
 /**
  * @swagger
  * /api-ged-prem/residences:
@@ -23,7 +25,7 @@ const config = {
  *         description: https://darksky.net/dev/docs#/dev/docs#response-format
  */
 router.get("/residences/:id/docs", (req, res) => {
-  console.log(
+  myLog(
     "Récupération de la liste des documents de la résidence : ",
     req.params.id
   );
@@ -34,7 +36,7 @@ router.get("/residences/:id/docs", (req, res) => {
     if (result.rows && result.rows.length !== 0) {
       /* Build Json to return  */
       result.rows.forEach(element => {
-        console.log("Traitement d un element", element);
+        myLog("Traitement d un element", element);
         let jsonElement = {
           itemId: element[0],
           versionId: element[10],
@@ -83,7 +85,7 @@ router.get("/docs/:id", (req, res) => {
   var fileName;
   /* Je récupère la catégorie du document à partir de l'identifiant de document et de sa version. */
   getDocInfo(docid).then(function(result) {
-    console.log(result);
+    myLog(result);
     if (!result || !result.rows || result.rows.length === 0) {
       res.status(204).send({
         error:
@@ -98,25 +100,25 @@ router.get("/docs/:id", (req, res) => {
     getAllowedCategories().then(function(resultCats) {
       let accessGranted = false;
       resultCats.rows.forEach(element => {
-        console.log("element[0] : ", element[0]);
-        console.log("catid : ", catid);
+        myLog("element[0] : ", element[0]);
+        myLog("catid : ", catid);
         if (element[0] === catid) {
-          console.log("Access Granted");
+          myLog("Access Granted");
           accessGranted = true;
         } else {
-          console.log("Access pas Granted");
+          myLog("Access pas Granted");
         }
       });
 
       if (!accessGranted) {
-        console.log("Voici la catégorie trouvée pour ce document : ", catid);
-        console.log(accessGranted);
+        myLog("Voici la catégorie trouvée pour ce document : ", catid);
+        myLog(accessGranted);
         res.status(403).send({
           error:
             "Ce document n'est pas accessible par l'API. Veuillez contacter le service informatique Silène avec le code OneNote : #API0001."
         });
       } else {
-        console.log("Début envoi doc");
+        myLog("Début envoi doc");
         var http = require('http');
 
         let url =
@@ -124,7 +126,7 @@ router.get("/docs/:id", (req, res) => {
           docid +
           "&versid=" +
           versionid;
-        // console.log(url)
+        // myLog(url)
 
         
 
@@ -138,7 +140,7 @@ router.get("/docs/:id", (req, res) => {
           response.on("end", function() {
             
             data = Buffer.concat(data);
-            console.log(
+            myLog(
               "requested content length: ",
               response.headers["content-length"]
             );
@@ -148,7 +150,7 @@ router.get("/docs/:id", (req, res) => {
                   "Aucun document récupéré avec ces ids."
               });
             } else {
-              console.log("parsed content length: ", data.length);
+              myLog("parsed content length: ", data.length);
               res.writeHead(200, {
                 "Content-Type": "application/pdf",
                 "Content-Disposition": "attachment; filename=" + fileName,
@@ -187,7 +189,7 @@ async function getDocInfo(docid) {
 
     return result;
   } catch (err) {
-    console.log("Ouch!", err);
+    myLog("Ouch!", err);
   } finally {
     if (conn) {
       // conn assignment worked, need to close
@@ -213,13 +215,13 @@ async function getAllowedCategories() {
     `
     );
 
-    console.log("Number of rows returned: " + result.rows.length);
-    console.log(result);
-    console.log(result.rows);
+    myLog("Number of rows returned: " + result.rows.length);
+    myLog(result);
+    myLog(result.rows);
 
     return result;
   } catch (err) {
-    console.log("Ouch!", err);
+    myLog("Ouch!", err);
   } finally {
     if (conn) {
       // conn assignment worked, need to close
@@ -257,12 +259,12 @@ async function getAllDocsOfResidence(residenceId) {
       [residenceId]
     );
 
-    // console.log("Number of rows returned: " + result.rows.length);
-    // console.log(result.rows);
+    // myLog("Number of rows returned: " + result.rows.length);
+    // myLog(result.rows);
 
     return result;
   } catch (err) {
-    console.log("Ouch!", err);
+    myLog("Ouch!", err);
   } finally {
     if (conn) {
       // conn assignment worked, need to close
@@ -271,4 +273,7 @@ async function getAllDocsOfResidence(residenceId) {
   }
 }
 
+function myLog (texte, objects) {
+  if(log) console.log(texte, objects)
+}
 module.exports = router;
