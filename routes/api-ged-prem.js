@@ -10,8 +10,6 @@ const config = {
 };
 
 
-
-
 /**
  * @swagger
  * /api-ged-prem/residences:
@@ -40,16 +38,15 @@ router.get("/residences/:id/docs", (req, res) => {
         myLog("Traitement d un element", element);
         let jsonElement = {
           itemId: element[0],
-          versionId: element[10],
+          versionId: element[5],
           fileName: element[1],
           createDate: element[2],
-          nodeAttachement: element[6],
-          type: element[8],
+          type: element[4],
           link:
             "/api-ged-prem/docs/" +
             element[0] +
             "?versionid=" +
-            element[10]
+            element[5]
         };
         jsonResult["result"].push(jsonElement);
       });
@@ -63,9 +60,6 @@ router.get("/residences", (req, res) => {
     "Récupération de la liste des résidences"
   );
 
-  // var jsonResult = { result: [] };
-
-  
 });
 
 /**
@@ -137,9 +131,6 @@ router.get("/docs/:id", (req, res) => {
           docid +
           "&versid=" +
           versionid;
-        // myLog(url)
-
-        
 
         var request = http.get(url, function(response) {
           var data = [];
@@ -156,11 +147,13 @@ router.get("/docs/:id", (req, res) => {
               response.headers["content-length"]
             );
             if (!data || data.length === 0) {
+              /* Retourne une erreur au client */
               res.status(204).send({
                 error:
                   "Aucun document récupéré avec ces ids."
               });
             } else {
+              /* Retourne le document au client */
               myLog("parsed content length: ", data.length);
               res.writeHead(200, {
                 "Content-Type": "application/pdf",
@@ -284,19 +277,18 @@ async function getAllDocsOfResidence(residenceId) {
      * ATTENTION : Bien utilisé le système de BIND VARIABLE d'oracle (et pas de la concatenation de String) pour éviter le SQL Injection
      */
     const result = await conn.execute(
-      `SELECT 
-      ki.ITEMID, ki.titre,kiv.CREATEDATE, kiv.AUTHOR , kf.FILENAME, kcat.TITLE catégorie , ka2.DESCRIPTION , kva2.Value , kwf.name répertoire , kwf.folderid, kiv.versid
-     FROM kweb_items ki, kweb_itemversion kiv, kweb_versattributes kva, kweb_versattributes kva2, kweb_files kf 
-     ,kweb_attributes ka,kweb_attributes ka2,kweb_typeitems kt ,kweb_categories kcat , kweb_folders kwf
-     where ki.itemid = kiv.itemid and kiv.versid = kva.versid and kiv.versid = kva2.versid and kf.reftable = 'KWEB_VERSATTRIBUTES' and kva.versattid = kf.refid
-     AND kva.attributeid = ka.attributeid and ka.typeattid = '1' 
-     and ki.typeid > 1000 
-     and kva2.attributeid = ka2.attributeid and ka2.typeattid != '1' and ki.typeid = kt.typeid
-     AND kcat.catid = ki.catid
-     and kwf.folderid = ki.folderid 
-     and kcat.catid = '55'
-     and kwf.folderid != '10003' 
-     and kva2.value like '%'||:id||'%'
+      `SELECT distinct (ki.ITEMID), ki.titre,kiv.CREATEDATE,  kcat.TITLE catégorie ,  kwf.name répertoire , kiv.versid
+      FROM kweb_items ki, kweb_itemversion kiv, kweb_versattributes kva, kweb_versattributes kva2, kweb_files kf 
+      ,kweb_attributes ka,kweb_attributes ka2,kweb_typeitems kt ,kweb_categories kcat , kweb_folders kwf
+      where ki.itemid = kiv.itemid and kiv.versid = kva.versid and kiv.versid = kva2.versid and kf.reftable = 'KWEB_VERSATTRIBUTES' and kva.versattid = kf.refid
+      AND kva.attributeid = ka.attributeid and ka.typeattid = '1' 
+      and ki.typeid > 1000 
+      and kva2.attributeid = ka2.attributeid and ka2.typeattid != '1' and ki.typeid = kt.typeid
+      AND kcat.catid = ki.catid
+      and kwf.folderid = ki.folderid 
+      and kcat.catid = '55'
+      and kwf.folderid != '10003' 
+      and kva2.value like '%'||:id||'%'
      `,
       [residenceId]
     );
