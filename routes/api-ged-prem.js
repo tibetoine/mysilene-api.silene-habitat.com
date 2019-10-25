@@ -288,7 +288,7 @@ async function getAllDocsOfResidence(residenceId) {
       and kwf.folderid = ki.folderid 
       and kcat.catid = '55'
       and kwf.folderid != '10003' 
-      and kva2.value like '%'||:id||'%'
+      and kva2.value like ''||:id||'%'
      `,
       [residenceId]
     );
