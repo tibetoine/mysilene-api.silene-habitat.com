@@ -205,7 +205,7 @@ router.put("/users/:id", function(req, res) {
  *         description: users
  */
 router.get("/users/:id", function(req, res) {
-  logger.logApiAccess("GET", req.headers, "/api/users");
+  logger.logApiAccess("GET", req.headers, "/api/users/:id");
   Users.findById(
     req.params.id,
 
@@ -221,6 +221,38 @@ router.get("/users/:id", function(req, res) {
       }
     }
   );
+});
+
+
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     description: Permet de récupérer une liste d'utilisateurs enregistrés dans MySilene
+ *     tags:
+ *      - Users
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: users
+ */
+router.get("/users", function(req, res) {
+  logger.logApiAccess("GET", req.headers, "/api/users");
+  Users.find({})
+    .sort("_id")
+    .exec(function(err, users) {
+      if (err) {
+        logger.logError(
+          "Erreur dans la récupération des utilisateurs en base",
+          "GET",
+          req.headers,
+          "/api/users"
+        );
+      } else {
+        res.json(users);
+      }
+    });
 });
 
 /**
