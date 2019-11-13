@@ -13,11 +13,7 @@ const db = process.env.MONGO_DB;
 mongoose.Promise = global.Promise;
 
 mongoose.connect(db, function(err) {
-  if (err) {
-    /*if(logger.isDebug(logger.system)) {
-      logger.system.debug("debugログは、DEBUGレベルの時だけ呼びたい。");
-    }*/
-  
+  if (err) {  
     logger.error.error("Erreur de connection à la base " , err);
     // console.error("Erreur de connection à la base " + err);
   }
@@ -212,4 +208,5 @@ router.get("/users/:id", function(req, res) {
 		});
   
 })
+
 module.exports = router;

@@ -3,16 +3,21 @@ const swaggerJSDoc = require('swagger-jsdoc');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+const ActiveDirectory = require('activedirectory');
+
 const mongoose = require('mongoose');
 const Users = require('./models/users');
 
 const healthcheck = require('./routes/healthcheck');
 const api = require('./routes/api');
+const apiAdmin = require('./routes/apiAdmin');
 const apiAuth = require('./routes/api-auth');
 const apiWeather = require('./routes/api-weather');
 const apiOperation = require('./routes/api-operation');
 const apiDocs = require('./routes/api-docs');
 const apiGedPrem = require('./routes/api-ged-prem');
+
+
 
 const port = process.env.EXPRESS_PORT || 3000;
 
@@ -82,6 +87,60 @@ app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname, 'api-docs/index.html'));
 });
 
+
+/**
+ * Permet de vérifier que l'utilisateur connecté est autorisé à accéder aux API sensibles.
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
+function isAdmin (req, res, next) {	
+	if (!req.headers['userid']) {
+		logger.logError("Pas de Header userid", "?", req.headers, "?");						
+		return res.sendStatus(401)
+	}
+	
+	var ldapConfig = {
+		url: process.env.LDAP_URL,
+		baseDN: process.env.LDAP_BASE_DN,
+		username: process.env.LDAP_USERNAME,
+		password: process.env.LDAP_PASSWORD
+	}
+
+
+	var ad = new ActiveDirectory(ldapConfig);
+
+	let groupName = '_Informatique'
+
+	ad.getUsersForGroup(groupName, function(err, users) {
+		if (err) {
+			logger.logError('ERROR: ' +JSON.stringify(err));
+		  	return res.sendStatus(401)
+		}
+	  
+		if (!users) {
+			// console.log('Group: ' + groupName + ' not found.');
+			logger.logError('Group: ' + groupName + ' not found.');
+			return res.sendStatus(401)	
+		}	
+		
+		var authorized;
+		users.forEach(element => {
+			if (element && element.sAMAccountName.trim().toLowerCase() === req.headers['userid']) {
+				authorized = "authorized"
+			} 
+		});
+		
+
+		if (authorized === "authorized") {
+			return next();
+		} else {
+			return res.sendStatus(401);
+		}
+
+	  });
+}
+
 function isAuthenticated (req, res, next) {
     const db = process.env.MONGO_DB;
 	mongoose.Promise = global.Promise;
@@ -142,6 +201,8 @@ app.use('/healthcheck', healthcheck);
 app.use(isAuthenticated); /* A partir de ce point toutes les routes nécessitent une authentification */
 app.use('/api', api);
 app.use('/api-docs', apiDocs);
+app.use(isAdmin); /* A partir de ce point toutes les routes nécessitent une autorisation de niveau Administrateur (Groupe _Informatique) */
+app.use('/api-admin', apiAdmin);
 
 /* Gestion des erreurs */
 /*app.use(function(err, req, res, next) {
