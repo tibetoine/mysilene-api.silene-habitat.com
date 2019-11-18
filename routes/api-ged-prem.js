@@ -288,7 +288,7 @@ async function getAllDocsOfResidence(residenceId) {
 
     return result;
   } catch (err) {
-    myLog("Ouch!", err);
+    logger.logError("Erreur Oracle lors de la récupération des résidences", "GET", null, null , err);
   } finally {
     if (conn) {
       // conn assignment worked, need to close
