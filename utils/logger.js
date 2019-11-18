@@ -82,7 +82,7 @@ module.exports = {
     }
     log4js
       .getLogger("mysilene")
-      .info("[Info]", method, apiEndpoint, "-", info, message, error);
+      .info("[Info]", method, apiEndpoint, "-", info, message);
   },
   isDebug: function(category) {
     return log4js.levels.DEBUG.level >= category.level.level;
