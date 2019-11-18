@@ -9,7 +9,6 @@ const config = {
   connectString: process.env.ORACLE_CONNECT_STRING
 };
 
-
 /**
  * @swagger
  * /api-ged-prem/residences:
@@ -24,9 +23,12 @@ const config = {
  *         description: https://darksky.net/dev/docs#/dev/docs#response-format
  */
 router.get("/residences/:id/docs", (req, res) => {
-  myLog(
-    "Récupération de la liste des documents de la résidence : ",
-    req.params.id
+  logger.logApiAccess("GET", req.headers, "/api-ged-prem/residences/:id/docs");
+  logger.logInfo(
+    "Récupération de la liste des documents de la résidence : " + req.params.id,
+    "GET",
+    req.headers,
+    "/api-ged-prem/residences/:id/docs"
   );
 
   var jsonResult = { result: [] };
@@ -34,19 +36,14 @@ router.get("/residences/:id/docs", (req, res) => {
   getAllDocsOfResidence(req.params.id).then(function(result) {
     if (result.rows && result.rows.length !== 0) {
       /* Build Json to return  */
-      result.rows.forEach(element => {
-        myLog("Traitement d un element", element);
+      result.rows.forEach(element => {        
         let jsonElement = {
           itemId: element[0],
           versionId: element[5],
           fileName: element[1],
           createDate: element[2],
           type: element[4],
-          link:
-            "/api-ged-prem/docs/" +
-            element[0] +
-            "?versionid=" +
-            element[5]
+          link: "/api-ged-prem/docs/" + element[0] + "?versionid=" + element[5]
         };
         jsonResult["result"].push(jsonElement);
       });
@@ -56,10 +53,7 @@ router.get("/residences/:id/docs", (req, res) => {
 });
 
 router.get("/residences", (req, res) => {
-  myLog(
-    "Récupération de la liste des résidences"
-  );
-
+  myLog("Récupération de la liste des résidences");
 });
 
 /**
@@ -72,7 +66,7 @@ router.get("/residences", (req, res) => {
  *     produces:
  *      - application/json
  *     responses:
- *       200: 
+ *       200:
  */
 router.get("/docs/:id", (req, res) => {
   if (!req.query.versionid || req.query.versionid == "") {
@@ -93,8 +87,7 @@ router.get("/docs/:id", (req, res) => {
     myLog(result);
     if (!result || !result.rows || result.rows.length === 0) {
       res.status(204).send({
-        error:
-          "Aucun document associé à ces ids."
+        error: "Aucun document associé à ces ids."
       });
     }
     /* Récupération de la catégorie ID */
@@ -124,7 +117,7 @@ router.get("/docs/:id", (req, res) => {
         });
       } else {
         myLog("Début envoi doc");
-        var http = require('http');
+        var http = require("http");
 
         let url =
           "http://spsihb01/ged.prod//geddocument.aspx?itemid=" +
@@ -135,12 +128,11 @@ router.get("/docs/:id", (req, res) => {
         var request = http.get(url, function(response) {
           var data = [];
 
-          response.on("data", function(chunk) {            
+          response.on("data", function(chunk) {
             data.push(chunk);
           });
 
           response.on("end", function() {
-            
             data = Buffer.concat(data);
             myLog(
               "requested content length: ",
@@ -149,8 +141,7 @@ router.get("/docs/:id", (req, res) => {
             if (!data || data.length === 0) {
               /* Retourne une erreur au client */
               res.status(204).send({
-                error:
-                  "Aucun document récupéré avec ces ids."
+                error: "Aucun document récupéré avec ces ids."
               });
             } else {
               /* Retourne le document au client */
@@ -173,7 +164,7 @@ router.get("/docs/:id", (req, res) => {
 
 /**
  * Récupère des informations sur un document à partir de son identifiant.
- * @param {*} docid identifiant de document 
+ * @param {*} docid identifiant de document
  */
 async function getDocInfo(docid) {
   let conn;
@@ -202,9 +193,8 @@ async function getDocInfo(docid) {
   }
 }
 
-
 /**
- * Récupérer la liste des résidences 
+ * Récupérer la liste des résidences
  */
 async function getResidencesList() {
   let conn;
@@ -307,8 +297,8 @@ async function getAllDocsOfResidence(residenceId) {
   }
 }
 
-function myLog (texte, objects) {
-  let log = process.env.LOG
-  if (log === 'ON') console.log(texte, objects)
+function myLog(texte, objects) {
+  let log = process.env.LOG;
+  if (log === "ON") console.log(texte, objects);
 }
 module.exports = router;
