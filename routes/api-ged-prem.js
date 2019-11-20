@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 var logger = require("../utils/logger");
+const helper = require("../helper/helper")
 
 const oracledb = require("oracledb");
 const config = {
@@ -36,7 +37,7 @@ router.get("/residences/:id/docs", (req, res) => {
   getAllDocsOfResidence(req.params.id).then(function(result) {
     if (result.rows && result.rows.length !== 0) {
       /* Build Json to return  */
-      result.rows.forEach(element => {        
+      result.rows.forEach(element => {
         let jsonElement = {
           itemId: element[0],
           versionId: element[5],
@@ -54,6 +55,21 @@ router.get("/residences/:id/docs", (req, res) => {
 
 router.get("/residences", (req, res) => {
   myLog("Récupération de la liste des résidences");
+  var jsonResult = { result: [] };
+  helper.getResidencesList().then(function(result) {
+    console.log(result)
+    if (result.rows && result.rows.length !== 0) {
+      /* Build Json to return  */
+      result.rows.forEach(element => {
+        let jsonElement = {
+          residenceId: element[0],
+          residenceName: element[1]
+        };
+        jsonResult["result"].push(jsonElement);
+      });
+    }
+    res.json(jsonResult);
+  });
 });
 
 /**
@@ -193,35 +209,7 @@ async function getDocInfo(docid) {
   }
 }
 
-/**
- * Récupérer la liste des résidences
- */
-async function getResidencesList() {
-  let conn;
-  try {
-    conn = await oracledb.getConnection(config);
 
-    /**
-     * ATTENTION : Bien utilisé le système de BIND VARIABLE d'oracle (et pas de la concatenation de String) pour éviter le SQL Injection
-     */
-    const result = await conn.execute(
-      `select CATID, TITRE 
-      from kweb_items ki 
-      where ki.itemid = :id
-     `,
-      [docid]
-    );
-
-    return result;
-  } catch (err) {
-    myLog("Ouch!", err);
-  } finally {
-    if (conn) {
-      // conn assignment worked, need to close
-      await conn.close();
-    }
-  }
-}
 
 /**
  * Récupère la liste des catégories autorisées pour lecture de documents depuis l'API
@@ -288,7 +276,13 @@ async function getAllDocsOfResidence(residenceId) {
 
     return result;
   } catch (err) {
-    logger.logError("Erreur Oracle lors de la récupération des résidences", "GET", null, null , err);
+    logger.logError(
+      "Erreur Oracle lors de la récupération des résidences",
+      "GET",
+      null,
+      null,
+      err
+    );
   } finally {
     if (conn) {
       // conn assignment worked, need to close

@@ -16,6 +16,7 @@ const apiWeather = require('./routes/api-weather');
 const apiOperation = require('./routes/api-operation');
 const apiDocs = require('./routes/api-docs');
 const apiGedPrem = require('./routes/api-ged-prem');
+const apiGedSharepoint = require('./routes/api-ged-sharepoint');
 
 
 
@@ -195,6 +196,7 @@ app.get('/swagger.json', function (req, res) {
 /* Attention l'ordre est important ici  */
 app.use('/api-auth', apiAuth);
 app.use('/api-ged-prem', apiGedPrem);
+app.use('/api-ged-sharepoint', apiGedSharepoint);
 app.use('/api-weather', apiWeather);
 app.use('/api-operation', apiOperation);
 app.use('/healthcheck', healthcheck);
