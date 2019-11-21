@@ -193,7 +193,10 @@ async function getDocsFromUrl(urlArray) {
           link: element.LinkingUrl,
           type: element.ListItemAllFields.SileneDocumentType
             ? element.ListItemAllFields.SileneDocumentType.WssId
-            : null
+            : null,
+          typeLabel: element.ListItemAllFields.SileneDocumentType
+          ? element.ListItemAllFields.SileneDocumentType.Label
+          : null,
         });
       });
     }
