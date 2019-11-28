@@ -57,7 +57,7 @@ router.get("/residences", (req, res) => {
   myLog("Récupération de la liste des résidences");
   var jsonResult = { result: [] };
   helper.getResidencesList().then(function(result) {
-    console.log(result)
+    // console.log(result)
     if (result.rows && result.rows.length !== 0) {
       /* Build Json to return  */
       result.rows.forEach(element => {

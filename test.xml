@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<entry xml:base="http://spsshp04:8081/patrimoine/_api/" 
+    xmlns="http://www.w3.org/2005/Atom" 
+    xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" 
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" 
+    xmlns:georss="http://www.georss.org/georss" 
+    xmlns:gml="http://www.opengis.net/gml">
+    <id>http://spsshp04:8081/patrimoine/_api/Web/GetFileByServerRelativeUrl('/patrimoine/0023R4  Trbale/Notification DC4 à ATELIER ISAC.pdf')</id>
+    <category term="SP.File" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <link rel="edit" href="Web/GetFileByServerRelativeUrl('/patrimoine/0023R4%20%20Trbale/Notification%20DC4%20%C3%A0%20ATELIER%20ISAC.pdf')" />
+    <link rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/Author" type="application/atom+xml;type=entry" title="Author" href="Web/GetFileByServerRelativeUrl('/patrimoine/0023R4%20%20Trbale/Notification%20DC4%20%C3%A0%20ATELIER%20ISAC.pdf')/Author" />
+    <link rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/CheckedOutByUser" type="application/atom+xml;type=entry" title="CheckedOutByUser" href="Web/GetFileByServerRelativeUrl('/patrimoine/0023R4%20%20Trbale/Notification%20DC4%20%C3%A0%20ATELIER%20ISAC.pdf')/CheckedOutByUser" />
+    <link rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/EffectiveInformationRightsManagementSettings" type="application/atom+xml;type=entry" title="EffectiveInformationRightsManagementSettings" href="Web/GetFileByServerRelativeUrl('/patrimoine/0023R4%20%20Trbale/Notification%20DC4%20%C3%A0%20ATELIER%20ISAC.pdf')/EffectiveInformationRightsManagementSettings" />
+    <link rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/InformationRightsManagementSettings" type="application/atom+xml;type=entry" title="InformationRightsManagementSettings" href="Web/GetFileByServerRelativeUrl('/patrimoine/0023R4%20%20Trbale/Notification%20DC4%20%C3%A0%20ATELIER%20ISAC.pdf')/InformationRightsManagementSettings" />
+    <link rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/ListItemAllFields" type="application/atom+xml;type=entry" title="ListItemAllFields" href="Web/GetFileByServerRelativeUrl('/patrimoine/0023R4%20%20Trbale/Notification%20DC4%20%C3%A0%20ATELIER%20ISAC.pdf')/ListItemAllFields" />
+    <link rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/LockedByUser" type="application/atom+xml;type=entry" title="LockedByUser" href="Web/GetFileByServerRelativeUrl('/patrimoine/0023R4%20%20Trbale/Notification%20DC4%20%C3%A0%20ATELIER%20ISAC.pdf')/LockedByUser" />
+    <link rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/ModifiedBy" type="application/atom+xml;type=entry" title="ModifiedBy" href="Web/GetFileByServerRelativeUrl('/patrimoine/0023R4%20%20Trbale/Notification%20DC4%20%C3%A0%20ATELIER%20ISAC.pdf')/ModifiedBy" />
+    <link rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/Properties" type="application/atom+xml;type=entry" title="Properties" href="Web/GetFileByServerRelativeUrl('/patrimoine/0023R4%20%20Trbale/Notification%20DC4%20%C3%A0%20ATELIER%20ISAC.pdf')/Properties" />
+    <link rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/Versions" type="application/atom+xml;type=feed" title="Versions" href="Web/GetFileByServerRelativeUrl('/patrimoine/0023R4%20%20Trbale/Notification%20DC4%20%C3%A0%20ATELIER%20ISAC.pdf')/Versions" />
+    <title />
+    <updated>2019-11-27T11:12:50Z</updated>
+    <author>
+        <name />
+    </author>
+    <content type="application/xml">
+        <m:properties>
+            <d:CheckInComment></d:CheckInComment>
+            <d:CheckOutType m:type="Edm.Int32">2</d:CheckOutType>
+            <d:ContentTag>{5AA1BA08-939B-4C05-8BBF-084A72F27CF4},5,2</d:ContentTag>
+            <d:CustomizedPageStatus m:type="Edm.Int32">0</d:CustomizedPageStatus>
+            <d:ETag>"{5AA1BA08-939B-4C05-8BBF-084A72F27CF4},5"</d:ETag>
+            <d:Exists m:type="Edm.Boolean">true</d:Exists>
+            <d:IrmEnabled m:type="Edm.Boolean">false</d:IrmEnabled>
+            <d:Length m:type="Edm.Int64">34347</d:Length>
+            <d:Level m:type="Edm.Byte">1</d:Level>
+            <d:LinkingUrl>http://spsshp04:8081/patrimoine/0023R4  Trbale/Notification DC4 à ATELIER ISAC.pdf?d=w5aa1ba08939b4c058bbf084a72f27cf4</d:LinkingUrl>
+            <d:MajorVersion m:type="Edm.Int32">2</d:MajorVersion>
+            <d:MinorVersion m:type="Edm.Int32">0</d:MinorVersion>
+            <d:Name>Notification DC4 à ATELIER ISAC.pdf</d:Name>
+            <d:ServerRelativeUrl>/patrimoine/0023R4  Trbale/Notification DC4 à ATELIER ISAC.pdf</d:ServerRelativeUrl>
+            <d:TimeCreated m:type="Edm.DateTime">2019-10-14T07:14:50Z</d:TimeCreated>
+            <d:TimeLastModified m:type="Edm.DateTime">2019-10-14T07:17:36Z</d:TimeLastModified>
+            <d:Title>Notification DC4 à ATELIER ISAC</d:Title>
+            <d:UIVersion m:type="Edm.Int32">1024</d:UIVersion>
+            <d:UIVersionLabel>2.0</d:UIVersionLabel>
+            <d:UniqueId m:type="Edm.Guid">5aa1ba08-939b-4c05-8bbf-084a72f27cf4</d:UniqueId>
+        </m:properties>
+    </content>
+</entry>

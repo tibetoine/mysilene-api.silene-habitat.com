@@ -6,16 +6,47 @@ const helper = require("../helper/helper");
 
 const spauth = require("node-sp-auth");
 
-const sharepointPatrimoineURI = process.env.SHAREPOINT_BASE_URL + "/patrimoine";
+const SHAREPOINT_PATRIMOINE_URI =
+  process.env.SHAREPOINT_BASE_URL + "/patrimoine";
 const sharepointAuth = () =>
-  spauth.getAuth(sharepointPatrimoineURI, {
+  spauth.getAuth(SHAREPOINT_PATRIMOINE_URI, {
     username: process.env.SHAREPOINT_USERNAME,
     password: process.env.SHAREPOINT_PASSWORD,
     domain: process.env.SHAREPOINT_DOMAIN
   });
 
-const filterExtension = ["doc", "docx", "pdf"];
-const filterType = [153, 94];
+var extToMimes = {
+  doc: "application/msword",
+  docx:
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  pdf: "application/pdf",
+  ppt: "application/vnd.ms-powerpoint",
+  pptx:
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  xls: "application/vnd.ms-excel",
+  xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  tif: "image/tiff",
+  tiff: "image/tiff",
+  dwg: "application/dwg",
+  jpeg: "image/jpeg",
+  jpg: "image/jpeg",
+  bmp: "image/bmp",
+  gif: "image/gif",
+  png: "image/png"
+};
+
+/* TODO : DOcumentation, comment récupérer l'identifiant d'un type de document ? */
+/* [J'ai pas trouvé mieux] Pour récupérer les ID il faut faire un appel à l'API sharepoint du type : http://spsshp04:8081/patrimoine/_api/web/GetFolderByServerRelativeUrl('Planothque')/Files?$expand=ListItemAllFields (Voir Postman) */
+const filterType = {
+  153: "Devis",
+  94: "CCTP",
+  1355: "Plan - Masse",
+  1354: "Plan - Cadastral",
+  1356: "Plan - Architectural",
+  1368: "Plan - Réseau",
+  1419: "Plan - Codification",
+  1357: "Plan - Topographique"
+};
 /**
  * @swagger
  * /api-ged-sharepoint/residences:
@@ -72,7 +103,6 @@ router.get("/residences", async (req, res) => {
     jsonList.d.results &&
     jsonList.d.results.length > 0
   ) {
-    // console.log('yeah')
     jsonList.d.results.forEach(element => {
       /* /!\ Attention c'est important que l'instance de regex soit "neuve" à chaque test (Sinon on cherche l'occurence suivante) */
       let regex = /(\d{4})/gi;
@@ -95,8 +125,6 @@ router.get("/residences", async (req, res) => {
               libraries: []
             };
             jsonResidenceList["residences"].push(jsonResidence);
-
-            console.log("residence pas trouvée avec l id : ", residenceId);
           }
           jsonResidence.libraries.push(newElement);
         }
@@ -127,87 +155,208 @@ router.get("/residences/:id/docs", async (req, res) => {
   var libraryNames = req.query.libraryNames;
 
   let libraryNamesArray = libraryNames.split(",");
-  console.log(libraryNamesArray);
+  console.log("libraryNamesArray", libraryNamesArray);
 
   // `http://spsshp04:8081/patrimoine/_api/web/GetFolderByServerRelativeUrl('0023R4%20%20Trbale')/Files`
 
-  var jsonResponse = await getDocsFromUrl(libraryNamesArray);
+  var jsonResponse = { result: [] };
+  await getDocsFromUrlArray(libraryNamesArray, jsonResponse);
+  await getDocsFromPlanotheque(jsonResponse, req.params.id);
+
+  /* Récupération des documents dans la planothèque */
 
   console.log("yeah", jsonResponse);
 
   res.json(jsonResponse);
 });
 
-async function getDocsFromUrl(urlArray) {
-  var temp = false;
-  var jsonResponse = { result: [] };
-  for (const element of urlArray) {
-    const url =
-      process.env.SHAREPOINT_BASE_URL +
-      "/patrimoine/_api/Web/GetFolderByServerRelativeUrl('" +
-      element +
-      "')/Files?$expand=ListItemAllFields";
-    var list = await sharepointAuth().then(auth =>
-      rp.get({
-        ...auth.options,
-        headers: { ...auth.headers, Accept: "application/json;odata=verbose" },
-        uri: encodeURI(url)
-      })
-    );
-
-    /* Parser la list pour créer une réponse JSON avec les documents */
-
-    if (!list) {
-      return null;
-    }
-    var jsonList = JSON.parse(list);
-    if (
-      jsonList &&
-      jsonList.d &&
-      jsonList.d.results &&
-      jsonList.d.results.length > 0
-    ) {
-      var documents = jsonList.d.results;
-      var filteredDocuments = documents.filter(document => {
-        /* Si le document est sensible on ne le montre pas */
-        if (document.ListItemAllFields.Sensible) {
-          return false;
-        }
-
-        /* On filtre l'extension */
-        if (!filterExtension.includes(document.Name.split(".").pop())) {
-          return false;
-        }
-
-        /* On filtre sur le type */
-        if (!document.ListItemAllFields.SileneDocumentType || !filterType.includes(document.ListItemAllFields.SileneDocumentType.WssId)) {
-          return false;
-        } 
-
-        return true;
-      });
-
-      filteredDocuments.forEach(element => {
-        jsonResponse.result.push({
-          documentName: element.Name,
-          link: element.LinkingUrl,
-          type: element.ListItemAllFields.SileneDocumentType
-            ? element.ListItemAllFields.SileneDocumentType.WssId
-            : null,
-          typeLabel: element.ListItemAllFields.SileneDocumentType
-          ? element.ListItemAllFields.SileneDocumentType.Label
-          : null,
-        });
-      });
-    }
-
-    /* Filtrer la liste par type métier et par extension (docx, doc, pdf, excel ?) */
-    if (!temp) {
-      console.log(jsonResponse);
-      temp = true;
-    }
+/**
+ *Itère sur les URLs connu et va ensuite chercher les documents associés.
+ * @param {*} urlArray
+ */
+async function getDocsFromUrlArray(urlArray, jsonResponse) {
+  for (const anUrl of urlArray) {
+    await getDocsFromUrl(anUrl, jsonResponse);
   }
+
   return jsonResponse;
+}
+
+/**
+ * Récupère les documents à partir d'une URL
+ * @param {*} url
+ */
+async function getDocsFromUrl(url, jsonResponse) {
+  const constructedUrl =
+    process.env.SHAREPOINT_BASE_URL +
+    "/patrimoine/_api/Web/GetFolderByServerRelativeUrl('" +
+    url +
+    "')/Files?$expand=ListItemAllFields";
+  var list = await sharepointAuth().then(auth =>
+    rp.get({
+      ...auth.options,
+      headers: { ...auth.headers, Accept: "application/json;odata=verbose" },
+      uri: encodeURI(constructedUrl)
+    })
+  );
+
+  /* Parser la list pour créer une réponse JSON avec les documents */
+
+  if (!list) {
+    return null;
+  }
+  var jsonList = JSON.parse(list);
+  if (
+    jsonList &&
+    jsonList.d &&
+    jsonList.d.results &&
+    jsonList.d.results.length > 0
+  ) {
+    var documents = jsonList.d.results;
+    /* On filtre les documents */
+    var filteredDocuments = documents.filter(filterDocs);
+
+    /* Construction de la réponse. */
+    const responseDocuments = filteredDocuments.map(maperDocs);
+
+    /*console.log("-- Je fusionne 2 tableaux --");
+    console.log("Tableau 1 : ", jsonResponse.result);
+    console.log("Tableau 2 : ", responseDocuments);*/
+    Array.prototype.push.apply(jsonResponse.result, responseDocuments);
+  }
+}
+
+/**
+ *
+ * @param {*} urlArray
+ */
+async function getDocsFromPlanotheque(jsonResponse, residenceId) {
+  /* Liste des documents de la planothèque */
+  const url =
+    process.env.SHAREPOINT_BASE_URL +
+    "/patrimoine/_api/Web/GetFolderByServerRelativeUrl('Planothque')/Files?$expand=ListItemAllFields&$filter=substringof('"+residenceId+"',Name)";
+  var list = await sharepointAuth().then(auth =>
+    rp.get({
+      ...auth.options,
+      headers: { ...auth.headers, Accept: "application/json;odata=verbose" },
+      uri: encodeURI(url)
+    })
+  );
+
+  /* Parser la list pour créer une réponse JSON avec les documents */
+
+  if (!list) {
+    return null;
+  }
+  var jsonList = JSON.parse(list);
+  if (
+    jsonList &&
+    jsonList.d &&
+    jsonList.d.results &&
+    jsonList.d.results.length > 0
+  ) {
+    var documents = jsonList.d.results;
+    /* On filtre les documents */
+    var filteredDocuments = documents.filter(filterDocs);
+
+    /* Construction de la réponse. */
+    const responseDocuments = filteredDocuments.map(maperDocs);
+
+    /*console.log('-- Je fusionne 2 tableaux --')
+      console.log('Tableau 1 : ', jsonResponse.result )
+      console.log('Tableau 2 : ', responseDocuments )*/
+    Array.prototype.push.apply(jsonResponse.result, responseDocuments);
+  }
+
+  return jsonResponse;
+}
+
+/**
+ * @swagger
+ * /api-ged-sharepoint/residences/doc:
+ *   get:
+ *     description: Retourne un document à partir de l'url passée en paramètre
+ *     tags:
+ *      - Residences
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: retourne un document (ou null)
+ */
+router.get("/residences/doc/", async (req, res) => {
+  /* Récupération de (ou des) libraryName */
+  var urlDoc = req.query.urlDoc;
+
+  var file = await getDocFromUrl(urlDoc);
+
+  if (!file) {
+    res.status(204).send({
+      error: "Aucun document récupéré"
+    });
+  }
+
+  /* Récupération du nom du fichier */
+  let fileName = getFileNameFromUrl(urlDoc);
+  let fileMime = getMimeFromUrl(urlDoc);
+
+  // TODO  Récupérer le nom du fichier
+  // console.log("The file : ", fileName, " with Mime : ", fileMime, " and buffer : ", file);
+  res.writeHead(200, {
+    "Content-Type": `${fileMime}`,
+    "Content-Disposition": `attachment; filename=${fileName}`,
+    "Content-Length": file.length
+  });
+  res.end(file);
+});
+
+/**
+ *
+ * @param {*} urlFile
+ */
+function getFileNameFromUrl(urlFile) {
+  var parts = urlFile.split("/");
+  var fileName = parts[parts.length - 1];
+
+  return fileName;
+}
+
+/**
+ * Retourne le mime type à partir de l'URL d'un fichier puis de son extension.
+ * @param {*} urlFile
+ */
+function getMimeFromUrl(urlFile) {
+  var parts = urlFile.split(".");
+  var extension = parts[parts.length - 1];
+  return extToMimes[extension];
+}
+/**
+ * Permet de récupérer un fichier.
+ *
+ * @param {*} urlFile l'url vers le fichier à récupérer
+ */
+async function getDocFromUrl(urlFile) {
+  /* Construction de l'URL pour récupérer le fichier  */
+  let sharepointURLFile =
+    SHAREPOINT_PATRIMOINE_URI +
+    `/_api/Web/GetFileByServerRelativeUrl('${urlFile}')/$value`;
+  console.log("Getting file from : ", sharepointURLFile);
+
+  /* Get File */
+  var responseFile = await sharepointAuth().then(async auth => {
+    return await rp
+      .get({
+        ...auth.options,
+        encoding: null,
+        headers: { ...auth.headers },
+        uri: encodeURI(sharepointURLFile)
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  });
+  // console.log("responseFile : ", responseFile);
+  return responseFile;
 }
 /**
  * @swagger
@@ -227,4 +376,48 @@ function myLog(texte, objects) {
   let log = process.env.LOG;
   if (log === "ON") console.log(texte, objects);
 }
+
+/**
+ * Transforme un element passé en paramètre en objet Json
+ *
+ * @param {*} document
+ */
+const maperDocs = element => {
+  return {
+    documentName: element.Name,
+    link: element.LinkingUrl,
+    sharepointServerRelativeUrl: element.ServerRelativeUrl,
+    type: element.ListItemAllFields.SileneDocumentType
+      ? element.ListItemAllFields.SileneDocumentType.WssId
+      : null,
+    typeLabel: element.ListItemAllFields.SileneDocumentType
+      ? element.ListItemAllFields.SileneDocumentType.Label
+      : null
+  };
+};
+/**
+ * Fonction qui permet de filtrer des documents d'une library.
+ */
+const filterDocs = document => {
+  /* Si le document est sensible on ne le montre pas */
+  if (document.ListItemAllFields.Sensible) {
+    return false;
+  }
+
+  /* On filtre l'extension */
+  if (!extToMimes.hasOwnProperty(document.Name.split(".").pop())) {
+    return false;
+  }
+
+  /* On filtre sur le type */
+  if (
+    !document.ListItemAllFields.SileneDocumentType ||
+    !filterType.hasOwnProperty(document.ListItemAllFields.SileneDocumentType.WssId)
+  ) {
+    return false;
+  }
+
+  return true;
+};
+
 module.exports = router;
