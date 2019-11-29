@@ -35,7 +35,7 @@ module.exports = {
         null,
         err
       );
-      myLog("Ouch!", err);
+      // myLog("Ouch!", err);
     } finally {
       if (conn) {
         // conn assignment worked, need to close

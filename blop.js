@@ -1,42 +1,48 @@
-const spauth = require("node-sp-auth");
-const rp = require("request-promise");
-const fs = require("fs");
+var extToMimes = {
+  doc: "application/msword",
+  docx:
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  pdf: "application/pdf",
+  ppt: "application/vnd.ms-powerpoint",
+  pptx:
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  xls: "application/vnd.ms-excel",
+  xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  tif: "image/tiff",
+  tiff: "image/tiff",
+  dwg: "application/dwg",
+  jpeg: "image/jpeg",
+  jpg: "image/jpeg",
+  bmp: "image/bmp",
+  gif: "image/gif",
+  png: "image/png"
+};
 
-const SHAREPOINT_BASE_URL = "http://spsshp04:8081";
-const SHAREPOINT_USERNAME = "SPAdmin";
-const SHAREPOINT_PASSWORD = "SPAdmin$44";
-const SHAREPOINT_DOMAIN = "silene.local";
 
-const sharepointPatrimoineURI = SHAREPOINT_BASE_URL + "/patrimoine";
+const filterTypeArray = [
+  "Annexe","Devis","CCTP"
+];
 
-const sharepointAuth = () =>
-  spauth.getAuth(sharepointPatrimoineURI, {
-    username: SHAREPOINT_USERNAME,
-    password: SHAREPOINT_PASSWORD,
-    domain: SHAREPOINT_DOMAIN
-  });
+var residenceId = '0070'
+/* Query Text */
+const queryText = `residence:${residenceId}`;
 
-test();
+/* Les propriétés à retourner dans le résultat */
+const selectProperties =
+  "Path,Filename,Title,Residence,SileneDocumentType,SileneSensible";
 
-async function test() {
-  await sharepointAuth().then(async auth => {
-    
-    rp
-      .get({
-        ...auth.options,
-        headers: { ...auth.headers },
-        uri: encodeURI(
-          "http://spsshp04:8081/patrimoine/_api/Web/GetFileByServerRelativeUrl('/patrimoine/0023R4  Trbale/Notification DC4 à ATELIER ISAC.pdf')/$value"
-        )
-      })
-      .then((response) => {
-        console.log(' response : ', response)
-        console.log(' type : ', response.type)
-      })
-      .catch(error => {
-        console.log(error);
-      });
+/* Les refiners : Indispensable pour pouvoir filtrer */
+const refiners = "fileExtension,SileneDocumentType";
 
-    
-  });
-}
+/* Filtre : On filtre par extension de fichier et par Type de document  */
+let extensions = Object.keys(extToMimes).map(element => '"'+element+'"').join(',')
+let types = filterTypeArray.map(element => '"'+element+'"')
+const refinementfilters =
+  `and(fileExtension:or(${extensions}),SileneDocumentType:(${types}))`
+
+/* L'URL construite */
+const baseUrl =
+  process.env.SHAREPOINT_BASE_URL +
+  `/patrimoine/_api/search/query?querytext='${queryText}'&selectproperties='${selectProperties}'&refiners='${refiners}'&refinementfilters='${refinementfilters}'`;
+
+console.log(baseUrl)
