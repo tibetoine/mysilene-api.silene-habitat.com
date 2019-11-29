@@ -94,7 +94,6 @@ router.get("/residences/:id/docs", async (req, res) => {
 
   /* Récupération des documents dans la planothèque */
 
-  // console.log("yeah", jsonResponse);
 
   res.json(jsonResponse);
 });
@@ -289,9 +288,9 @@ async function getDocsFromPatrimoine(jsonResponse, residenceId) {
   /* Construction de la réponse. */
   const responseDocuments = documents.map(maperSearchDocs);
 
-  console.log('-- Je fusionne 2 tableaux --')
+  /*console.log('-- Je fusionne 2 tableaux --')
     console.log('Tableau 1 : ', jsonResponse.result )
-    console.log('Tableau 2 : ', responseDocuments )
+    console.log('Tableau 2 : ', responseDocuments )*/
   Array.prototype.push.apply(jsonResponse.result, responseDocuments);
 
   return jsonResponse;
@@ -409,15 +408,17 @@ function myLog(texte, objects) {
  * @param {*} document
  */
 const maperSearchDocs = jsonElement => {
-  console.log("maperSearchDocs - element : ", jsonElement)
+  // console.log("maperSearchDocs - element : ", jsonElement)
   
   let documentName = null
   let link = null  
+  let sharepointServerRelativeUrl = null  
   let typeLabel = null
   jsonElement.Cells.results.forEach(element => {
     switch (element.Key) {
-      case "Path":
+      case "Path":        
         link = element.Value
+        sharepointServerRelativeUrl = element.Value.substring(element.Value.indexOf('/patrimoine/'))
         break;
       case "Filename":
         documentName = element.Value
@@ -432,6 +433,7 @@ const maperSearchDocs = jsonElement => {
   return {
     documentName: documentName,
     link: link,        
+    sharepointServerRelativeUrl: sharepointServerRelativeUrl,        
     typeLabel: typeLabel
   }
 };
