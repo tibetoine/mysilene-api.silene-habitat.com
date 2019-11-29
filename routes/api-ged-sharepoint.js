@@ -155,20 +155,41 @@ router.get("/residences/:id/docs", async (req, res) => {
   var libraryNames = req.query.libraryNames;
 
   let libraryNamesArray = libraryNames.split(",");
-  console.log("libraryNamesArray", libraryNamesArray);
+  // console.log("libraryNamesArray", libraryNamesArray);
 
   // `http://spsshp04:8081/patrimoine/_api/web/GetFolderByServerRelativeUrl('0023R4%20%20Trbale')/Files`
 
   var jsonResponse = { result: [] };
   await getDocsFromUrlArray(libraryNamesArray, jsonResponse);
-  await getDocsFromPlanotheque(jsonResponse, req.params.id);
+  // await getDocsFromPlanotheque(jsonResponse, req.params.id);
 
   /* Récupération des documents dans la planothèque */
 
-  console.log("yeah", jsonResponse);
+  // console.log("yeah", jsonResponse);
 
   res.json(jsonResponse);
 });
+
+
+/**
+ * @swagger
+ * /api-ged-sharepoint/residences/:id/plans:
+ *   get:
+ *     description: Retourne la liste des plans Sharepoint
+ *     tags:
+ *      - Residences
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: Retourne la liste des plans d'une résidence
+ */
+router.get("/residences/:id/plans", async (req, res) => {
+  var jsonResponse = { result: [] };
+  await getDocsFromPlanotheque(jsonResponse, req.params.id); 
+  res.json(jsonResponse);
+});
+
 
 /**
  *Itère sur les URLs connu et va ensuite chercher les documents associés.
@@ -340,7 +361,7 @@ async function getDocFromUrl(urlFile) {
   let sharepointURLFile =
     SHAREPOINT_PATRIMOINE_URI +
     `/_api/Web/GetFileByServerRelativeUrl('${urlFile}')/$value`;
-  console.log("Getting file from : ", sharepointURLFile);
+  // console.log("Getting file from : ", sharepointURLFile);
 
   /* Get File */
   var responseFile = await sharepointAuth().then(async auth => {
