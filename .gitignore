@@ -50,4 +50,5 @@ Thumbs.db
 mysilene-api.log
 
 #conf Files
+/conf/*.json
 /conf/!*example.json
