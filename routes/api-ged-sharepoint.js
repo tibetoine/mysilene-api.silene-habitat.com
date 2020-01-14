@@ -5,6 +5,7 @@ const rp = require("request-promise");
 const helper = require("../helper/helper");
 
 const spauth = require("node-sp-auth");
+const externalConf = require("../conf/external-conf.json")
 
 const SHAREPOINT_PATRIMOINE_URI =
   process.env.SHAREPOINT_BASE_URL + "/patrimoine";
@@ -36,8 +37,7 @@ var extToMimes = {
 };
 
 /* TODO : DOcumentation, comment récupérer l'identifiant d'un type de document ? */
-/* [J'ai pas trouvé mieux] Pour récupérer les ID il faut faire un appel à l'API sharepoint du type : http://spsshp04:8081/patrimoine/_api/web/GetFolderByServerRelativeUrl('Planothque')/Files?$expand=ListItemAllFields (Voir Postman) */
-const filterTypeArray = ["Annexe", "Devis", "CCTP"];
+const filterTypeArray = externalConf.apiGedSharepointFilterType
 /**
  * @swagger
  * /api-ged-sharepoint/residences:
@@ -226,8 +226,8 @@ async function getDocsFromPlanotheque(jsonResponse, residenceId) {
  * - L'identifiant de la résidence
  * - Les exstensions autorisées
  * - Les types de documents autorisées
- * 
- * @param {*} residenceId 
+ *
+ * @param {*} residenceId
  */
 function constructeSearchUrl(residenceId) {
   /* Query Text */
@@ -284,7 +284,7 @@ async function getDocsFromPatrimoine(jsonResponse, residenceId) {
   } catch (error) {
     return null;
   }
-  
+
   /* Construction de la réponse. */
   const responseDocuments = documents.map(maperSearchDocs);
 
@@ -409,14 +409,14 @@ function myLog(texte, objects) {
  */
 const maperSearchDocs = jsonElement => {
   // console.log("maperSearchDocs - element : ", jsonElement)
-  
+
   let documentName = null
-  let link = null  
-  let sharepointServerRelativeUrl = null  
+  let link = null
+  let sharepointServerRelativeUrl = null
   let typeLabel = null
   jsonElement.Cells.results.forEach(element => {
     switch (element.Key) {
-      case "Path":        
+      case "Path":
         link = element.Value
         sharepointServerRelativeUrl = element.Value.substring(element.Value.indexOf('/patrimoine/'))
         break;
@@ -425,15 +425,15 @@ const maperSearchDocs = jsonElement => {
         break;
       case "SileneDocumentType":
         typeLabel = element.Value
-        break;    
+        break;
       default:
         break;
     }
   });
   return {
     documentName: documentName,
-    link: link,        
-    sharepointServerRelativeUrl: sharepointServerRelativeUrl,        
+    link: link,
+    sharepointServerRelativeUrl: sharepointServerRelativeUrl,
     typeLabel: typeLabel
   }
 };

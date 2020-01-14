@@ -48,3 +48,6 @@ Thumbs.db
 #Images Contacts
 /src/assets/images/*.jpg
 mysilene-api.log
+
+#conf Files
+/conf/!*example.json

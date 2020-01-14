@@ -1,12 +1,12 @@
-const express = require("express");
-const router = express.Router();
-var logger = require("../utils/logger");
-const rp = require("request-promise");
-const helper = require("../helper/helper");
-const vCardsJS = require('vcards-js');
-const ActiveDirectory = require("activedirectory");
+const express = require("express")
+const router = express.Router()
+var logger = require("../utils/logger")
+const rp = require("request-promise")
+const helper = require("../helper/helper")
+const vCardsJS = require("vcards-js")
+const ActiveDirectory = require("activedirectory")
 
-const spauth = require("node-sp-auth");
+const spauth = require("node-sp-auth")
 
 /**
  * @swagger
@@ -22,13 +22,13 @@ const spauth = require("node-sp-auth");
  *         description: Retourne la liste des residences avec l'id de résidence et l'URL vers la(ou les) librairie(s) associée(s).
  */
 router.get("/contacts/:id/vcard", async (req, res) => {
-  logger.logApiAccess("GET", req.headers, `/contacts/${req.params.id}/vcard`);
+  logger.logApiAccess("GET", req.headers, `/contacts/${req.params.id}/vcard`)
   logger.logInfo(
     "Export Vcard d'un contact",
     "GET",
     req.headers,
     "/api-vcard/contacts"
-  );
+  )
 
   /* 1/ Controle de surface de l'id */
 
@@ -57,44 +57,47 @@ router.get("/contacts/:id/vcard", async (req, res) => {
         "thumbnailPhoto"
       ]
     }
-  };
+  }
 
-  var ad = new ActiveDirectory(ldapConfig);
-  var sAMAccountName = req.params.id;
-  ad.findUser(sAMAccountName, function (err, user) {
+  var ad = new ActiveDirectory(ldapConfig)
+  var sAMAccountName = req.params.id
+  ad.findUser(sAMAccountName, function(err, user) {
     if (err) {
-      console.log('ERROR: ' + JSON.stringify(err));
-      return;
+      console.log("ERROR: " + JSON.stringify(err))
+      return
     }
 
-    if (!user) res.status(404).send('User Not found');
+    if (!user) {
+      console.log('Je ne connais pas ', sAMAccountName)
+      res.status(404).send("User Not found")
+    } else {
+      // console.log(user)
+      vCard = vCardsJS()
 
-    console.log(user)
-    vCard = vCardsJS();
+      //set properties
+      vCard.firstName = user.givenName
+      vCard.lastName = user.sn
+      vCard.email = user.mail
+      vCard.organization = "Silène"
+      vCard.title = user.title
+      if (user.telephoneNumber) vCard.workPhone = user.telephoneNumber
+      if (user.mobile) vCard.cellPhone = user.mobile
+      if (user.thumbnailPhoto)
+        vCard.photo.embedFromString(
+          new Buffer(user.thumbnailPhoto).toString("base64"),
+          "image/jpg"
+        )
+      //set content-type and disposition including desired filename
+      res.set(
+        "Content-Type",
+        `text/vcard; charset=utf-8; name="${sAMAccountName}.vcf"`
+      )
+      res.set("Content-Disposition", `inline; filename="${sAMAccountName}.vcf"`)
 
-    //set properties
-    vCard.firstName = user.givenName;    
-    vCard.lastName = user.sn;
-    vCard.email = user.mail;
-    vCard.organization = 'Silène';
-    vCard.title = user.title;
-    if(user.telephoneNumber) vCard.workPhone = user.telephoneNumber
-    if(user.mobile) vCard.cellPhone  = user.mobile
-    if (user.thumbnailPhoto) vCard.photo.embedFromString(new Buffer(user.thumbnailPhoto).toString('base64'), 'image/jpg');
-    //set content-type and disposition including desired filename
-    res.set('Content-Type', `text/vcard; charset=utf-8; name="${sAMAccountName}.vcf"`);
-    res.set('Content-Disposition', `inline; filename="${sAMAccountName}.vcf"`);
+      //send the response
+      res.send(vCard.getFormattedString())
+    }
+  })
+})
 
-    //send the response
-    res.send(vCard.getFormattedString());
-  });
-
-
-
-
-
-
-});
-
-
-module.exports = router;
+module.exports = router
