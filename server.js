@@ -19,6 +19,10 @@ const apiGedPrem = require('./routes/api-ged-prem');
 const apiGedSharepoint = require('./routes/api-ged-sharepoint');
 const apiVcard = require('./routes/api-vcard');
 
+/* Memcached */
+var Memcached = require('memcached');
+Memcached.config.poolSize = 25;
+Memcached.config.timeout = 1;
 
 
 const port = process.env.EXPRESS_PORT || 3000;
@@ -46,7 +50,7 @@ var swaggerDefinition = {
 	// import swaggerDefinitions
 	swaggerDefinition: swaggerDefinition,
 	// path to the API docs
-	apis: ['./**/routes/*.js','routes.js'],// pass all in array 
+	apis: ['./**/routes/*.js','routes.js'],// pass all in array
 	};
   // initialize swagger-jsdoc
   var swaggerSpec = swaggerJSDoc(options);
@@ -54,14 +58,14 @@ var swaggerDefinition = {
 app.use(require('sanitize').middleware);
 
 
-  
+
 app.use(function (req, res, next) {
-	
+
 	// Website you wish to allow to connect
-	
+
 	var allowedOrigins = ['http://localhost:4200', 'http://192.168.1.34:4200', 'http://10.10.10.5:4200', 'http://siln-634.silene.local:4200', 'http://localhost:9000','http://localhost:8080'];
 	//var allowedOrigins = process.env.ALLOWED_ORIGINS.split(',');
-	
+
 	var origin = req.headers.origin;
 	if (allowedOrigins.indexOf(origin) > -1) {
 		res.setHeader('Access-Control-Allow-Origin', origin);
@@ -92,16 +96,16 @@ app.get('/', function (req, res) {
 
 /**
  * Permet de vérifier que l'utilisateur connecté est autorisé à accéder aux API sensibles.
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
  */
-function isAdmin (req, res, next) {	
+function isAdmin (req, res, next) {
 	if (!req.headers['userid']) {
-		logger.logError("Pas de Header userid", "?", req.headers, "?");						
+		logger.logError("Pas de Header userid", "?", req.headers, "?");
 		return res.sendStatus(401)
 	}
-	
+
 	var ldapConfig = {
 		url: process.env.LDAP_URL,
 		baseDN: process.env.LDAP_BASE_DN,
@@ -119,20 +123,20 @@ function isAdmin (req, res, next) {
 			logger.logError('ERROR: ' +JSON.stringify(err));
 		  	return res.sendStatus(401)
 		}
-	  
+
 		if (!users) {
 			// console.log('Group: ' + groupName + ' not found.');
 			logger.logError('Group: ' + groupName + ' not found.');
-			return res.sendStatus(401)	
-		}	
-		
+			return res.sendStatus(401)
+		}
+
 		var authorized;
 		users.forEach(element => {
 			if (element && element.sAMAccountName.trim().toLowerCase() === req.headers['userid']) {
 				authorized = "authorized"
-			} 
+			}
 		});
-		
+
 
 		if (authorized === "authorized") {
 			return next();
@@ -146,13 +150,13 @@ function isAdmin (req, res, next) {
 function isAuthenticated (req, res, next) {
     const db = process.env.MONGO_DB;
 	mongoose.Promise = global.Promise;
-	
+
 	var userConnu = false;
 
 	// console.log(req.headers)
     if (!req.headers['authorization']) {
 		logger.logError("Pas de Header authorization", "?", req.headers, "?");
-		// console.log('You must be logged in to access this API.')				
+		// console.log('You must be logged in to access this API.')
 		return res.sendStatus(401)
     }
 
@@ -168,17 +172,17 @@ function isAuthenticated (req, res, next) {
 		} else {
 			// console.log(JSON.stringify(user))
 		}
-		
+
 		if (user && user.length > 0) {
 			// console.log("user[0]._id.trim().toLowerCase()", user[0]._id.trim().toLowerCase())
 			// console.log("req.headers['userid']", req.headers['userid'])
 			if (user[0]._id && user[0]._id.length > 0 && user[0]._id.trim().toLowerCase() === req.headers['userid']) {
-				
+
 				// console.log("Auth : Ok le user " + req.headers['userid']+ " est reconnu.")
 				userConnu = true
 				return next()
 			} else {
-				return res.sendStatus(401)	
+				return res.sendStatus(401)
 			}
 		} else {
 			return res.sendStatus(401)
@@ -186,7 +190,7 @@ function isAuthenticated (req, res, next) {
 	})
 }
 
-// serve swagger 
+// serve swagger
 app.get('/swagger.json', function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	res.send(swaggerSpec);

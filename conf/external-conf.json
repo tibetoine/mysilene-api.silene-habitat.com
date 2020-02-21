@@ -1,3 +1,4 @@
 {
-    "apiGedSharepointFilterType" : ["Annexe", "Devis", "CCTP"]
+    "apiGedSharepointFilterType" : ["Annexe", "Devis", "CCTP"],
+    "normalAccount" : "i%3A0%23.w%7Ch4403%5Cbidault"
 }
