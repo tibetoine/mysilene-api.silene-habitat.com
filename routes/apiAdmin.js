@@ -13,15 +13,15 @@ const db = process.env.MONGO_DB;
 mongoose.Promise = global.Promise;
 
 mongoose.connect(db, function(err) {
-  if (err) {  
-    logger.error.error("Erreur de connection à la base " , err);
+  if (err) {
+    logger.error("Erreur de connection à la base " , err);
     // console.error("Erreur de connection à la base " + err);
   }
 });
 
 
 router.get("/", function(req, res) {
-  logger.error.error("Erreur de connection à la base " , err);
+  logger.error("Erreur de connection à la base " , err);
   res.send("api admin works");
 });
 /**
@@ -30,7 +30,7 @@ router.get("/", function(req, res) {
  *   Users:
  *     properties:
  *       _id:
- *         type: string       
+ *         type: string
  *       prefs:
  *         type: [string]
  */
@@ -40,7 +40,7 @@ router.get("/", function(req, res) {
  * @swagger
  * /api/users:
  *   delete:
- *     description: Permet de supprimer un user 
+ *     description: Permet de supprimer un user
  *     tags:
  *      - Users
  *     produces:
@@ -51,9 +51,9 @@ router.get("/", function(req, res) {
  */
 router.delete("/users/:id", function (req, res) {
   logger.logApiAccess("DELETE", req.headers, "/api/users");
-  
+
   Users.findById(req.params.id,
-    
+
     function (err, user) {
       var userId = req.params.id
       if (err) {
@@ -79,5 +79,5 @@ router.delete("/users/:id", function (req, res) {
       });
     });
 });
-  
+
 module.exports = router;

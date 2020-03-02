@@ -469,7 +469,7 @@ async function getDocFromUrl(urlFile) {
         uri: encodeURI(sharepointURLFile)
       })
       .catch(error => {
-        console.log(error)
+        console.error(error)
       })
   })
   // console.log("responseFile : ", responseFile);

@@ -15,13 +15,13 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(db, function(err) {
   if (err) {
-    logger.error.error("Erreur de connection à la base ", err);
+    logger.error("Erreur de connection à la base ", err);
     // console.error("Erreur de connection à la base " + err);
   }
 });
 
 router.get("/", function(req, res) {
-  logger.error.error("Erreur de connection à la base ", err);
+  logger.error("Erreur de connection à la base ", err);
   res.send("api works");
 });
 /**
@@ -259,7 +259,7 @@ router.get("/users", function(req, res) {
  * @swagger
  * /api/users/admin:
  *   get:
- *     description: Permet de savoir si l'utilisateur passé en paramètre est admin ou non 
+ *     description: Permet de savoir si l'utilisateur passé en paramètre est admin ou non
  *     tags:
  *      - Users
  *     produces:
