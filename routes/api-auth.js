@@ -24,7 +24,7 @@ var ad = new ActiveDirectory(ldapConfig);
 // var ad = new ActiveDirectoryMock(ldapConfig);
 
 var buildBusinessError = (message, httpErrorCode, sileneErrorCode, correlationId) => {
-	
+
 	if (message == null || message.length <= 0) {
 		throw new Error("Le paramètre 'message' est requis");
 	}
@@ -44,10 +44,10 @@ var buildBusinessError = (message, httpErrorCode, sileneErrorCode, correlationId
 		},
 		message: message
 	}
-	
+
 	return error
 }
-mongoose.connect(db, function (err) {
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }, function (err) {
 	if (err) {
 		console.error("Erreur de connection à la base " + err);
 	}
@@ -85,7 +85,7 @@ router.post('/auth', function (req, res) {
 	var correlationId = uuidv4();
 	// console.log(correlationId - 'Post Auth');
 
-	
+
 
 	if(!req.body.id){
 		res.status("400");
@@ -138,7 +138,7 @@ router.post('/auth', function (req, res) {
 							authSuccess(userId, req, correlationId, res);
 						} else {
 							var error = buildBusinessError("Echec de l'authentification", 403, 4034, correlationId)
-							res.status(403).json(error);		
+							res.status(403).json(error);
 						}
 					});
 				}
@@ -148,7 +148,7 @@ router.post('/auth', function (req, res) {
 				}
 				if (!err && !auth) {
 					var error = buildBusinessError("Echec de l'authentification", 403, 4034, correlationId)
-					res.status(403).json(error);		
+					res.status(403).json(error);
 				}
 			});
 		}
@@ -173,7 +173,7 @@ function authSuccess (userId, req, correlationId, res) {
 	/* 2- Create or Update user et token en base*/
 	//var updateObj = { token: token };
 	// var updateObj = { $push: { tokens: token } };
-	
+
 	Users.findByIdAndUpdate(userId, { $push: { tokens: token } }, { upsert: true, new: true }, function (err, updatedUser) {
 		if (err) {
 			// console.log('Error saving a User : ' + userId + " avec le token : " + token);

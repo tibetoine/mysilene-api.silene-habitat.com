@@ -19,10 +19,6 @@ const apiGedPrem = require('./routes/api-ged-prem');
 const apiGedSharepoint = require('./routes/api-ged-sharepoint');
 const apiVcard = require('./routes/api-vcard');
 
-/* Memcached */
-var Memcached = require('memcached');
-Memcached.config.poolSize = 25;
-Memcached.config.timeout = 1;
 
 
 const port = process.env.EXPRESS_PORT || 3000;

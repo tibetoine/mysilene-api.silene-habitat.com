@@ -4,7 +4,6 @@
   "description": "API pour l'application MySilene",
   "main": "server.js",
   "scripts": {
-    "dev-api-win": "nodemon server.js --exec babel-node",
     "start": "node server"
   },
   "keywords": [],
@@ -14,15 +13,12 @@
     "activedirectory": "^0.7.2",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
-    "dark-sky": "^1.1.2",
+    "dark-sky": "^1.1.5",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-validator": "^4.3.0",
-    "healthcheck-fastit": "^0.3.1",
     "lodash": "^4.17.15",
     "log4js": "^6.1.2",
-    "memcached": "^2.2.2",
-    "memjs": "^1.2.2",
     "mongodb": "^3.5.3",
     "mongoose": "^5.9.1",
     "node-sp-auth": "^2.5.7",
@@ -30,20 +26,9 @@
     "request-promise": "^4.2.5",
     "request-promise-lite": "^0.13.1",
     "sanitize": "^2.1.0",
-    "sp-download": "^1.1.1",
     "swagger-jsdoc": "^3.5.0",
     "uuid": "^3.2.1",
     "vcards-js": "^2.10.0"
   },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-plugin-transform-builtin-extend": "^1.1.2",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-3": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "nodemon": "^1.14.11"
-  }
+  "devDependencies": {}
 }

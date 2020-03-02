@@ -13,15 +13,15 @@ const ActiveDirectory = require("activedirectory");
 const db = process.env.MONGO_DB;
 mongoose.Promise = global.Promise;
 
-mongoose.connect(db, function(err) {
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
   if (err) {
-    logger.error("Erreur de connection à la base ", err);
+    logger.logError("Erreur de connection à la base ", err);
     // console.error("Erreur de connection à la base " + err);
   }
 });
 
 router.get("/", function(req, res) {
-  logger.error("Erreur de connection à la base ", err);
+  logger.logError("Erreur de connection à la base ", err);
   res.send("api works");
 });
 /**
