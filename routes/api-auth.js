@@ -76,17 +76,33 @@ async function findAdUser(login) {
     try {
         for (let index = 0; index < loginToTest.length; index++) {
             const element = loginToTest[index]
+<<<<<<< HEAD
             console.log("Recherche de l'utilisateur : ", element)
             user = await ad.findUser(element)
             if (!user || Object.keys(user).length === 0) {
                 console.log("Pas d'utilisateur trouvé avec le login ", element)
+=======
+            console.log("Recherche de l'utilisateur : ",
+                element)
+            user = await ad.findUser(element)
+            if (!user || Object.keys(user).length === 0) {
+                console.log("Pas d'utilisateur trouvé avec le login ",
+                element)
+>>>>>>> d959dfc9de6f8a14084868a15a4c1d1803e586f5
                 logger.logInfo(
                     "Pas d'utilisateur trouvé avec le login ",
                     element
                 )
             } else {
+<<<<<<< HEAD
                 /* C'est bon, on a trouvé l'utilisateur dans l'AD, on conserve son bon login. */
                 console.log('Utilisateur trouvé avec le login ', element)
+=======
+                
+                /* C'est bon, on a trouvé l'utilisateur dans l'AD, on conserve son bon login. */
+                console.log("Utilisateur trouvé avec le login ",
+                element)
+>>>>>>> d959dfc9de6f8a14084868a15a4c1d1803e586f5
                 return user
             }
         }
@@ -158,6 +174,7 @@ router.post('/auth', async function(req, res) {
 
     console.log('authentification avec le user : ', userId)
 
+<<<<<<< HEAD
     let auth
     try {
         auth = await ad.authenticate(
@@ -166,6 +183,17 @@ router.post('/auth', async function(req, res) {
         )
         if (!auth || Object.keys(auth).length === 0) {
             auth = await ad.authenticate(userId + '@silene.local', userPassword)
+=======
+    let auth 
+    try {
+        auth = await ad.authenticate(
+            userId + '@silene-habitat.com',
+            userPassword)
+        if (!auth ||  Object.keys(auth).length === 0) {
+            auth = await ad.authenticate(
+                userId + '@silene.local',
+                userPassword) 
+>>>>>>> d959dfc9de6f8a14084868a15a4c1d1803e586f5
         }
     } catch (error) {
         var error = buildBusinessError(
@@ -175,7 +203,13 @@ router.post('/auth', async function(req, res) {
             correlationId
         )
         logger.logError(
+<<<<<<< HEAD
             "Impossible d'authentifier l'utilisateur [" + userId + ']',
+=======
+            "Impossible d'authentifier l'utilisateur [" +
+                userId +
+                ']',
+>>>>>>> d959dfc9de6f8a14084868a15a4c1d1803e586f5
             'POST',
             req.headers,
             '/api-auth/auth'
@@ -183,6 +217,10 @@ router.post('/auth', async function(req, res) {
         res.status(403).json(error)
         return
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> d959dfc9de6f8a14084868a15a4c1d1803e586f5
 
     if (auth) {
         // console.log('auth2', auth2)
