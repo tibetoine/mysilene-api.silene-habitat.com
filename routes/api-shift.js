@@ -93,8 +93,9 @@ router.delete('/shifts/:id', function(req, res) {
 router.put('/shifts/users/:id', async function(req, res) {
     /* ATTENTION : TODO : Vérifier que l'utilisateur auth a le droit de modifier le userId passé en paramètre */
 
-    console.log(req.body)
+    // console.log(req.body)
     let newRecord = {
+        _id: mongoose.Types.ObjectId(),
         time: req.body.datetime,
         type: req.body.type,
         comment: req.body.comment
