@@ -11,6 +11,7 @@
   "license": "",
   "dependencies": {
     "activedirectory": "^0.7.2",
+    "ad-promise": "^1.6.8",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "dark-sky": "^1.1.5",

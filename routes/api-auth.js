@@ -3,7 +3,7 @@ const router = express.Router()
 const mongoose = require('mongoose')
 const request = require('request-promise-lite')
 const Users = require('../models/users')
-const ActiveDirectory = require('activedirectory')
+const ActiveDirectory = require('ad-promise')
 const ActiveDirectoryMock = require('../mock/activedirectory')
 const assert = require('assert')
 const crypto = require('crypto')
@@ -64,32 +64,43 @@ mongoose.connect(
 router.get('/', function(req, res) {
     res.send('api-auth works')
 })
-
 /**
- * @swagger
- * /api-auth/auth:
- *   post:
- *     description: Permet d'authentifier un utilisateur via login et mot de passe
- *     tags:
- *      - Auth
- *     produces:
- *      - application/json
- *     parameters:
- *       - name: id
- *         description: id est le nom utilisé pourla connexion à l'AD Silène
- *         in: formData
- *         required: true
- *         type: string
- *       - name: password
- *         description: User's password.
- *         in: formData
- *         required: true
- *         type: string
- *     responses:
- *       200:
- *         description: Retourne un Token de connexion.
+ * Cherche un utilisateur dans l'AD à partir d'un login.
+ * Si trouvé retourne un utilisateur sinon retourn NULL
+ * En cas d'erreur throw une erreur
+ * @param {*} login
  */
-router.post('/auth', function(req, res) {
+async function findAdUser(login) {
+    let loginToTest = [login, login.substring(1), login.substring(2)]
+    let user
+    try {
+        for (let index = 0; index < loginToTest.length; index++) {
+            const element = loginToTest[index]
+            console.log("Recherche de l'utilisateur : ",
+                element)
+            user = await ad.findUser(element)
+            if (!user || Object.keys(user).length === 0) {
+                console.log("Pas d'utilisateur trouvé avec le login ",
+                element)
+                logger.logInfo(
+                    "Pas d'utilisateur trouvé avec le login ",
+                    element
+                )
+            } else {
+                
+                /* C'est bon, on a trouvé l'utilisateur dans l'AD, on conserve son bon login. */
+                console.log("Utilisateur trouvé avec le login ",
+                element)
+                return user
+            }
+        }
+    } catch (error) {
+        throw error
+    }
+    return user
+}
+
+router.post('/auth', async function(req, res) {
     var correlationId = uuidv4()
     // console.log(correlationId - 'Post Auth');
 
@@ -109,147 +120,90 @@ router.post('/auth', function(req, res) {
         res.send('Il manque le login ou le mot de passe')
         return
     }
+    let user = null
 
-    // 1- Authentification sur l'AD.
-    // console.log("Recherche dans l'ad de sAMAccountName = " + userId)
-    ad.findUser(userId, function(err, user) {
-        // console.log("flag : " + res);
-        if (err) {
-            // console.log('ERROR: ' + JSON.stringify(err));
-            var error = buildBusinessError(
-                "Erreur lors de la recherche de l'utilisateur dans l'ad.",
-                403,
-                40311,
-                correlationId,
-                err
-            )
-            res.status(403)
-                .type('application/json')
-                .send(error)
-            return
-        }
-        if (!user) {
-            userId = userId.substring(1)
-            ad.findUser(userId, function(err1, user1) {
-                if (err1) {
-                    // console.log('ERROR: ' + JSON.stringify(err));
-                    var error = buildBusinessError(
-                        "Erreur lors de la recherche de l'utilisateur dans l'ad.",
-                        403,
-                        40311,
-                        correlationId,
-                        err1
-                    )
-                    res.status(403)
-                        .type('application/json')
-                        .send(error)
-                    return
-                }
-                if (!user1) {
-                    userId = userId.substring(1)
-                    ad.findUser(userId, function(err2, user2) {
-                        if (err2) {
-                            // console.log('ERROR: ' + JSON.stringify(err));
-                            var error = buildBusinessError(
-                                "Erreur lors de la recherche de l'utilisateur dans l'ad.",
-                                403,
-                                40311,
-                                correlationId,
-                                err2
-                            )
-                            res.status(403)
-                                .type('application/json')
-                                .send(error)
-                            return
-                        }
-                        if (!user2) {
-                            // console.log('User: ' + userId + ' not found.');
-                            var error = buildBusinessError(
-                                'Utilisateur inconnu',
-                                403,
-                                40312,
-                                correlationId
-                            )
-                            logger.logError(
-                                'Utilisateur [' + userId + '] inconnu ',
-                                'POST',
-                                req.headers,
-                                '/api-auth/auth'
-                            )
-                            res.status(403).json(error)
-                            return
-                        }
-                    })
-                }
-            })
-        } else {
-            /* On cherche à authentifier l'utilisateur */
-            ad.authenticate(
-                userId + '@silene-habitat.com',
-                userPassword,
-                function(err, auth) {
-                    // console.log("Tentative d'authent pour " + userId + "@silene-habitat.com avec le mdp : xxx");
-                    if (err) {
-                        // console.log("erreur d'authent --> Nouvelle tentative sur @silene.local. ");
-                        ad.authenticate(
-                            userId + '@silene.local',
-                            userPassword,
-                            function(err2, auth2) {
-                                // console.log("Tentative d'authent pour " + userId + "@silene.local avec le mdp : xxx");
-                                if (err2) {
-                                    // console.log('err2', err2)
-                                    var error = buildBusinessError(
-                                        "Impossible d'authentifier l'utilisateur",
-                                        403,
-                                        4032,
-                                        correlationId
-                                    )
-                                    logger.logError(
-                                        "Impossible d'authentifier l'utilisateur [" +
-                                            userId +
-                                            ']',
-                                        'POST',
-                                        req.headers,
-                                        '/api-auth/auth'
-                                    )
-                                    res.status(403).json(error)
-                                    return
-                                }
-                                if (auth2) {
-                                    // console.log('auth2', auth2)
-                                    authSuccess(userId, req, correlationId, res)
-                                } else {
-                                    var error = buildBusinessError(
-                                        "Echec de l'authentification",
-                                        403,
-                                        4034,
-                                        correlationId
-                                    )
-                                    res.status(403).json(error)
-                                }
-                            }
-                        )
-                    }
+    try {
+        user = await findAdUser(userId)
+    } catch (error) {
+        console.error(error)
+        var error = buildBusinessError(
+            "Erreur lors de la recherche de l'utilisateur dans l'ad.",
+            403,
+            40311,
+            correlationId,
+            error
+        )
+        res.status(403)
+            .type('application/json')
+            .send(error)
+        return
+    }
+    /* Si l'utilisateur n'est pas trouvé dans l'ad */
+    if (!user || Object.keys(user).length === 0) {
+        // console.log('User: ' + userId + ' not found.');
+        var error = buildBusinessError(
+            'Utilisateur inconnu',
+            403,
+            40312,
+            correlationId
+        )
+        logger.logError(
+            'Utilisateur [' + userId + '] inconnu ',
+            'POST',
+            req.headers,
+            '/api-auth/auth'
+        )
+        res.status(403).json(error)
+        return
+    }
 
-                    if (auth) {
-                        authSuccess(userId, req, correlationId, res)
-                    }
-                    if (!err && !auth) {
-                        var error = buildBusinessError(
-                            "Echec de l'authentification",
-                            403,
-                            4034,
-                            correlationId
-                        )
-                        res.status(403).json(error)
-                    }
-                }
-            )
+    /* Récupération du login du user */
+    userId = user.sAMAccountName
+
+    console.log('authentification avec le user : ', userId)
+
+    let auth 
+    try {
+        auth = await ad.authenticate(
+            userId + '@silene-habitat.com',
+            userPassword)
+        if (!auth ||  Object.keys(auth).length === 0) {
+            auth = await ad.authenticate(
+                userId + '@silene.local',
+                userPassword) 
         }
-        // console.log(JSON.stringify(user));
-        /* On sort */
-        // res.json(user);
-    })
+    } catch (error) {
+        var error = buildBusinessError(
+            "Impossible d'authentifier l'utilisateur",
+            403,
+            4032,
+            correlationId
+        )
+        logger.logError(
+            "Impossible d'authentifier l'utilisateur [" +
+                userId +
+                ']',
+            'POST',
+            req.headers,
+            '/api-auth/auth'
+        )
+        res.status(403).json(error)
+        return
+    }
+    
+
+    if (auth) {
+        // console.log('auth2', auth2)
+        authSuccess(userId, req, correlationId, res)
+    } else {
+        var error = buildBusinessError(
+            "Echec de l'authentification",
+            403,
+            4034,
+            correlationId
+        )
+        res.status(403).json(error)
+    }
 })
 /**
  * Cherche un utilisateur dans l'AD à partir d'un login.
@@ -372,6 +326,7 @@ function authSuccess(userId, req, correlationId, res) {
                     '/api-auth/auth'
                 )
                 res.json({ _id: userId, token: token })
+                return
             }
         }
     )
