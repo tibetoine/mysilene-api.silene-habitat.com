@@ -251,6 +251,76 @@ router.post('/auth', function(req, res) {
         // res.json(user);
     })
 })
+/**
+ * Cherche un utilisateur dans l'AD à partir d'un login.
+ * Si trouvé retourne un utilisateur sinon retourn NULL
+ * En cas d'erreur throw une erreur
+ * @param {*} login
+ */
+async function findAdUser(login) {
+    let loginToTest = [login, login.substring(1), login.substring(2)]
+    let user
+    try {
+        for (let index = 0; index < loginToTest.length; index++) {
+            const element = loginToTest[index]
+            user = await ad.findUser(element)
+            if (!user) {
+                logger.logInfo(
+                    "Pas d'utilisateur trouvé avec le login ",
+                    element
+                )
+            } else {
+                /* C'est bon, on a trouvé l'utilisateur dans l'AD, on conserve son bon login. */
+                return user
+            }
+        }
+    } catch (error) {
+        throw error
+    }
+    return user
+}
+
+router.post('/auth2', function(req, res) {
+    var correlationId = uuidv4()
+    // console.log(correlationId - 'Post Auth');
+
+    if (!req.body.id) {
+        res.status('400')
+        res.send('Pas de login!')
+        return
+    }
+    var userId = req.body.id.trim().toLowerCase()
+    // userId --> enlever email ending au besoin
+    // console.log("userId :" +  userId);
+    userId = userId.replace('@silene-habitat.com', '')
+
+    var userPassword = req.body.password
+    if (!userId || !userPassword) {
+        res.status('400')
+        res.send('Il manque le login ou le mot de passe')
+        return
+    }
+    let user = null
+
+    try {
+        user = findAdUser(userId)
+    } catch (error) {
+        var error = buildBusinessError(
+            "Erreur lors de la recherche de l'utilisateur dans l'ad.",
+            403,
+            40311,
+            correlationId,
+            error
+        )
+        res.status(403)
+            .type('application/json')
+            .send(error)
+        return
+    }
+
+    /* Récupération du login du user */
+    console.log(user)
+})
 
 module.exports = router
 
