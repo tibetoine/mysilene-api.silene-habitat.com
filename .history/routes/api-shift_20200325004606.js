@@ -90,60 +90,6 @@ router.delete('/shifts/:id', function(req, res) {
     })
 })
 
-router.delete('/shifts/details/:id', async function(req, res) {
-    // console.log('DELETE', req.headers, '/api-shift/details')
-    var detailId = req.params.id
-    let result
-    try {
-        result = await Shift.updateMany(
-            {},
-            { $pull: { details: { _id: mongoose.Types.ObjectId(detailId) } } }
-        )
-    } catch (error) {
-        console.error(
-            "Erreur dans la suppression d'un détail",
-            'DELETE',
-            req.headers,
-            '/api-shifts/shifts/details/:id'
-        )
-        console.error(error)
-        return
-    }
-
-    // console.log(`Suppression d'un détail : `, result)
-    res.json(result)
-    return
-})
-
-/**
- * Permet d'extraire en CSV les données pour le user passé en paramètre.
- */
-router.get('/shifts/users/:id/extract', async function(req, res) {
-    /* Get data for the user */
-    let shifts
-    try {
-        shifts = await Shift.find({ $and: [{ userId: req.params.id }] }).sort(
-            '-date'
-        )
-    } catch (err) {
-        console.error(
-            "Erreur dans la récupération des shifts de l'utilisateur xx en base",
-            'GET',
-            req.headers,
-            '/api-shifts/shifts/user/:id'
-        )
-        return
-    }
-
-    /* Mapping des données. */
-})
-
-/**
- *
- * @param {*} login
- */
-function getUserDataFromAd(login) {}
-
 router.put('/shifts/users/:id', async function(req, res) {
     /* ATTENTION : TODO : Vérifier que l'utilisateur auth a le droit de modifier le userId passé en paramètre */
 
