@@ -76,33 +76,17 @@ async function findAdUser(login) {
     try {
         for (let index = 0; index < loginToTest.length; index++) {
             const element = loginToTest[index]
-<<<<<<< HEAD
             console.log("Recherche de l'utilisateur : ", element)
             user = await ad.findUser(element)
             if (!user || Object.keys(user).length === 0) {
                 console.log("Pas d'utilisateur trouvé avec le login ", element)
-=======
-            console.log("Recherche de l'utilisateur : ",
-                element)
-            user = await ad.findUser(element)
-            if (!user || Object.keys(user).length === 0) {
-                console.log("Pas d'utilisateur trouvé avec le login ",
-                element)
->>>>>>> d959dfc9de6f8a14084868a15a4c1d1803e586f5
                 logger.logInfo(
                     "Pas d'utilisateur trouvé avec le login ",
                     element
                 )
             } else {
-<<<<<<< HEAD
                 /* C'est bon, on a trouvé l'utilisateur dans l'AD, on conserve son bon login. */
                 console.log('Utilisateur trouvé avec le login ', element)
-=======
-                
-                /* C'est bon, on a trouvé l'utilisateur dans l'AD, on conserve son bon login. */
-                console.log("Utilisateur trouvé avec le login ",
-                element)
->>>>>>> d959dfc9de6f8a14084868a15a4c1d1803e586f5
                 return user
             }
         }
@@ -174,7 +158,6 @@ router.post('/auth', async function(req, res) {
 
     console.log('authentification avec le user : ', userId)
 
-<<<<<<< HEAD
     let auth
     try {
         auth = await ad.authenticate(
@@ -183,17 +166,6 @@ router.post('/auth', async function(req, res) {
         )
         if (!auth || Object.keys(auth).length === 0) {
             auth = await ad.authenticate(userId + '@silene.local', userPassword)
-=======
-    let auth 
-    try {
-        auth = await ad.authenticate(
-            userId + '@silene-habitat.com',
-            userPassword)
-        if (!auth ||  Object.keys(auth).length === 0) {
-            auth = await ad.authenticate(
-                userId + '@silene.local',
-                userPassword) 
->>>>>>> d959dfc9de6f8a14084868a15a4c1d1803e586f5
         }
     } catch (error) {
         var error = buildBusinessError(
@@ -203,13 +175,7 @@ router.post('/auth', async function(req, res) {
             correlationId
         )
         logger.logError(
-<<<<<<< HEAD
             "Impossible d'authentifier l'utilisateur [" + userId + ']',
-=======
-            "Impossible d'authentifier l'utilisateur [" +
-                userId +
-                ']',
->>>>>>> d959dfc9de6f8a14084868a15a4c1d1803e586f5
             'POST',
             req.headers,
             '/api-auth/auth'
@@ -217,10 +183,6 @@ router.post('/auth', async function(req, res) {
         res.status(403).json(error)
         return
     }
-<<<<<<< HEAD
-=======
-    
->>>>>>> d959dfc9de6f8a14084868a15a4c1d1803e586f5
 
     if (auth) {
         // console.log('auth2', auth2)
@@ -234,76 +196,6 @@ router.post('/auth', async function(req, res) {
         )
         res.status(403).json(error)
     }
-})
-/**
- * Cherche un utilisateur dans l'AD à partir d'un login.
- * Si trouvé retourne un utilisateur sinon retourn NULL
- * En cas d'erreur throw une erreur
- * @param {*} login
- */
-async function findAdUser(login) {
-    let loginToTest = [login, login.substring(1), login.substring(2)]
-    let user
-    try {
-        for (let index = 0; index < loginToTest.length; index++) {
-            const element = loginToTest[index]
-            user = await ad.findUser(element)
-            if (!user) {
-                logger.logInfo(
-                    "Pas d'utilisateur trouvé avec le login ",
-                    element
-                )
-            } else {
-                /* C'est bon, on a trouvé l'utilisateur dans l'AD, on conserve son bon login. */
-                return user
-            }
-        }
-    } catch (error) {
-        throw error
-    }
-    return user
-}
-
-router.post('/auth2', function(req, res) {
-    var correlationId = uuidv4()
-    // console.log(correlationId - 'Post Auth');
-
-    if (!req.body.id) {
-        res.status('400')
-        res.send('Pas de login!')
-        return
-    }
-    var userId = req.body.id.trim().toLowerCase()
-    // userId --> enlever email ending au besoin
-    // console.log("userId :" +  userId);
-    userId = userId.replace('@silene-habitat.com', '')
-
-    var userPassword = req.body.password
-    if (!userId || !userPassword) {
-        res.status('400')
-        res.send('Il manque le login ou le mot de passe')
-        return
-    }
-    let user = null
-
-    try {
-        user = findAdUser(userId)
-    } catch (error) {
-        var error = buildBusinessError(
-            "Erreur lors de la recherche de l'utilisateur dans l'ad.",
-            403,
-            40311,
-            correlationId,
-            error
-        )
-        res.status(403)
-            .type('application/json')
-            .send(error)
-        return
-    }
-
-    /* Récupération du login du user */
-    console.log(user)
 })
 
 module.exports = router
