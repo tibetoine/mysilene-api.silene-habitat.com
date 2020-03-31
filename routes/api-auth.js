@@ -201,7 +201,7 @@ router.post('/auth', async function(req, res) {
 module.exports = router
 
 function authSuccess(userId, req, correlationId, res) {
-    // console.log('[OK] : ' + userId + ' is Authenticated!');
+    console.log('[OK] : ' + userId + ' is Authenticated!');
     logger.logSuccess(
         ' [ ' + userId + '] est Authentifié',
         'POST',
@@ -240,13 +240,14 @@ function authSuccess(userId, req, correlationId, res) {
                 )
                 res.status(403).json(error)
             } else {
-                // console.log('[OK] : Token enregistré (ou mis à jour) en base pour ' + userId);
+                console.log('[OK] : Token enregistré (ou mis à jour) en base pour ' + userId);
                 logger.logSuccess(
                     'Token enregistré (ou mis à jour) en base pour ' + userId,
                     'POST',
                     req.headers,
                     '/api-auth/auth'
                 )
+                console.log({ _id: userId, token: token })
                 res.json({ _id: userId, token: token })
                 return
             }

@@ -20,6 +20,8 @@ const apiGedSharepoint = require('./routes/api-ged-sharepoint')
 const apiVcard = require('./routes/api-vcard')
 const apiShift = require('./routes/api-shift')
 
+var json2xls = require('json2xls')
+
 const port = process.env.EXPRESS_PORT || 3000
 
 var logger = require('./utils/logger')
@@ -209,6 +211,8 @@ app.get('/swagger.json', function(req, res) {
     res.setHeader('Content-Type', 'application/json')
     res.send(swaggerSpec)
 })
+
+app.use(json2xls.middleware)
 
 /* Attention l'ordre est important ici  */
 app.use('/api-auth', apiAuth)
