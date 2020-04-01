@@ -157,6 +157,7 @@ router.post('/auth', async function(req, res) {
     userId = user.sAMAccountName
 
     console.log('authentification avec le user : ', userId)
+    // console.log('authentification avec le pass : ', userPassword)
 
     let auth
     try {

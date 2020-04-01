@@ -215,13 +215,25 @@ router.get("/users/:id", function(req, res) {
     function(err, user) {
       if (err) {
         console.log(
-          "Erreur dans la récupération du user " + req.params.id,
+          "Erreur dans la récupération du user [%s]" , req.params.id,
           err
-        );
-      } else {
-        user.tokens = undefined;
-        res.json(user);
+        )
+        let errorMessage = `Get User - Impossible de trouver le user [${req.params.id}] `
+        res.status(500).send(errorMessage)
+        return
+      } 
+      if (!user) {
+        console.log(
+          "Get User - Utilisateur non trouvé [%s] ",req.params.id,
+          err
+        )
+        res.status(500).send(`Impossible de trouver le user [${req.params.id}]`)  
+        return
       }
+      user.tokens = undefined;
+      res.json(user);
+      return
+      
     }
   );
 });
@@ -251,7 +263,8 @@ router.get("/users", function(req, res) {
           "GET",
           req.headers,
           "/api/users"
-        );
+        )
+        
       } else {
         res.json(users);
       }
@@ -327,14 +340,16 @@ router.get('/users/:id/roles', async function(req, res) {
   try {
       contact = await Contacts.findOne({ sAMAccountName: userId }).lean()
   } catch (err) {
-      console.error("Erreur la recherche de l'utilisateur " + userId, err)
-      res.sendStatus(500)
-      return
+    let errorMessage = `GET Roles - Erreur lors de la recherche des roles de [${userId}]`  
+    console.error(errorMessage)
+    res.status(500).send(errorMessage)
+    return
   }
 
   if (!contact) {
-      console.error('Utilisateur non trouvé : ' + userId)
-      res.sendStatus(404)
+      console.error('GET Roles - Utilisateur non trouvé [%s] : ' , userId)
+      let errorMessage = `GET Roles - Utilisateur non trouvé [${userId}]`
+      res.status(404).send(errorMessage)
       return
   }
 

@@ -201,6 +201,7 @@ async function _getExtractionArray(jsonShifts) {
             element.details.forEach(detail => {
                 return result.push({
                     user: element.userId,
+                    matricule : contact.matricule,
                     mail: contact.mail,
                     nom: contact.sn ? contact.sn.toUpperCase() : contact.sn,
                     prenom: contact.givenName,
@@ -212,7 +213,7 @@ async function _getExtractionArray(jsonShifts) {
                     time_heures: _stringToHeures(detail.time),
                     time_minutes: _stringToMinutes(detail.time),
                     mois: element.date.split('-')[1],
-                    semaine: ISO8601_week_no(new Date(element.date)),
+                    semaine: ISO8601_week_no(new Date(element.date.replace(/\u200E/g, ''))),
                     type: detail.type,
                     commentaire: detail.comment
                 })
