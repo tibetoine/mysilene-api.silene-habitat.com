@@ -14,14 +14,14 @@ const db = process.env.MONGO_DB;
 mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false)
 
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }, function (err) {
   if (err) {
     logger.logError("Erreur de connection à la base ", err);
     // console.error("Erreur de connection à la base " + err);
   }
 });
 
-router.get("/", function(req, res) {
+router.get("/", function (req, res) {
   logger.logError("Erreur de connection à la base ", err);
   res.send("api works");
 });
@@ -108,12 +108,12 @@ var loadContacts = []
  *       200:
  *         description: news
  */
-router.get("/news", function(req, res) {
+router.get("/news", function (req, res) {
   logger.logApiAccess("GET", req.headers, "/api/news");
 
   NewsSilene.find({})
     .sort("-date")
-    .exec(function(err, news) {
+    .exec(function (err, news) {
       if (err) {
         logger.logError(
           "Erreur dans la récupération des news en base",
@@ -140,11 +140,11 @@ router.get("/news", function(req, res) {
  *       200:
  *         description: contacts
  */
-router.get("/contacts", function(req, res) {
+router.get("/contacts", function (req, res) {
   logger.logApiAccess("GET", req.headers, "/api/contacts");
   Contacts.find({})
     .sort({ sn: 1 })
-    .exec(function(err, contacts) {
+    .exec(function (err, contacts) {
       if (err) {
         logger.logError(
           "Erreur dans la récupération des contacts en base",
@@ -171,7 +171,7 @@ router.get("/contacts", function(req, res) {
  *       200:
  *         description: users
  */
-router.put("/users/:id", function(req, res) {
+router.put("/users/:id", function (req, res) {
   logger.logApiAccess("PUT", req.headers, "/api/users");
   Users.findByIdAndUpdate(
     req.params.id,
@@ -183,7 +183,7 @@ router.put("/users/:id", function(req, res) {
     {
       new: true
     },
-    function(err, updatedUser) {
+    function (err, updatedUser) {
       if (err) {
         console.log("Erreur dans la mise à jour du user", err);
       } else {
@@ -207,33 +207,33 @@ router.put("/users/:id", function(req, res) {
  *       200:
  *         description: users
  */
-router.get("/users/:id", function(req, res) {
+router.get("/users/:id", function (req, res) {
   logger.logApiAccess("GET", req.headers, "/api/users/:id");
   Users.findById(
     req.params.id,
 
-    function(err, user) {
+    function (err, user) {
       if (err) {
         console.log(
-          "Erreur dans la récupération du user [%s]" , req.params.id,
+          "Erreur dans la récupération du user [%s]", req.params.id,
           err
         )
         let errorMessage = `Get User - Impossible de trouver le user [${req.params.id}] `
         res.status(500).send(errorMessage)
         return
-      } 
+      }
       if (!user) {
         console.log(
-          "Get User - Utilisateur non trouvé [%s] ",req.params.id,
+          "Get User - Utilisateur non trouvé [%s] ", req.params.id,
           err
         )
-        res.status(500).send(`Impossible de trouver le user [${req.params.id}]`)  
+        res.status(500).send(`Impossible de trouver le user [${req.params.id}]`)
         return
       }
       user.tokens = undefined;
       res.json(user);
       return
-      
+
     }
   );
 });
@@ -252,11 +252,11 @@ router.get("/users/:id", function(req, res) {
  *       200:
  *         description: users
  */
-router.get("/users", function(req, res) {
+router.get("/users", function (req, res) {
   logger.logApiAccess("GET", req.headers, "/api/users");
   Users.find({})
     .sort("_id")
-    .exec(function(err, users) {
+    .exec(function (err, users) {
       if (err) {
         logger.logError(
           "Erreur dans la récupération des utilisateurs en base",
@@ -264,7 +264,7 @@ router.get("/users", function(req, res) {
           req.headers,
           "/api/users"
         )
-        
+
       } else {
         res.json(users);
       }
@@ -286,7 +286,7 @@ router.get("/users", function(req, res) {
  *       404:
  *         description: L'utilisateur n'est pas administrateur
  */
-router.get("/users/admin/:id", function(req, res) {
+router.get("/users/admin/:id", function (req, res) {
   var ldapConfig = {
     url: process.env.LDAP_URL,
     baseDN: process.env.LDAP_BASE_DN,
@@ -298,7 +298,7 @@ router.get("/users/admin/:id", function(req, res) {
 
   let groupName = "_Informatique";
 
-  ad.getUsersForGroup(groupName, function(err, users) {
+  ad.getUsersForGroup(groupName, function (err, users) {
     if (err) {
       logger.logError("ERROR: " + JSON.stringify(err));
       return res.sendStatus(401);
@@ -332,42 +332,42 @@ router.get("/users/admin/:id", function(req, res) {
  * Permet de récupérer les rôles d'un utilisateur dont l'id est passé en paramètre
  * Cette fonction se base sur la collection Contacts (qui est enrichit via ETL)
  */
-router.get('/users/:id/roles', async function(req, res) {
+router.get('/users/:id/roles', async function (req, res) {
   var userId = req.params.id
   /* Recherche l'utilisateur dans la table contact */
   let contact
   let roles = []
   try {
-      contact = await Contacts.findOne({ sAMAccountName: userId }).lean()
+    contact = await Contacts.findOne({ sAMAccountName: userId }).lean()
   } catch (err) {
-    let errorMessage = `GET Roles - Erreur lors de la recherche des roles de [${userId}]`  
+    let errorMessage = `GET Roles - Erreur lors de la recherche des roles de [${userId}]`
     console.error(errorMessage)
     res.status(500).send(errorMessage)
     return
   }
 
   if (!contact) {
-      console.error('GET Roles - Utilisateur non trouvé [%s] : ' , userId)
-      let errorMessage = `GET Roles - Utilisateur non trouvé [${userId}]`
-      res.status(404).send(errorMessage)
-      return
+    console.error('GET Roles - Utilisateur non trouvé [%s] : ', userId)
+    let errorMessage = `GET Roles - Utilisateur non trouvé [${userId}]`
+    res.status(404).send(errorMessage)
+    return
   }
 
   /* Regarde si groups contient certains groupe */
   contact.groups.forEach(element => {
-      /* Si dans le groupe Informatique ==> Role Admin */
-      if (element.dn && element.dn.includes('_Informatique')) {
-          roles.push('admin')
-      }
+    /* Si dans le groupe Informatique ==> Role Admin */
+    if (element.dn && element.dn.includes('_Informatique')) {
+      roles.push('admin')
+    }
 
-      /* Si dans le groupe _Ressource_humaines ==> Role rh */
-      if (element.dn && element.dn.includes('_Ressource_humaines')) {
-          roles.push('rh')
-      }
+    /* Si dans le groupe _Ressource_humaines ==> Role rh */
+    if (element.dn && element.dn.includes('_Ressource_humaines')) {
+      roles.push('rh')
+    }
   })
 
   if (contact.isManager === true) {
-      roles.push('manager')
+    roles.push('manager')
   }
 
   res.json(roles)
@@ -377,15 +377,15 @@ router.get('/users/:id/roles', async function(req, res) {
 /**
 * Retourne les information d'un utilisateur
 */
-router.get('/contacts/:id', async function(req, res) {
+router.get('/contacts/:id', async function (req, res) {
   var userId = req.params.id
   let contact
   try {
-      contact = await Contacts.findOne({ sAMAccountName: userId }).lean()
+    contact = await Contacts.findOne({ sAMAccountName: userId }).lean()
   } catch (err) {
-      console.error("Erreur la recherche de l'utilisateur " + userId, err)
-      res.sendStatus(500)
-      return
+    console.error("Erreur la recherche de l'utilisateur " + userId, err)
+    res.sendStatus(500)
+    return
   }
 
   res.json(contact)
@@ -394,7 +394,7 @@ router.get('/contacts/:id', async function(req, res) {
 /**
 * Retourne l'ensemble des employés silène
 */
-router.get('/users/rh/:id/all', async function(req, res) {
+router.get('/users/rh/:id/all', async function (req, res) {
   var userId = req.params.id
   /* TODO - Vérifier que l'utilisateur connecté est bien manager */
 
@@ -403,44 +403,44 @@ router.get('/users/rh/:id/all', async function(req, res) {
   let allContacts
   /* 0/ Charge tous les contacts pour éviter les appels répétés à la base */
   try {
-      allContacts = await Contacts.find({ matricule: { $ne: 'Non trouvé' } })
-          .sort({ givenName: 1 })
-          .lean()
+    allContacts = await Contacts.find({ matricule: { $ne: 'Non trouvé' } })
+      .sort({ givenName: 1 })
+      .lean()
   } catch (err) {
-      console.error("Erreur la recherche de l'utilisateur " + userId, err)
-      res.sendStatus(500)
-      return
+    console.error("Erreur la recherche de l'utilisateur " + userId, err)
+    res.sendStatus(500)
+    return
   }
 
   for (let index = 0; index < allContacts.length; index++) {
-      const contact = allContacts[index]
-      loadContacts[contact.sAMAccountName] = contact
+    const contact = allContacts[index]
+    loadContacts[contact.sAMAccountName] = contact
   }
 
   /* 1/ Récupération des enfants */
-  let contact = loadContacts[userId]
+  let userRh = loadContacts[userId]
 
-  if (!contact) {
-      console.error('Utilisateur non trouvé : ' + userId)
-      res.sendStatus(404)
-      return
+  if (!userRh) {
+    console.error('/users/rh/:id/all - Utilisateur non trouvé : ' + userId)
+    res.sendStatus(404)
+    return
   }
 
   let isRh = false
-  contact.groups.forEach(element => {
-      /* Si dans le groupe _Ressource_humaines ==> Role rh */
-      if (element.dn && element.dn.includes('_Ressource_humaines')) {
-          isRh = true
-      }
+  userRh.groups.forEach(element => {
+    /* Si dans le groupe _Ressource_humaines ==> Role rh */
+    if (element.dn && element.dn.includes('_Ressource_humaines')) {
+      isRh = true
+    }
   })
 
   if (!isRh) {
-      console.error(`Cet utilisateur n'est pas du service RH:  ` + userId)
+    console.error(`/users/rh/:id/all - Cet utilisateur n'est pas du service RH:  ` + userId)
 
-      res.status(401).send(
-          `Cet utilisateur n'est pas du service RH:  ` + userId
-      )
-      return
+    res.status(401).send(
+      `/users/rh/:id/all - Cet utilisateur n'est pas du service RH:  ` + userId
+    )
+    return
   }
   // TODO vérifier que l'user est RH
 
@@ -452,7 +452,7 @@ router.get('/users/rh/:id/all', async function(req, res) {
 /**
 * Retourne l'ensemble des employés visibles par un manager
 */
-router.get('/users/manager/:id/children', async function(req, res) {
+router.get('/users/manager/:id/children', async function (req, res) {
   var userId = req.params.id
   /* TODO - Vérifier que l'utilisateur connecté est bien manager */
 
@@ -461,42 +461,41 @@ router.get('/users/manager/:id/children', async function(req, res) {
   let allContacts
   /* 0/ Charge tous les contacts pour éviter les appels répétés à la base */
   try {
-      allContacts = await Contacts.find({ matricule: { $ne: 'Non trouvé' } })
-          .sort({ givenName: 1 })
-          .lean()
+    allContacts = await Contacts.find({ matricule: { $ne: 'Non trouvé' } })
+      .sort({ givenName: 1 })
+      .lean()
   } catch (err) {
-      console.error("Erreur la recherche de l'utilisateur " + userId, err)
-      res.sendStatus(500)
-      return
+    console.error("Erreur la recherche de l'utilisateur " + userId, err)
+    res.sendStatus(500)
+    return
   }
 
+  /* Construction d'un json avec le sAMAccountName en Clé. (Facilitant la recherche de contact par identifiant) */
   for (let index = 0; index < allContacts.length; index++) {
-      const contact = allContacts[index]
-      loadContacts[contact.sAMAccountName] = contact
+    const contact = allContacts[index]
+    loadContacts[contact.sAMAccountName] = contact
   }
 
   /* 1/ Récupération des enfants */
-  let contact
+  let manager = loadContacts[userId]
 
-  contact = loadContacts[userId]
-
-  if (!contact) {
-      console.error('Utilisateur non trouvé : ' + userId)
-      res.sendStatus(404)
-      return
+  if (!manager) {
+    console.error('Utilisateur non trouvé : ' + userId)
+    res.sendStatus(404)
+    return
   }
 
-  if (!contact.isManager) {
-      console.error(`Cet utilisateur n'est pas un manager:  ` + userId)
+  if (!manager.isManager) {
+    console.error(`Cet utilisateur n'est pas un manager:  ` + userId)
 
-      res.status(401).send(`Cet utilisateur n'est pas un manager:  ` + userId)
-      return
+    res.status(401).send(`Cet utilisateur n'est pas un manager:  ` + userId)
+    return
   }
 
-  jsonResult.directChildren = _getChildren(contact.children)
+  jsonResult.directChildren = _getChildren(manager.children)
   jsonResult.indirectChildren = []
 
-  _getIndirectChildren(jsonResult, contact.children)
+  _getIndirectChildren(jsonResult, manager.children)
 
   // console.log(jsonResult)
 
@@ -510,9 +509,11 @@ router.get('/users/manager/:id/children', async function(req, res) {
 function _getChildren(children) {
   let returnedChildren = []
   for (let index = 0; index < children.length; index++) {
-      const child = children[index]
-      let infoContact = getContactInfo(child)
+    const child = children[index]
+    let infoContact = getContactInfo(child)
+    if (infoContact) {
       returnedChildren.push(infoContact)
+    }
   }
 
   return returnedChildren
@@ -526,9 +527,9 @@ function _getAll(allContacts) {
   let returnedChildren = []
 
   for (let index = 0; index < allContacts.length; index++) {
-      const contact = allContacts[index]
-      let infoContact = getContactInfo(contact.sAMAccountName)
-      returnedChildren.push(infoContact)
+    const contact = allContacts[index]
+    let infoContact = getContactInfo(contact.sAMAccountName)
+    returnedChildren.push(infoContact)
   }
 
   return returnedChildren
@@ -541,19 +542,23 @@ function _getAll(allContacts) {
 */
 function _getIndirectChildren(jsonResult, children) {
   for (let index = 0; index < children.length; index++) {
-      const child = children[index]
-      /* Est ce que l'enfant a lui meme des enfants? */
-      let contact = getContact(child)
-      if (contact.isManager == true) {
-          let jsonElement = {
-              owner: getContactInfo(child),
-              children: _getChildren(contact.children)
-          }
-          jsonResult.indirectChildren.push(jsonElement)
-
-          /* Récursif */
-          _getIndirectChildren(jsonResult, contact.children)
+    const child = children[index]
+    /* Est ce que l'enfant a lui meme des enfants? */
+    let contact = getContact(child)
+    /* Si pas de contact. Cela peut etre le cas, si  l'utilisateur n'a pas de matricule dans Orhus --> il aura été filtré de la table de référence. */
+    if (!contact) {
+      continue
+    }
+    if (contact.isManager == true) {
+      let jsonElement = {
+        owner: getContactInfo(child),
+        children: _getChildren(contact.children)
       }
+      jsonResult.indirectChildren.push(jsonElement)
+
+      /* Récursif */
+      _getIndirectChildren(jsonResult, contact.children)
+    }
   }
 }
 
@@ -565,7 +570,8 @@ function getContact(userId) {
   let contact = loadContacts[userId]
 
   if (!contact) {
-      console.error('Utilisateur non trouvé : ' + userId)
+    console.error('Function interne getContact - Utilisateur non trouvé : ' + userId)
+    return null
   }
   return contact
 }
@@ -574,19 +580,18 @@ function getContact(userId) {
 * Retourne les informations d'un utilisateur
 */
 function getContactInfo(userId) {
-  let contact
-
-  contact = loadContacts[userId]
+  let contact = loadContacts[userId]
 
   if (!contact) {
-      console.error('Utilisateur non trouvé : ' + userId)
+    console.error('Function getContactInfo - Utilisateur non trouvé dans la table Contacts filtré sur le matricule présent : ' + userId)
+    return null
   }
 
   return {
-      sAMAccountName: userId,
-      prenom: contact.givenName,
-      nom: contact.sn,
-      thumbnailPhoto: contact.thumbnailPhoto
+    sAMAccountName: userId,
+    prenom: contact.givenName,
+    nom: contact.sn,
+    thumbnailPhoto: contact.thumbnailPhoto
   }
 }
 
