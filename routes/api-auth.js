@@ -169,7 +169,8 @@ router.post('/auth', async function(req, res) {
             auth = await ad.authenticate(userId + '@silene.local', userPassword)
         }
     } catch (error) {
-        var error = buildBusinessError(
+        console.log('Erreur d Auth : ', error )
+        var error2 = buildBusinessError(
             "Impossible d'authentifier l'utilisateur",
             403,
             4032,
@@ -179,9 +180,10 @@ router.post('/auth', async function(req, res) {
             "Impossible d'authentifier l'utilisateur [" + userId + ']',
             'POST',
             req.headers,
-            '/api-auth/auth'
+            '/api-auth/auth',
+            error
         )
-        res.status(403).json(error)
+        res.status(403).json(error2)
         return
     }
 

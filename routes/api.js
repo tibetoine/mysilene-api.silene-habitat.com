@@ -142,7 +142,7 @@ router.get("/news", function (req, res) {
  */
 router.get("/contacts", function (req, res) {
   logger.logApiAccess("GET", req.headers, "/api/contacts");
-  Contacts.find({})
+  Contacts.find({"deleted":false})
     .sort({ sn: 1 })
     .exec(function (err, contacts) {
       if (err) {
@@ -403,7 +403,7 @@ router.get('/users/rh/:id/all', async function (req, res) {
   let allContacts
   /* 0/ Charge tous les contacts pour éviter les appels répétés à la base */
   try {
-    allContacts = await Contacts.find({ matricule: { $ne: 'Non trouvé' } })
+    allContacts = await Contacts.find({$and : [{ matricule: { $ne: 'Non trouvé' }},{deleted:false} ]})
       .sort({ givenName: 1 })
       .lean()
   } catch (err) {
@@ -461,7 +461,7 @@ router.get('/users/manager/:id/children', async function (req, res) {
   let allContacts
   /* 0/ Charge tous les contacts pour éviter les appels répétés à la base */
   try {
-    allContacts = await Contacts.find({ matricule: { $ne: 'Non trouvé' } })
+    allContacts = await Contacts.find({$and : [{ matricule: { $ne: 'Non trouvé' }},{deleted:false} ]})
       .sort({ givenName: 1 })
       .lean()
   } catch (err) {

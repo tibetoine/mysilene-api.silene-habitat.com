@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const Shift = require('../models/shifts')
 const Contacts = require('../models/contacts')
 const dotenv = require('dotenv')
+var logger = require('../utils/logger')
 
 dotenv.config()
 
@@ -196,28 +197,32 @@ async function _getExtractionArray(jsonShifts) {
         if (!contact) {
             // console.log(element)
             console.error('Impossible de trouver le user  ', element.userId)
-        }
-        if (element.details) {
-            element.details.forEach(detail => {
-                return result.push({
-                    user: element.userId,
-                    matricule : contact.matricule,
-                    mail: contact.mail,
-                    nom: contact.sn ? contact.sn.toUpperCase() : contact.sn,
-                    prenom: contact.givenName,
-                    department: contact.department,
-                    title: contact.title,
-                    direction: contact.st,
-                    date: element.date,
-                    time: detail.time,
-                    time_heures: _stringToHeures(detail.time),
-                    time_minutes: _stringToMinutes(detail.time),
-                    mois: element.date.split('-')[1],
-                    semaine: ISO8601_week_no(new Date(element.date.replace(/\u200E/g, ''))),
-                    type: detail.type,
-                    commentaire: detail.comment
+            logger.logError('Impossible de trouver le user '+ element.userId, 'GET',
+            null,
+            '/api-shift/extract/xxx' )
+        } else {
+            if (element.details) {
+                element.details.forEach(detail => {
+                    return result.push({
+                        user: element.userId,
+                        matricule : contact.matricule,
+                        mail: contact.mail,
+                        nom: contact.sn ? contact.sn.toUpperCase() : contact.sn,
+                        prenom: contact.givenName,
+                        department: contact.department,
+                        title: contact.title,
+                        direction: contact.st,
+                        date: element.date,
+                        time: detail.time,
+                        time_heures: _stringToHeures(detail.time),
+                        time_minutes: _stringToMinutes(detail.time),
+                        mois: element.date.split('-')[1],
+                        semaine: ISO8601_week_no(new Date(element.date.replace(/\u200E/g, ''))),
+                        type: detail.type,
+                        commentaire: detail.comment
+                    })
                 })
-            })
+            }
         }
     })
 
