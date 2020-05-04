@@ -160,24 +160,22 @@ router.post('/auth', async function(req, res) {
     // console.log('authentification avec le pass : ', userPassword)
 
     let auth
+    let finalUser = 'h4403\\'+userId
     try {
         auth = await ad.authenticate(
-            userId + '@silene-habitat.com',
+            finalUser,
             userPassword
-        )
-        if (!auth || Object.keys(auth).length === 0) {
-            auth = await ad.authenticate(userId + '@silene.local', userPassword)
-        }
+        )        
     } catch (error) {
         console.log('Erreur d Auth : ', error )
         var error2 = buildBusinessError(
-            "Impossible d'authentifier l'utilisateur",
+            "Impossible d'authentifier l'utilisateur [" + finalUser + ']',
             403,
             4032,
             correlationId
         )
         logger.logError(
-            "Impossible d'authentifier l'utilisateur [" + userId + ']',
+            "Impossible d'authentifier l'utilisateur [" + finalUser + ']',
             'POST',
             req.headers,
             '/api-auth/auth',
