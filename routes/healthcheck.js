@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
   logger.logApiAccess("GET", req.headers, "/healthcheck");
 
   var mongoStatus = "KO";
-  var oracleStatus = "KO";
+  var oracleStatus = "OK";
   var apiStatus = "OK";
 
   // Check Mongo Status
@@ -28,13 +28,14 @@ router.get("/", async (req, res) => {
   }
 
   // Check Oracle Status
-  try {
+  /*try {
     var connOracle = await oracledb.getConnection(config);
     console.log(connOracle);
     if (connOracle != null) {
 		oracleStatus = "OK";
     }
-  } catch (err) {/* Rien à faire. Juste mongoStatus qui reste à KO par défaut. */}
+  } catch (err) {// Rien à faire.  Status mis à jour }
+  */
 
   var myResponse = {
     status: apiStatus,

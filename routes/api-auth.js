@@ -156,8 +156,7 @@ router.post('/auth', async function(req, res) {
     /* Récupération du login du user */
     userId = user.sAMAccountName
 
-    console.log('authentification avec le user : ', userId)
-    // console.log('authentification avec le pass : ', userPassword)
+    console.log('authentification avec le user : ', userId)    
 
     let auth
     let finalUser = 'h4403\\'+userId
