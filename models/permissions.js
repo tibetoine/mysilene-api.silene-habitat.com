@@ -1,13 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 
-const usersSchema = new Schema({
-	_id:String,		
-	token: String,
-	tokens: [String],
-	prefs: [String]
-});
+const permissionsSchema = new Schema({
+  _id: String,
+  description: String,
+  roles: [String],
+  icon: String,
+  text: String,
+  path: String
+})
 
-
-module.exports = mongoose.model('users', usersSchema, 'users');
+module.exports = mongoose.model('permissions', permissionsSchema, 'permissions')

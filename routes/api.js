@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const request = require("request-promise-lite");
 
 const NewsSilene = require("../models/newsSilene");
 const Contacts = require("../models/contacts");
 const Users = require("../models/users");
+const Roles = require('../models/roles')
 var logger = require("../utils/logger");
 require("dotenv").load();
 const ActiveDirectory = require("activedirectory");
@@ -157,6 +157,27 @@ router.get("/contacts", function (req, res) {
       }
     });
 });
+
+
+router.get('/groups', function (req, res) {
+  // db.getCollection('contacts').aggregate([{$unwind:"$groups"},{$group:{_id:"$groups.cn"}}, {$sort : {_id:1}}])
+  Contacts.aggregate([
+    { $unwind: '$groups' },
+    { $group: { _id: '$groups.cn' } },
+    { $sort: { _id: 1 } }
+  ]).exec(function (err, groups) {
+    if (err) {
+      logger.logError(
+        'Erreur dans la récupération des groups en base',
+        'GET',
+        req.headers,
+        '/api/groups'
+      )
+    } else {
+      res.json(groups)
+    }
+  })
+})
 
 /**
  * @swagger
@@ -327,6 +348,43 @@ router.get("/users/admin/:id", function (req, res) {
   });
 });
 
+/**
+ * Permet d'enregistrer en base qu'un utilisateur travaille le samedi
+ */
+router.post('/contacts/:id/saturday', async function (req, res) {
+  let userId = req.params.id
+  try {
+    let result = await Contacts.findOneAndUpdate(
+      { sAMAccountName: userId },
+      { saturday: true },
+      {
+        returnOriginal: false
+      }
+    )
+    res.status(200).send('Contact mis à jour')
+  } catch (error) {
+    res.status(500).send('Erreur recording saturday in Mongo', error)
+  }
+})
+
+/**
+ * Permet d'enregistrer en base qu'un utilisateur ne travaille pas le samedi
+ */
+router.delete('/contacts/:id/saturday', async function (req, res) {
+  let userId = req.params.id
+  try {
+    let result = await Contacts.findOneAndUpdate(
+      { sAMAccountName: userId },
+      { saturday: false },
+      {
+        returnOriginal: false
+      }
+    )
+    res.status(200).send('Contact mis à jour')
+  } catch (error) {
+    res.status(500).send('Erreur recording saturday in Mongo', error)
+  }
+})
 
 /**
  * Permet de récupérer les rôles d'un utilisateur dont l'id est passé en paramètre
@@ -352,24 +410,46 @@ router.get('/users/:id/roles', async function (req, res) {
     res.status(404).send(errorMessage)
     return
   }
-
-  /* Regarde si groups contient certains groupe */
-  contact.groups.forEach(element => {
-    /* Si dans le groupe Informatique ==> Role Admin */
-    if (element.dn && element.dn.includes('_Informatique')) {
-      roles.push('admin')
-    }
-
-    /* Si dans le groupe _Ressource_humaines ==> Role rh */
-    if (element.dn && element.dn.includes('_Ressource_humaines')) {
-      roles.push('rh')
-    }
-  })
-
+  /* 1/ Si le contact est manager  */
+  // console.log('contact', contact)
   if (contact.isManager === true) {
-    roles.push('manager')
+    roles.push['MANAGER']
   }
 
+  /* 2/ Cherche les rôles associé à cet utilisateur */
+  let foundroles = await Roles.find({ users: { $in: [userId] } })
+  // console.log('roles trouvés : ', foundroles)
+
+  if (foundroles) {
+    foundroles.forEach((role) => {
+      roles.push(role._id)
+    })
+  }
+
+  /* 3/ Cherches les rôles associé à cet utilisateur via ces groupes */
+  if (contact.groups && contact.groups.length > 0) {
+    // console.log(contact.groups.length)
+    let userGroups = []
+    for (let index = 0; index < contact.groups.length; index++) {
+      const group = contact.groups[index]
+      // console.log(group)
+      userGroups.push(group.cn)
+    }
+
+    let foundroles2 = await Roles.find({ groups: { $in: userGroups } })
+    if (foundroles2) {
+      // console.log(foundroles2)
+      foundroles2.forEach((role2) => {
+        roles.push(role2._id)
+      })
+    }
+  }
+  // roles.push('admin')
+
+  roles = roles.reduce(
+    (unique, item) => (unique.includes(item) ? unique : [...unique, item]),
+    []
+  )
   res.json(roles)
   return
 })

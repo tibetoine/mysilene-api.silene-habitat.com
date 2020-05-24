@@ -15,7 +15,8 @@ const contactsSchema = new Schema({
 	silenesst:String, 
 	sileneserrefile:String,
 	sileneguidefile:String,
-	title:String
+	title:String,
+	saturday:Boolean
 });
 
 

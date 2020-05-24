@@ -1,9 +1,10 @@
 {
   "name": "MySilene-Api",
-  "version": "1.0.0",
-  "description": "API pour l'application MySilene",
+  "version": "4.0.0",
+  "description": "API pour l'application MySilene et Silene-doc",
   "main": "server.js",
   "scripts": {
+    "dev": "nodemon server.js",
     "start": "node server"
   },
   "keywords": [],
@@ -13,6 +14,7 @@
     "activedirectory": "^0.7.2",
     "ad-promise": "^1.6.8",
     "body-parser": "~1.18.2",
+    "convert-excel-to-json": "^1.6.1",
     "cookie-parser": "~1.4.3",
     "dark-sky": "^1.1.5",
     "dotenv": "^5.0.1",
@@ -22,6 +24,7 @@
     "log4js": "^6.1.2",
     "mongodb": "^3.5.3",
     "mongoose": "^5.9.1",
+    "multer": "^1.4.2",
     "node-sp-auth": "^2.5.7",
     "oracledb": "^4.0.1",
     "request-promise": "^4.2.5",
@@ -32,5 +35,7 @@
     "vcards-js": "^2.10.0",
     "json2xls": "^0.1.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
 }

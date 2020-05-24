@@ -1,0 +1,98 @@
+[
+  {
+    "_id": "home",
+    "description": "Page d'accueil",
+    "roles": ["ALL"],
+    "icon": "home",
+    "text": "Home",
+    "path": "/home"
+  },
+  {
+    "_id": "news",
+    "description": "Les actualités Silène",
+    "roles": ["ALL"],
+    "icon": "art_track",
+    "text": "Actualités",
+    "path": "/news"
+  },
+  {
+    "_id": "contacts",
+    "description": "Les contacts internes Silène",
+    "roles": ["ALL"],
+    "icon": "contacts",
+    "text": "Contacts",
+    "path": "/contacts"
+  },
+  {
+    "_id": "meteo",
+    "description": "La météo",
+    "roles": ["ALL"],
+    "icon": "cloud",
+    "text": "Météo",
+    "path": "/meteo"
+  },
+  {
+    "_id": "shifts",
+    "description": "La gestion des temps",
+    "roles": ["ALL"],
+    "icon": "today",
+    "text": "Gestion de temps",
+    "path": "/shifts"
+  },
+  {
+    "_id": "help",
+    "description": "Aide",
+    "roles": ["ALL"],
+    "icon": "help",
+    "text": "Aide",
+    "path": "/help"
+  },
+  {
+    "_id": "admin",
+    "description": "Administration de MySilène (Attention zone sensible)",
+    "roles": ["ADMIN"],
+    "icon": "build",
+    "text": "Administration",
+    "path": "/admin"
+  },
+  {
+    "_id": "shiftsManager",
+    "description": "Tableaux de bords de la GTA",
+    "roles": ["MANAGER", "RH"],
+    "icon": "verified_user",
+    "text": "GTA - Manager ",
+    "path": "/gta_manager"
+  },
+  {
+    "_id": "shiftsRH",
+    "description": "GTA pour les RH (possibilité d'export en masse)",
+    "roles": ["RH"],
+    "icon": "verified_user",
+    "text": "GTA - RH ",
+    "path": "/gta_rh"
+  },
+  {
+    "_id": "interessement",
+    "description": "Module pour gérer les interessement",
+    "roles": ["ALL"],
+    "icon": "euro",
+    "text": "Interessement ",
+    "path": "/interessement"
+  },
+  {
+    "_id": "interessement_admin",
+    "description": "Module Backoffice pour gérer le module d'intéressement ",
+    "roles": ["RH"],
+    "icon": "euro",
+    "text": "Interessement Admin",
+    "path": "/interessement_admin"
+  },
+  {
+    "_id": "interessement_rh",
+    "description": "Module Backoffice pour utiliser le module intéressement côté RH ",
+    "roles": ["RH"],
+    "icon": "euro",
+    "text": "Interessement RH",
+    "path": "/interessement_rh"
+  }
+]

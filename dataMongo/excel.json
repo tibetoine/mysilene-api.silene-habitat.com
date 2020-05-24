@@ -1,0 +1,15 @@
+{
+  "matricule": "xx",
+  "nir": "xx",
+  "cle_nir": "xx",
+  "nb_jrs_maladie": "xx",
+  "nb_jrs_enfants_malade": "xx",
+  "nb_jrs_conges_sans_solde": "xx",
+  "nb_jrs_greve_service_non_fait": "xx",
+  "nb_jrs_absences_injustifiees": "xx",
+  "nb_jrs_cif": "xx",
+  "nb_jrs_ouvres_annee_NmoinsUn_apres_absence": "xx",
+  "montant_brut": "xx",
+  "csg_crds": "xx",
+  "quote_part_net": "xx"
+}

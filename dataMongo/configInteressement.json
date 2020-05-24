@@ -1,0 +1,179 @@
+[
+  {
+    "_id": "2020",
+    "date_accord_interessement": "2017-06-19",
+    "montant_global": { "$numberDouble": "282678.23" },
+    "nombre_jours_de_travail_effectif": { "$numberInt": "251" },
+    "date_echeance_choix": "2020-06-15",
+    "abondement": "50",
+    "interet_retard": "",
+    "autofinancement": "13,63",
+    "pourcentage_masse_salariale": "4,73",
+    "estimation_montant_indiduel_brut": { "$numberDouble": "1537.26" },
+    "resultat_exploitation": "x,xx",
+    "majoration_autofinancement": "0,73",
+    "repartition_defaut_sur_bulletin_de_salaire": "0",
+    "taux_csg_crds": "9,7",
+    "pee": [
+      {
+        "index_du_fond": { "$numberInt": "1" },
+        "nom_du_fond": "SOREA MONETAIRE",
+        "numero_du_fond": "A1",
+        "percent": "100",
+        "lien_notice_d_information": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      },
+      {
+        "index_du_fond": { "$numberInt": "2" },
+        "nom_du_fond": "SOREA Actions Euro",
+        "numero_du_fond": "B1",
+        "percent": "0",
+        "lien_notice_d_information": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      },
+      {
+        "index_du_fond": { "$numberInt": "3" },
+        "nom_du_fond": "SOREA Obligations",
+        "numero_du_fond": "C1",
+        "percent": "0",
+        "lien_notice_d_information": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      },
+      {
+        "index_du_fond": { "$numberInt": "4" },
+        "nom_du_fond": "SOREA Dynamique Solidaire",
+        "numero_du_fond": "D1",
+        "percent": "0",
+        "lien_notice_d_information": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      },
+      {
+        "index_du_fond": { "$numberInt": "5" },
+        "nom_du_fond": "SOREA Croissance",
+        "numero_du_fond": "E1",
+        "percent": "0",
+        "lien_notice_d_information": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      }
+    ],
+    "critères": [
+      {
+        "_id": "qualite",
+        "titre": "La qualité de service rendue au client",
+        "objectif": "+85%",
+        "Réalisé": "87%",
+        "resultat": { "$numberDouble": "150" },
+        "repartition": "30%"
+      },
+      {
+        "_id": "demande_financement",
+        "titre": "Nombre de logements faisant l’objet d’une demande de financement",
+        "objectif": "240 logements",
+        "Réalisé": "348 logements",
+        "resultat": { "$numberDouble": "150" },
+        "repartition": "20%"
+      },
+      {
+        "_id": "logements_rehabilites",
+        "titre": "Réception de logements réhabilités",
+        "objectif": "230 logements",
+        "Réalisé": "97 logements",
+        "resultat": { "$numberDouble": "0" },
+        "repartition": "20%"
+      },
+      {
+        "_id": "vacance",
+        "titre": "Vacance",
+        "objectif": "2% du parc de logement",
+        "Réalisé": "1,68%",
+        "resultat": { "$numberDouble": "150" },
+        "repartition": "20%"
+      },
+      {
+        "_id": "impayes",
+        "titre": "Impayés",
+        "objectif": "4,4%",
+        "Réalisé": "3,23%",
+        "resultat": { "$numberDouble": "150" },
+        "repartition": "10%"
+      }
+    ]
+  },
+  {
+    "_id": "2021",
+    "date_accord_interessement": "2020-05-01",
+    "montant_global": 250977.09,
+    "nombre_jours_de_travail_effectif": 252,
+    "date_echeance_choix": "2020-06-01",
+    "abondement": "50%",
+    "interet_retard": "",
+    "autofinancement": "11.98%",
+    "pourcentage_masse_salariale": "4,39",
+    "estimation_montant_indiduel_brut": 1369.79,
+    "label_autre_absence": "",
+    "pee": [
+      {
+        "index_du_fond": 1,
+        "nom_du_fond": "SOREA MONETAIRE",
+        "numero_du_fond": "A1"
+      },
+      {
+        "index_du_fond": 2,
+        "nom_du_fond": "SOREA Actions Euro",
+        "numero_du_fond": "B1"
+      },
+      {
+        "index_du_fond": 3,
+        "nom_du_fond": "SOREA Obligations",
+        "numero_du_fond": "C1"
+      },
+      {
+        "index_du_fond": 4,
+        "nom_du_fond": "SOREA Dynamique Solidaire",
+        "numero_du_fond": "D1"
+      },
+      {
+        "index_du_fond": 5,
+        "nom_du_fond": "SOREA Croissance",
+        "numero_du_fond": "E1"
+      }
+    ],
+    "critères": [
+      {
+        "_id": "qualite",
+        "titre": "La qualité de service rendue au clien_notice_d_informationt",
+        "objectif": "+85%",
+        "Réalisé": "89,90%",
+        "resultat": 150,
+        "repartition": "30%"
+      },
+      {
+        "_id": "demande_financement",
+        "titre": "Nombre de logements faisant l’objet d’une demande de financement",
+        "objectif": "210 logements",
+        "Réalisé": "238",
+        "resultat": 150,
+        "repartition": "20%"
+      },
+      {
+        "_id": "logements_rehabilites",
+        "titre": "Réception de logements réhabilités",
+        "objectif": "180 logements",
+        "Réalisé": "231",
+        "resultat": 150,
+        "repartition": "20%"
+      },
+      {
+        "_id": "vacance",
+        "titre": "Vacance",
+        "objectif": "2% du parc de logement",
+        "Réalisé": "1,73%",
+        "resultat": 150,
+        "repartition": "20%"
+      },
+      {
+        "_id": "impayes",
+        "titre": "Impayés",
+        "objectif": "4,4%",
+        "Réalisé": "3,69%",
+        "resultat": 150,
+        "repartition": "10%"
+      }
+    ]
+  }
+]

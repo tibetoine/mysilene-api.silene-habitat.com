@@ -19,6 +19,8 @@ const apiGedPrem = require('./routes/api-ged-prem')
 const apiGedSharepoint = require('./routes/api-ged-sharepoint')
 const apiVcard = require('./routes/api-vcard')
 const apiShift = require('./routes/api-shift')
+const apiInteressement = require('./routes/api-itt')
+const apiAccess = require('./routes/api-access')
 
 var json2xls = require('json2xls')
 
@@ -226,8 +228,10 @@ app.use(
     isAuthenticated
 ) /* A partir de ce point toutes les routes nécessitent une authentification */
 app.use('/api', api)
+app.use('/api-access', apiAccess)
 app.use('/api-docs', apiDocs)
 app.use('/api-shift', apiShift)
+app.use('/api-itt', apiInteressement)
 
 app.use(
     isAdmin
