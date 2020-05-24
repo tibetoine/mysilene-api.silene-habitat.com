@@ -1,6 +1,7 @@
 [
   {
     "_id": "home",
+    "order": { "$numberDouble": "1" },
     "description": "Page d'accueil",
     "roles": ["ALL"],
     "icon": "home",
@@ -9,6 +10,7 @@
   },
   {
     "_id": "news",
+    "order": { "$numberDouble": "2" },
     "description": "Les actualités Silène",
     "roles": ["ALL"],
     "icon": "art_track",
@@ -17,6 +19,7 @@
   },
   {
     "_id": "contacts",
+    "order": { "$numberDouble": "3" },
     "description": "Les contacts internes Silène",
     "roles": ["ALL"],
     "icon": "contacts",
@@ -25,6 +28,7 @@
   },
   {
     "_id": "meteo",
+    "order": { "$numberDouble": "4" },
     "description": "La météo",
     "roles": ["ALL"],
     "icon": "cloud",
@@ -33,6 +37,7 @@
   },
   {
     "_id": "shifts",
+    "order": { "$numberDouble": "5" },
     "description": "La gestion des temps",
     "roles": ["ALL"],
     "icon": "today",
@@ -40,31 +45,8 @@
     "path": "/shifts"
   },
   {
-    "_id": "help",
-    "description": "Aide",
-    "roles": ["ALL"],
-    "icon": "help",
-    "text": "Aide",
-    "path": "/help"
-  },
-  {
-    "_id": "admin",
-    "description": "Administration de MySilène (Attention zone sensible)",
-    "roles": ["ADMIN"],
-    "icon": "build",
-    "text": "Administration",
-    "path": "/admin"
-  },
-  {
-    "_id": "shiftsManager",
-    "description": "Tableaux de bords de la GTA",
-    "roles": ["MANAGER", "RH"],
-    "icon": "verified_user",
-    "text": "GTA - Manager ",
-    "path": "/gta_manager"
-  },
-  {
     "_id": "shiftsRH",
+    "order": { "$numberDouble": "6" },
     "description": "GTA pour les RH (possibilité d'export en masse)",
     "roles": ["RH"],
     "icon": "verified_user",
@@ -72,7 +54,17 @@
     "path": "/gta_rh"
   },
   {
+    "_id": "shiftsManager",
+    "order": { "$numberDouble": "7" },
+    "description": "Tableaux de bords de la GTA",
+    "roles": ["MANAGER", "RH"],
+    "icon": "verified_user",
+    "text": "GTA - Manager ",
+    "path": "/gta_manager"
+  },
+  {
     "_id": "interessement",
+    "order": { "$numberDouble": "8" },
     "description": "Module pour gérer les interessement",
     "roles": ["ALL"],
     "icon": "euro",
@@ -80,7 +72,17 @@
     "path": "/interessement"
   },
   {
+    "_id": "interessement_rh",
+    "order": { "$numberDouble": "9" },
+    "description": "Module Backoffice pour utiliser le module intéressement côté RH ",
+    "roles": ["RH"],
+    "icon": "euro",
+    "text": "Interessement RH",
+    "path": "/interessement_rh"
+  },
+  {
     "_id": "interessement_admin",
+    "order": { "$numberDouble": "10" },
     "description": "Module Backoffice pour gérer le module d'intéressement ",
     "roles": ["RH"],
     "icon": "euro",
@@ -88,11 +90,21 @@
     "path": "/interessement_admin"
   },
   {
-    "_id": "interessement_rh",
-    "description": "Module Backoffice pour utiliser le module intéressement côté RH ",
-    "roles": ["RH"],
-    "icon": "euro",
-    "text": "Interessement RH",
-    "path": "/interessement_rh"
+    "_id": "admin",
+    "order": { "$numberDouble": "11" },
+    "description": "Administration de MySilène (Attention zone sensible)",
+    "roles": ["ADMIN"],
+    "icon": "build",
+    "text": "Administration",
+    "path": "/admin"
+  },
+  {
+    "_id": "help",
+    "order": { "$numberDouble": "12" },
+    "description": "Aide",
+    "roles": ["ALL"],
+    "icon": "help",
+    "text": "Aide",
+    "path": "/help"
   }
 ]
