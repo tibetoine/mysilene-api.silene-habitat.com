@@ -28,13 +28,21 @@ router.get("/", async (req, res) => {
   }
 
   // Check Oracle Status
-  /*try {
-    var connOracle = await oracledb.getConnection(config);
+  /*
+  var connOracle
+  try {
+    connOracle = await oracledb.getConnection(config);
     console.log(connOracle);
     if (connOracle != null) {
 		oracleStatus = "OK";
     }
   } catch (err) {// Rien à faire.  Status mis à jour }
+  finally {
+      if (connOracle) {
+        // connOracle assignment worked, need to close
+        await connOracle.close();
+      }
+    }
   */
 
   var myResponse = {
