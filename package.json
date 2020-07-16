@@ -20,7 +20,7 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-validator": "^4.3.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "log4js": "^6.1.2",
     "mongodb": "^3.5.3",
     "mongoose": "^5.9.1",
